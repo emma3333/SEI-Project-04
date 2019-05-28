@@ -1,8 +1,11 @@
-from flask import Blueprint, request, jsonify, abort #flask is responsible for sending responses
+from flask import Blueprint, request, jsonify, abort, g #flask is responsible for sending responses
 from pony.orm import db_session
 from marshmallow import ValidationError
 from app import db
 from models.Pool import Pool, PoolSchema
+# from lib.secure_route import secure_route
+
+
 
 router = Blueprint(__name__, 'pools') # creates the router for this controller
 
@@ -24,6 +27,7 @@ def create():
         # attempt to convert the JSON into a dict
         data = schema.load(request.get_json())
         # Use that to create a pool object
+        data['user'] = g.current_user
         pool = Pool(**data)
         # Store it in the database
         db.commit()

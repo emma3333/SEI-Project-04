@@ -12,6 +12,7 @@ class User(db.Entity):
     email = Required(str, unique=True)
     password_hash = Required(str)
     pools = Set('Pool')
+    # comments = Set('Comment')
 
     def is_password_valid(self, plaintext):
         return bcrypt.checkpw(plaintext.encode('utf8'), self.password_hash.encode('utf8'))
@@ -38,6 +39,7 @@ class UserSchema(Schema):
     password = fields.Str(load_only=True)
     password_confirmation = fields.Str(load_only=True)
     pools = fields.Nested('PoolSchema', many=True, exclude=('user',))
+    # comments = fields.Nested('CommentSchema', many=True, exclude=('user',))
 
 
     def generate_hash(self, plaintext):
