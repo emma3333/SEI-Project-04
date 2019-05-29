@@ -149,7 +149,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
               {errors.country && <div className="help is-danger">{errors.country}</div>}
             </div>
             <div className="field">
-              <label className="label">Heated?</label>
+              <label className="label">Heated</label>
               <div className="control">
                 <div className="select is-fullwidth">
                   <select
