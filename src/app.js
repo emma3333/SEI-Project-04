@@ -14,6 +14,7 @@ import PoolsShow from './components/pools/Show'
 import PoolsIndex from './components/pools/Index'
 
 import 'bulma'
+import './style.scss'
 
 class App extends React.Component {
   render() {

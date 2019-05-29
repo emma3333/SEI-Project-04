@@ -1,6 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl'
+import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
+import Promise from 'bluebird'
+import Card from './Card'
+import { Link } from 'react-router-dom'
+
+
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoiZW1tYTIwMTkiLCJhIjoiY2p3OTZqYWhtMGdkejQxcGRpZnozc2cwcCJ9.y7XLy3U5leX_xHO1Qer06w'
@@ -10,13 +15,30 @@ class Show extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      pool: []
+      pool: [],
+      pools: []
     }
   }
 
+  getPools() {
+    Promise.props({
+      pool: axios.get(`/api/pools/${this.props.match.params.id}`).then(res => res.data),
+      pools: axios.get('/api/pools').then(res => res.data)
+    })
+      .then(res => {
+        this.setState({ pool: res.pool, pools: res.pools })
+      })
+      .catch(err => this.setState({ errors: err.response.data.errors }))
+  }
+
   componentDidMount() {
-    axios.get(`/api/pools/${this.props.match.params.id}`)
-      .then(res => this.setState({ pool: res.data }))
+    this.getPools()
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.location.pathname !== this.props.location.pathname) {
+      this.getPools()
+    }
   }
 
   render() {
@@ -24,13 +46,15 @@ class Show extends React.Component {
 
     const { name, description, type, address, long, lat, region, heated, country, user, image} = this.state.pool
 
-    console.log(this.state.pool)
-    console.log(lat)
+    const similar = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
+
+    console.log(this.state.pool, 'POOL')
+    console.log(this.state.pools, 'POOLS')
+    console.log(similar, 'SIMILAR')
 
     return (
 
-      <section className="hero is-fullheight-with-navbar">
-
+      <section className="is-fullheight-with-navbar">
 
         <Map
           style="mapbox://styles/mapbox/streets-v9"
@@ -45,13 +69,44 @@ class Show extends React.Component {
           </Marker>
         </Map>
 
-        <div className="columns is-multiline">
-          <div className="column is-two-fifths-desktop is-half-tablet is-full-mobile">
-            <figure className="image">
-              <img src={image} alt={name} />
-            </figure>
+        <div className="section">
+          <div className="columns is-multiline">
+
+            <div className="column is-two-fifths-desktop is-half-tablet is-full-mobile">
+              <figure className="image">
+                <img src={image} alt={name} />
+              </figure>
+            </div>
+            <div className="column is-two-fifths-desktop is-half-tablet is-full-mobile">
+              <p className="pool-heading">{name}</p>
+              <p>Description: {description}</p>
+              <p>Type: {type}</p>
+              <p>Heated: {heated}</p>
+              <p>Address: {address}</p>
+              <p>Region: {region}</p>
+              <p>Country: {country}</p>
+            </div>
+
+            <div className="column is-one-fifth-desktop is-half-tablet is-full-mobile">
+              <div className="similar-pools">
+
+                <h2 className="subtitle is-6 subheading-show">Nearby pools</h2>
+
+                <div>
+                  {similar.map(pool =>
+                    <div className="pool-heading" key={pool.id}>
+                      <Link to={`/pools/${pool.id}`}>
+                        <Card {...pool} />
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
+
 
       </section>
     )
