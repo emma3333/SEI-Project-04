@@ -82,7 +82,7 @@ class Show extends React.Component {
 
 
               {/* COMMENTS ==================================================*/}
-              <div className="pool-heading">
+              <div className="comment-heading">
                 <h2 className="subtitle is-6">Comments</h2>
                 <article className="media">
                   <figure className="media-left">
@@ -132,7 +132,7 @@ class Show extends React.Component {
 
                 <div>
                   {nearby.map(pool =>
-                    <div className="pool-heading" key={pool.id}>
+                    <div className="nearby-pools" key={pool.id}>
                       <Link to={`/pools/${pool.id}`}>
                         <Card {...pool} />
                       </Link>

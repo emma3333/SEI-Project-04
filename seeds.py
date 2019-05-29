@@ -12,7 +12,8 @@ with db_session():
     emma = User(
         username='emma',
         email='ekprice01@gmail.com',
-        password_hash=schema.generate_hash('pass')
+        password_hash=schema.generate_hash('pass'),
+        image='https://candobristol.co.uk/img/profile-pic.svg'
     )
 
     pool_one = Pool(
@@ -160,7 +161,7 @@ with db_session():
         image='https://www.historic-uk.com/wp-content/uploads/2017/01/mermaids-at-mermaids-pool.jpg',
         description='Mermaid’s Pool is a small pool on Kinder Scout in Derbyshire, England, which, according to legend, is inhabited by a beautiful mermaid who can be seen if you look into the water at sunrise on Easter Sunday. It is also said that its water is salty due to its being connected by an underground passage to the Atlantic.',
         type='pond',
-        address='Hayfield, High Peak S33 7ZJ',
+        address='Hayfield, High Peak, S33 7ZJ',
         lng='-1.846999',
         lat='53.364384',
         region='North West',

@@ -1,14 +1,26 @@
-
+.home {
+  letter-spacing: 2px;
+}
 
 nav {
   text-transform: uppercase;
   font-size: 14px;
 }
 
+.nearby-pools {
+  padding: 4px 0;
+  text-transform: uppercase;
+}
+
 .pool-heading {
   text-transform: uppercase;
 }
 
-.nearby-pools {
+.comment-heading{
   text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.label, .input, .select {
+  font-size: 14px;
 }

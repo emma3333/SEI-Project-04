@@ -3,17 +3,18 @@ import { withRouter } from 'react-router-dom'
 
 const Form = ({ handleChange, handleSubmit, data, errors}) => {
   return (
-    <section className="section">
+    <section>
       <div className="container is-fluid">
         <div className="formBox">
           <form onSubmit={handleSubmit}>
+            <h1 className="title is-4">Add a pool</h1>
             <div className="field">
               <label className="label">Name</label>
               <div className="control">
                 <input
                   className="input"
                   name="name"
-                  placeholder="Mermaid Pool"
+                  placeholder="eg: Mermaid Pool"
                   onChange={handleChange}
                   value={data.name || ''}
                 />
@@ -26,7 +27,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
                 <input
                   className="input"
                   name="description"
-                  placeholder="eg: ..."
+                  placeholder="eg: A stunning small pool for a chilly dip"
                   onChange={handleChange}
                   value={data.description || ''}
                 />
@@ -39,7 +40,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
                 <input
                   className="input"
                   name="image"
-                  placeholder="eg: https://pool.jpg"
+                  placeholder="eg: https://wildswimming.com/images/swim.png"
                   onChange={handleChange}
                   value={data.image || ''}
                 />
@@ -99,6 +100,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
                 <input
                   className="input"
                   name="address"
+                  placeholder="eg: Hayfield, High Peak, S33 7ZJ"
                   onChange={handleChange}
                   value={data.address || ''}
                 />
@@ -111,6 +113,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
                 <input
                   className="input"
                   name="lng"
+                  placeholder="eg: -1.846999"
                   onChange={handleChange}
                   value={data.lng || ''}
                 />
@@ -123,6 +126,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
                 <input
                   className="input"
                   name="lat"
+                  placeholder="eg: 53.364384"
                   onChange={handleChange}
                   value={data.lat || ''}
                 />
@@ -166,7 +170,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
               {errors.heated && <div className="help is-danger">{errors.heated}</div>}
             </div>
 
-            <button className="button is-dark">Submit</button>
+            <button className="button is-dark">SUBMIT</button>
           </form>
         </div>
       </div>

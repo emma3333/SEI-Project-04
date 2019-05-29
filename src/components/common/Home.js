@@ -1,36 +1,54 @@
 import React from 'react'
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
+import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
+import axios from 'axios'
 
 const Map = ReactMapboxGl({
+  minZoom: 0,
+  maxZoom: 5,
   accessToken: process.env.MAPBOX_TOKEN
 })
 
-const Home = () => {
-  return (
-    <section className="hero is-fullheight-with-navbar">
-      <div className="columns is-multiline">
-        <Map
-          style="mapbox://styles/mapbox/streets-v9"
-          containerStyle={{
-            height: '50vh',
-            width: '100vw'
-          }}>
-          <Layer
-            type="symbol"
-            id="marker"
-            layout={{ 'icon-image': 'marker-15' }}>
-            <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
-          </Layer>
-        </Map>
-      </div>
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title display">Wild Swimming</h1>
-          <h2 className="subtitle"></h2>
+class Home extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state={
+      pools: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/api/pools')
+      .then(res => this.setState({ pools: res.data }))
+  }
+
+  render() {
+    return (
+      <section className="hero is-fullheight-with-navbar">
+        <div className="columns is-multiline">
+          <Map
+            style="mapbox://styles/mapbox/streets-v9"
+            containerStyle={{
+              height: '70vh',
+              width: '100vw'
+            }}>
+            {this.state.pools.map(pool =>
+              <Marker key={pool.id}
+                coordinates={[pool.lng, pool.lat]}
+                anchor="bottom">
+                <img src={'../../assets/marker.png'}/>
+              </Marker>
+            )}
+          </Map>
         </div>
-      </div>
-    </section>
-  )
+        <div className="hero-body">
+          <div className="container home">
+            <h1 className="title display">Wild Swimming</h1>
+            <h2 className="subtitle"></h2>
+          </div>
+        </div>
+      </section>
+    )
+  }
 }
 
 export default Home
