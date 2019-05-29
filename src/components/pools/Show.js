@@ -5,8 +5,10 @@ import Promise from 'bluebird'
 import Card from './Card'
 import { Link } from 'react-router-dom'
 
+const mapboxToken = process.env.MAPBOX_TOKEN
+
 const Map = ReactMapboxGl({
-  accessToken: process.env.MAPBOX_TOKEN
+  accessToken: mapboxToken
 })
 
 class Show extends React.Component {
@@ -59,7 +61,12 @@ class Show extends React.Component {
       <section className="is-fullheight-with-navbar">
 
         <Map
-          style="mapbox://styles/mapbox/streets-v9"
+          style="mapbox://styles/mapbox/streets-v10"
+          zoom={[10]}
+          center={{
+            lat: 51.527714,
+            lng: -0.095843
+          }}
           containerStyle={{
             height: '40vh',
             width: '100vw'

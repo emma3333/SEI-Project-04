@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom'
 import Card from './Card'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
 
+const mapboxToken = process.env.MAPBOX_TOKEN
+
 const Map = ReactMapboxGl({
-  accessToken: process.env.MAPBOX_TOKEN
+  accessToken: mapboxToken
 })
+
 
 class Index extends React.Component {
 
@@ -35,7 +38,12 @@ class Index extends React.Component {
       <section className="hero is-fullheight-with-navbar">
         <div className="columns is-multiline">
           <Map
-            style="mapbox://styles/mapbox/streets-v9"
+            style="mapbox://styles/mapbox/streets-v10"
+            zoom={[10]}
+            center={{
+              lat: 51.527714,
+              lng: -0.095843
+            }}
             containerStyle={{
               height: '40vh',
               width: '100vw'

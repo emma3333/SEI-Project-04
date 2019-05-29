@@ -2,11 +2,12 @@ import React from 'react'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
 import axios from 'axios'
 
+const mapboxToken = process.env.MAPBOX_TOKEN
+
 const Map = ReactMapboxGl({
-  minZoom: 0,
-  maxZoom: 5,
-  accessToken: process.env.MAPBOX_TOKEN
+  accessToken: mapboxToken
 })
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -26,7 +27,12 @@ class Home extends React.Component {
       <section className="hero is-fullheight-with-navbar">
         <div className="columns is-multiline">
           <Map
-            style="mapbox://styles/mapbox/streets-v9"
+            style="mapbox://styles/mapbox/streets-v10"
+            zoom={[5]}
+            center={{
+              lat: 54.364384,
+              lng: -1.846999
+            }}
             containerStyle={{
               height: '70vh',
               width: '100vw'
