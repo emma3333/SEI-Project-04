@@ -1,9 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const Map = ReactMapboxGl({
+  minZoom: 0,
+  maxZoom: 8,
   accessToken: process.env.MAPBOX_TOKEN
 })
 
@@ -34,7 +36,7 @@ class PoolsMap extends React.Component {
             }}>
             {this.state.pools.map(pool =>
               <Marker key={pool.id}
-                coordinates={[pool.long, pool.lat]}
+                coordinates={[pool.lng, pool.lat]}
                 anchor="bottom">
                 <img src={'../../assets/marker.png'}/>
               </Marker>

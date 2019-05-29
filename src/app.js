@@ -13,7 +13,7 @@ import Register from './components/auth/Register'
 import PoolsShow from './components/pools/Show'
 import PoolsIndex from './components/pools/Index'
 import PoolsMap from './components/pools/Map'
-
+import PoolsNew from './components/pools/New'
 
 import 'bulma'
 import './style.scss'
@@ -25,6 +25,7 @@ class App extends React.Component {
         <div>
           <Navbar />
           <Switch>
+            <Route path='/pools/new' component={PoolsNew} />
             <Route path='/pools/:id' component={PoolsShow} />
             <Route path='/pools' component={PoolsIndex} />
             <Route path='/map' component={PoolsMap} />

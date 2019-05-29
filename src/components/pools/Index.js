@@ -42,7 +42,7 @@ class Index extends React.Component {
             }}>
             {this.state.pools.map(pool =>
               <Marker key={pool.id}
-                coordinates={[pool.long, pool.lat]}
+                coordinates={[pool.lng, pool.lat]}
                 anchor="bottom">
                 <img src={'../../assets/marker.png'}/>
               </Marker>

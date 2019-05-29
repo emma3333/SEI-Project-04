@@ -42,7 +42,7 @@ class Show extends React.Component {
   render() {
     if(!this.state.pool) return null
 
-    const { name, description, type, address, long, lat, region, heated, country, user, image} = this.state.pool
+    const { name, description, type, address, lng, lat, region, heated, country, user, image} = this.state.pool
 
     const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
 
@@ -61,7 +61,7 @@ class Show extends React.Component {
             width: '100vw'
           }}>
           <Marker
-            coordinates={[long, lat]}
+            coordinates={[lng, lat]}
             anchor="bottom">
             <img src={'../../assets/marker.png'}/>
           </Marker>
