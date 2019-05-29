@@ -1,24 +1,33 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import axios from 'axios'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+
+// import SecureRoute from './components/common/SecureRoute'
+
+import Home from './components/common/Home'
+import Navbar from './components/common/Navbar'
+
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+
+import PoolsIndex from './components/pools/Index'
+
+import 'bulma'
 
 class App extends React.Component {
-
-  componentDidMount() {
-    axios.get('/api/pools')
-      .then(res => this.setState({ pools: res.data }))
-  }
-
   render() {
-    if(!this.state) return <p>Loading...</p>
-    return (
-      <div>
-        {this.state.pools.map(pool => <div key={pool.id}>
-          <h2>{pool.name}</h2>
-          <p>{pool.address}</p>
-          <p>{pool.description}</p>
-        </div>)}
-      </div>
+    return(
+      <Router>
+        <div>
+          <Navbar />
+          <Switch>
+            <Route path='/pools' component={PoolsIndex} />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </div>
+      </Router>
     )
   }
 }
