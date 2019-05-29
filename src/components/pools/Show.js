@@ -5,10 +5,8 @@ import Promise from 'bluebird'
 import Card from './Card'
 import { Link } from 'react-router-dom'
 
-
-
 const Map = ReactMapboxGl({
-  accessToken: 'pk.eyJ1IjoiZW1tYTIwMTkiLCJhIjoiY2p3OTZqYWhtMGdkejQxcGRpZnozc2cwcCJ9.y7XLy3U5leX_xHO1Qer06w'
+  accessToken: process.env.MAPBOX_TOKEN
 })
 
 class Show extends React.Component {
@@ -46,11 +44,11 @@ class Show extends React.Component {
 
     const { name, description, type, address, long, lat, region, heated, country, user, image} = this.state.pool
 
-    const similar = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
+    const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
 
     console.log(this.state.pool, 'POOL')
     console.log(this.state.pools, 'POOLS')
-    console.log(similar, 'SIMILAR')
+    console.log(nearby, 'SIMILAR')
 
     return (
 
@@ -78,8 +76,7 @@ class Show extends React.Component {
               </figure>
             </div>
             <div className="column is-two-fifths-desktop is-half-tablet is-full-mobile">
-              <p className="pool-heading">{name}</p>
-              <p>Description: {description}</p>
+              <h2 className="subtitle is-6 pool-heading">{name}</h2>              <p>Description: {description}</p>
               <p>Type: {type}</p>
               <p>Heated: {heated}</p>
               <p>Address: {address}</p>
@@ -88,12 +85,12 @@ class Show extends React.Component {
             </div>
 
             <div className="column is-one-fifth-desktop is-half-tablet is-full-mobile">
-              <div className="similar-pools">
+              <div className="nearby-pools">
 
                 <h2 className="subtitle is-6 subheading-show">Nearby pools</h2>
 
                 <div>
-                  {similar.map(pool =>
+                  {nearby.map(pool =>
                     <div className="pool-heading" key={pool.id}>
                       <Link to={`/pools/${pool.id}`}>
                         <Card {...pool} />

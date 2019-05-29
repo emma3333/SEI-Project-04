@@ -12,6 +12,8 @@ import Register from './components/auth/Register'
 
 import PoolsShow from './components/pools/Show'
 import PoolsIndex from './components/pools/Index'
+import PoolsMap from './components/pools/Map'
+
 
 import 'bulma'
 import './style.scss'
@@ -25,6 +27,7 @@ class App extends React.Component {
           <Switch>
             <Route path='/pools/:id' component={PoolsShow} />
             <Route path='/pools' component={PoolsIndex} />
+            <Route path='/map' component={PoolsMap} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/" component={Home} />

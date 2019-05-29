@@ -26,7 +26,7 @@ class Navbar extends React.Component{
   }
   render(){
     return (
-      <nav className="navbar is-light">
+      <nav className="navbar is-dark">
         <div className="navbar-brand">
           <a role="button" className={`navbar-burger${this.state.active ? ' is-active' : ''}`}
             onClick={this.toggleActive}>
@@ -44,6 +44,7 @@ class Navbar extends React.Component{
 
           <div className="navbar-start">
             <Link to="/" className="navbar-item">Home</Link>
+            <Link to="/map" className="navbar-item">Map</Link>
             <Link to="/pools" className="navbar-item">Pools</Link>
             {Auth.isAuthenticated() && <Link to="/pools/new" className="navbar-item">Add new pool</Link>}
           </div>

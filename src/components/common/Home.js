@@ -2,7 +2,7 @@ import React from 'react'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
 
 const Map = ReactMapboxGl({
-  accessToken: 'pk.eyJ1IjoiZW1tYTIwMTkiLCJhIjoiY2p3OTZqYWhtMGdkejQxcGRpZnozc2cwcCJ9.y7XLy3U5leX_xHO1Qer06w'
+  accessToken: process.env.MAPBOX_TOKEN
 })
 
 const Home = () => {

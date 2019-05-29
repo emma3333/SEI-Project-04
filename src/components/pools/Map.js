@@ -1,15 +1,13 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import Card from './Card'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
+import { Link } from 'react-router-dom'
 
 const Map = ReactMapboxGl({
   accessToken: process.env.MAPBOX_TOKEN
 })
 
-class Index extends React.Component {
-
+class PoolsMap extends React.Component {
   constructor(props) {
     super(props)
     this.state={
@@ -22,12 +20,6 @@ class Index extends React.Component {
       .then(res => this.setState({ pools: res.data }))
   }
 
-  componentDidUpdate(prevProps) {
-    if(prevProps.location.pathname !== this.props.location.pathname) {
-      this.getData()
-    }
-  }
-
   render() {
     console.log(this.state.pools)
     if(!this.state) return <p>Loading...</p>
@@ -37,7 +29,7 @@ class Index extends React.Component {
           <Map
             style="mapbox://styles/mapbox/streets-v9"
             containerStyle={{
-              height: '40vh',
+              height: '100vh',
               width: '100vw'
             }}>
             {this.state.pools.map(pool =>
@@ -49,25 +41,9 @@ class Index extends React.Component {
             )}
           </Map>
         </div>
-
-
-
-        <div className="columns is-multiline">
-          {this.state.pools.map(pool =>
-            <div key={pool.id} className="column is-one-quarter-desktop is-one-third-tablet">
-              <Link to={`/pools/${pool.id}`}>
-                <Card {...pool} />
-              </Link>
-            </div>
-          )}
-        </div>
-
-
-
       </section>
-
     )
   }
 }
 
-export default Index
+export default PoolsMap

@@ -1,6 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const environmentPlugin = process.env.NODE_ENV === 'production' ? (
+  new webpack.EnvironmentPlugin({ ...process.env })
+) : (
+  new Dotenv()
+)
 
 module.exports = {
   entry: './src/app.js', // where our main source file is
@@ -28,6 +35,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    environmentPlugin,
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: 'index.html',
