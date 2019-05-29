@@ -17,7 +17,7 @@ class Register extends React.Component {
 
   handleChange(e) {
     // merge data on state with new data from form
-    const data = { ...this.state.data, [e.target.username]: e.target.value }
+    const data = { ...this.state.data, [e.target.name]: e.target.value }
     // set the data on state
     this.setState({ data }) // same as ({ data: data }) (ES6 shorthand)
   }
