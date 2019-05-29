@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, abort, g #flask is responsible for sending responses
+from flask import Blueprint, request, jsonify, abort, g
 from pony.orm import db_session
 from marshmallow import ValidationError
 from app import db
