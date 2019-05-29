@@ -17,7 +17,7 @@ class Register extends React.Component {
 
   handleChange(e) {
     // merge data on state with new data from form
-    const data = { ...this.state.data, [e.target.name]: e.target.value }
+    const data = { ...this.state.data, [e.target.username]: e.target.value }
     // set the data on state
     this.setState({ data }) // same as ({ data: data }) (ES6 shorthand)
   }
@@ -49,7 +49,7 @@ class Register extends React.Component {
                     <input
                       className="input"
                       name="username"
-                      placeholder="eg: emma"
+                      placeholder="eg: Emma"
                       onChange={this.handleChange}
                     />
                   </div>
@@ -87,13 +87,13 @@ class Register extends React.Component {
                   <div className="control">
                     <input
                       className="input"
-                      name="passwordConfirmation"
+                      name="password_confirmation"
                       type="password"
                       placeholder="eg: ••••••••"
                       onChange={this.handleChange}
                     />
                   </div>
-                  {this.state.errors.passwordConfirmation && <div className="help is-danger">{this.state.errors.passwordConfirmation}</div>}
+                  {this.state.errors.password_confirmation && <div className="help is-danger">{this.state.errors.password_confirmation}</div>}
 
                 </div>
 
