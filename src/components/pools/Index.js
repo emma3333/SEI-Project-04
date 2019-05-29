@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import Card from './Card'
 
 class Index extends React.Component {
 
@@ -24,13 +26,29 @@ class Index extends React.Component {
   render() {
     if(!this.state) return <p>Loading...</p>
     return (
-      <div>
-        {this.state.pools.map(pool => <div key={pool.id}>
-          <h2>{pool.name}</h2>
-          <p>{pool.address}</p>
-          <p>{pool.description}</p>
-        </div>)}
-      </div>
+      <section className="section">
+        <div className="container">
+
+          <div className="columns is-multiline">
+            <h1>MAP</h1>
+          </div>
+
+
+          <div className="columns is-multiline">
+            {this.state.pools.map(pool =>
+              <div key={pool.id} className="column is-one-quarter-desktop is-one-third-tablet">
+                <Link to={`/pools/${pool.id}`}>
+                  <Card {...pool} />
+                </Link>
+              </div>
+            )}
+          </div>
+
+
+
+        </div>
+      </section>
+
     )
   }
 }

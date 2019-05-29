@@ -26,7 +26,7 @@ class Navbar extends React.Component{
   }
   render(){
     return (
-      <nav className="navbar is-fixed-top is-dark">
+      <nav className="navbar is-dark">
         <div className="navbar-brand">
           <a role="button" className={`navbar-burger${this.state.active ? ' is-active' : ''}`}
             onClick={this.toggleActive}>

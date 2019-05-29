@@ -10,6 +10,7 @@ import Navbar from './components/common/Navbar'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 
+import PoolsShow from './components/pools/Show'
 import PoolsIndex from './components/pools/Index'
 
 import 'bulma'
@@ -21,6 +22,7 @@ class App extends React.Component {
         <div>
           <Navbar />
           <Switch>
+            <Route path='/pools/:id' component={PoolsShow} />
             <Route path='/pools' component={PoolsIndex} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
