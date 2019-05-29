@@ -3,8 +3,7 @@ from pony.orm import db_session
 from marshmallow import ValidationError
 from app import db
 from models.Pool import Pool, PoolSchema
-# from lib.secure_route import secure_route
-
+from lib.secure_route import secure_route
 
 
 router = Blueprint(__name__, 'pools') # creates the router for this controller
@@ -19,6 +18,7 @@ def index():
 
 @router.route('/pools', methods=['POST'])
 @db_session
+@secure_route
 def create():
     # This will deserialize the JSON from insomnia
     schema = PoolSchema()
@@ -56,6 +56,7 @@ def show(pool_id):
 
 @router.route('/pools/<int:pool_id>', methods=['PUT'])
 @db_session
+@secure_route
 def update(pool_id):
     # This serializes our data, turns the object into a string
     schema = PoolSchema()
@@ -77,6 +78,7 @@ def update(pool_id):
 
 @router.route('/pools/<int:pool_id>', methods=['DELETE'])
 @db_session
+@secure_route
 def delete(pool_id):
     pool = Pool.get(id=pool_id)
 
