@@ -127,6 +127,63 @@ with db_session():
         user=emma
     )
 
+    pool_nine = Pool(
+        name='Jubilee Pool',
+        image='https://www.cornwalls.co.uk/sites/default/files/photos/jubilee_pool_0.jpg',
+        description='Sea Pool, 100m x 73m on its longest axis. Includes a \'baby pool\' within the main pool for kids. The \'Poolside cafe\' next door serves coffee, lunch and suppers.',
+        type='lido',
+        address='The Promenade Penzance',
+        lng='-5.532032',
+        lat='50.115202',
+        region='South West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_ten = Pool(
+        name='Marbury Park Open Air Pool',
+        image='https://www.warringtonguardian.co.uk/resources/images/7990695.jpg?type=article-full',
+        description='30m pool in Marbury Country Park. Swimmers are asked to become members of Marbury Park Swimming Club and join for a season.',
+        type='lido',
+        address='Marbury Park Open Air Pool, Marbury, Northwich, CW9 6AT',
+        lng='-2.528206',
+        lat='53.283491',
+        region='North West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_eleven = Pool(
+        name='Mermaid\'s Pool',
+        image='https://www.historic-uk.com/wp-content/uploads/2017/01/mermaids-at-mermaids-pool.jpg',
+        description='Mermaid’s Pool is a small pool on Kinder Scout in Derbyshire, England, which, according to legend, is inhabited by a beautiful mermaid who can be seen if you look into the water at sunrise on Easter Sunday. It is also said that its water is salty due to its being connected by an underground passage to the Atlantic.',
+        type='pond',
+        address='Hayfield, High Peak S33 7ZJ',
+        lng='-1.846999',
+        lat='53.364384',
+        region='North West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twelve = Pool(
+        name='Janet\'s Foss',
+        image='https://wildswim.com/imageprocessor/b3c9bcda-06cb-4b1d-af65-136eba25c0e8.jpg?width=800&height=480&mode=crop',
+        description='A stunning small pool for a chilly dip. Sit on the sandy beach to take in the sounds of the waterfall before plunging in. Perfect for floating and watching the clouds and trees overhead, the waterfall is almost a roar with your ears under the water.',
+        type='pond',
+        address='Janet\'s Foss, Skipton BD23 4DL',
+        lng='-2.135150',
+        lat='54.066898',
+        region='North West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+
     comment_one = Comment(
         content='Favourite pool in London',
         user=emma,
@@ -137,6 +194,12 @@ with db_session():
         content='Most relaxing place to swim',
         user=emma,
         pool=pool_six
+    )
+
+    comment_three = Comment(
+        content='Worth the hike to get there',
+        user=emma,
+        pool=pool_eight
     )
 
 
