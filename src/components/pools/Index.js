@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Card from './Card'
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
+import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoiZW1tYTIwMTkiLCJhIjoiY2p3OTZqYWhtMGdkejQxcGRpZnozc2cwcCJ9.y7XLy3U5leX_xHO1Qer06w'
@@ -30,6 +30,7 @@ class Index extends React.Component {
   }
 
   render() {
+    console.log(this.state.pools)
     if(!this.state) return <p>Loading...</p>
     return (
       <section className="hero is-fullheight-with-navbar">
@@ -40,12 +41,13 @@ class Index extends React.Component {
               height: '40vh',
               width: '100vw'
             }}>
-            <Layer
-              type="symbol"
-              id="marker"
-              layout={{ 'icon-image': 'marker-15' }}>
-              <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
-            </Layer>
+            {this.state.pools.map(pool =>
+              <Marker key={pool.id}
+                coordinates={[pool.long, pool.lat]}
+                anchor="bottom">
+                <img src={'../../assets/marker.png'}/>
+              </Marker>
+            )}
           </Map>
         </div>
 
