@@ -20,7 +20,7 @@ class PoolsMap extends React.Component {
       },
       pools: [],
       marker: null,
-      zoom: [10],
+      zoom: [12],
       active: false,
       poolId: ''
     }
@@ -40,8 +40,8 @@ class PoolsMap extends React.Component {
   clickMarker(pool) {
     this.setState({ active: true })
     this.setState({ pool })
-    this.setState({ currentLocation: {lat: pool.lat, lng: pool.lng }})
-    this.setState({ zoom: [10] })
+    this.setState({ currentLocation: {lat: pool.lng, lng: pool.lat }})
+    this.setState({ zoom: [15] })
     this.setState({ poolId: pool.id })
   }
 
