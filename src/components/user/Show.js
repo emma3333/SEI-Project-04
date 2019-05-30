@@ -18,15 +18,17 @@ class UsersShow extends React.Component {
 
   render() {
     if(!this.state.user) return null
+    console.log(this.state.user)
     const { id } = this.state.user
     return (
       <section className="section">
-        <div className="container">
+        <div className="container editpage">
 
           <div className="columns is-variable is-2">
+
             <div className="column is-third">
-              <div className="box">
-                <div className="">
+              <div className="user-info box">
+                <div className="user-image">
                   <figure className="image">
                     <img src={this.state.user.image} alt={this.state.user.username} />
                   </figure>
@@ -34,7 +36,31 @@ class UsersShow extends React.Component {
                 <div className="username">
                   <h3 className="subheading-show">{this.state.user.username}</h3>
                 </div>
+                <div className="user-bio">
+                </div>
               </div>
+
+            </div>
+
+            <div className="column is-third">
+              <div className="vinylCollection box">
+                <h3 className="subtitle subheading-show">Plan your trip</h3>
+                <div className="columns is-multiline">
+
+                </div>
+              </div>
+            </div>
+
+            <div className="column is-third">
+              <div className="wishList box">
+                <div className="wishList">
+                  <h3 className="subtitle subheading-show">Starred places</h3>
+                  <div className="columns is-multiline">
+
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
