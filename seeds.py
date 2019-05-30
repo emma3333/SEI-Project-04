@@ -13,7 +13,7 @@ with db_session():
         username='emma',
         email='ekprice01@gmail.com',
         password_hash=schema.generate_hash('pass'),
-        image='https://candobristol.co.uk/img/profile-pic.svg'
+        image='https://imgur.com/X2Px8OR'
     )
 
     pool_one = Pool(
@@ -175,7 +175,7 @@ with db_session():
         image='https://wildswim.com/imageprocessor/b3c9bcda-06cb-4b1d-af65-136eba25c0e8.jpg?width=800&height=480&mode=crop',
         description='A stunning small pool for a chilly dip. Sit on the sandy beach to take in the sounds of the waterfall before plunging in. Perfect for floating and watching the clouds and trees overhead, the waterfall is almost a roar with your ears under the water.',
         type='pond',
-        address='Janet\'s Foss, Skipton BD23 4DL',
+        address='Janet\'s Foss, Skipton, BD23 4DL',
         lng='-2.135150',
         lat='54.066898',
         region='North West',

@@ -104,12 +104,44 @@ class Show extends React.Component {
                     </nav>
                   </div>
                 </article>
-                <div>user comment:
-                  {comments.map(comment =>
-                    <p key={comment.id}>{comment.content}</p>
 
-                  )}
-                </div>
+                {comments.map(comment =>
+                  <article key={comment.id} className="media">
+                    <figure className="media-left">
+
+                      <p className="image is-64x64">
+                        <Link to={`/users/${comment.user.id}`}>
+                          <img src={comment.user.image} />
+                        </Link>
+                      </p>
+                    </figure>
+                    <div className="media-content">
+                      <div className="content">
+                        <p className="commentText">
+                          <strong>{comment.user.username}</strong>  <small>{comment.created_at.substring(0, comment.created_at.length - 5).replace(/T/g, ' ')}</small>
+                          <br />
+                          {comment.content}
+                        </p>
+                      </div>
+                      <nav className="level is-mobile">
+                        <div className="level-left">
+                          <a className="level-item">
+                            <span className="icon is-small"><i className="fas fa-reply"></i></span>
+                          </a>
+                          <a className="level-item">
+                            <span className="icon is-small"><i className="fas fa-retweet"></i></span>
+                          </a>
+                          <a className="level-item">
+                            <span className="icon is-small"><i className="fas fa-heart"></i></span>
+                          </a>
+                        </div>
+                      </nav>
+                    </div>
+                    <div className="media-right">
+                      <button id={comment.id} value={comment.user.id} className="delete" onClick={this.handleDeleteComments}></button>
+                    </div>
+                  </article>
+                )}
 
 
 
