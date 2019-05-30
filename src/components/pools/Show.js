@@ -57,18 +57,17 @@ class Show extends React.Component {
     axios.post(`/api/pools/${this.props.match.params.id}/comments`, this.state.data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-    window.location.reload()
+      .then(() => this.getPools())
   }
 
   handleDeleteComments(e) {
     const token = Auth.getToken()
-    if (e.target.value === Auth.getPayload().sub) {
-      axios.delete(`/api/pools/${this.props.match.params.id}/comments/${e.target.id}`, {
-        headers: { 'Authorization': `Bearer ${token}` }
-      } )
-    }
-    window.location.reload()
+    axios.delete(`/api/pools/${this.props.match.params.id}/comments/${e.target.id}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    } )
+      .then(() => this.getPools())
   }
+
 
 
   render() {
