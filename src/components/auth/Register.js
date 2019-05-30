@@ -22,7 +22,6 @@ class Register extends React.Component {
     this.setState({ data }) // same as ({ data: data }) (ES6 shorthand)
   }
 
-
   // send data to API
   handleSubmit(e) {
     e.preventDefault() // a forms default is to reload the  browser

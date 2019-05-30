@@ -6,7 +6,6 @@ import Card from './Card'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
 
-
 const mapboxToken = process.env.MAPBOX_TOKEN
 
 const Map = ReactMapboxGl({
@@ -18,9 +17,11 @@ class Show extends React.Component {
     super(props)
     this.state = {
       pool: null,
-      pools: []
+      pools: [],
+      data: null
     }
 
+    this.handleChange = this.handleChange.bind(this)
     this.handleComment = this.handleComment.bind(this)
     this.handleDeleteComments = this.handleDeleteComments.bind(this)
 
@@ -45,24 +46,24 @@ class Show extends React.Component {
     }
   }
 
+  handleChange(e) {
+    const data = { ...this.state.comment, [e.target.name]: e.target.value }
+    this.setState({ data })
+  }
+
   handleComment(e) {
     e.preventDefault()
-
     const token = Auth.getToken()
-
-    axios.post(`/api/pools/${this.props.match.params.id}`, this.state.data, {
+    axios.post(`/api/pools/${this.props.match.params.id}/comments`, this.state.data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-
     window.location.reload()
   }
 
   handleDeleteComments(e) {
-
     const token = Auth.getToken()
-
     if (e.target.value === Auth.getPayload().sub) {
-      axios.delete(`/api/pools/${this.props.match.params.id}/${e.target.id}`, {
+      axios.delete(`/api/pools/${this.props.match.params.id}/comments/${e.target.id}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       } )
     }
@@ -77,7 +78,9 @@ class Show extends React.Component {
 
     const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
 
-    console.log(comments)
+    console.log(comments, 'COMMENTS')
+
+    console.log(this.state.data, 'COMMENT DATA')
 
     return (
 
@@ -139,7 +142,6 @@ class Show extends React.Component {
                 {comments.map(comment =>
                   <article key={comment.id} className="media">
                     <figure className="media-left">
-
                       <p className="image is-64x64">
                         <Link to={`/users/${comment.user.id}`}>
                           <img src={comment.user.image} />
@@ -149,7 +151,7 @@ class Show extends React.Component {
                     <div className="media-content">
                       <div className="content">
                         <p className="commentText">
-                          <strong>{comment.user.username}</strong>  <small>{comment.created_at.substring(0, comment.created_at.length - 5).replace(/T/g, ' ')}</small>
+                          <strong>{comment.user.username}</strong>  <small>{comment.created_at.substring(0, comment.created_at.length - 8)}</small>
                           <br />
                           {comment.content}
                         </p>
@@ -174,13 +176,9 @@ class Show extends React.Component {
                   </article>
                 )}
 
-
-
               </div>
 
-
             </div>
-
 
             <div className="column is-two-fifths-desktop is-half-tablet is-full-mobile">
               <h2 className="subtitle is-6 pool-heading">{name}</h2>
@@ -196,9 +194,7 @@ class Show extends React.Component {
 
             <div className="column is-one-fifth-desktop is-half-tablet is-full-mobile">
               <div className="nearby-pools">
-
                 <h2 className="subtitle is-6">Nearby pools</h2>
-
                 <div>
                   {nearby.map(pool =>
                     <div className="nearby-pools" key={pool.id}>
@@ -208,7 +204,6 @@ class Show extends React.Component {
                     </div>
                   )}
                 </div>
-
               </div>
             </div>
           </div>
