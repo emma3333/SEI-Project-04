@@ -20,7 +20,7 @@ class PoolsMap extends React.Component {
       },
       pools: [],
       marker: null,
-      zoom: [11],
+      zoom: [10],
       active: false,
       poolId: ''
     }
@@ -41,7 +41,7 @@ class PoolsMap extends React.Component {
     this.setState({ active: true })
     this.setState({ pool })
     this.setState({ currentLocation: {lat: pool.lng, lng: pool.lat }})
-    this.setState({ zoom: [15] })
+    this.setState({ zoom: [12] })
     this.setState({ poolId: pool.id })
   }
 
@@ -53,14 +53,14 @@ class PoolsMap extends React.Component {
         </div>
       )}
     return (
-      <section className="hero is-fullheight-with-navbar">
+      <section className="hero map-hero">
         <div className="columns is-multiline">
           <Map
             style="mapbox://styles/mapbox/streets-v10"
             center={[ this.state.currentLocation.lat, this.state.currentLocation.lng ]}
             zoom = {this.state.zoom}
             containerStyle={{
-              height: '100vh',
+              height: '50vh',
               width: '100vw'
             }}>
             {this.state.pools.map(pool =>
