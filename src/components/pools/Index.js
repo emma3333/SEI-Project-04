@@ -79,30 +79,35 @@ class Index extends React.Component {
           </Map>
         </div>
 
-        {/* SEARCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
-        <div className="control column index-control">
-          <input
-            className="input"
-            type="text"
-            placeholder="Search by name of pool"
-            name="searchText"
-            onChange={this.handleChange}
-          />
-        </div>
+        <div className="container">
+          <div className="container columns">
 
-        {/* DROPDOWN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
-        <div className="control column index-control">
-          <div className="select">
-            <select
-              name="region"
-              onChange={this.handleChange}
-              value={this.state.region || 'All'}
-            >
-              <option value=''>All</option>
-              {regions.map(region =>
-                <option key={region} value={region}>{region.charAt(0).toUpperCase() + region.substr(1)}</option>
-              )}
-            </select>
+            {/* SEARCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
+            <div className="control column index-control">
+              <input
+                className="input"
+                type="text"
+                placeholder="Search by name of pool"
+                name="searchText"
+                onChange={this.handleChange}
+              />
+            </div>
+
+            {/* DROPDOWN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
+            <div className="control column index-control">
+              <div className="select">
+                <select
+                  name="region"
+                  onChange={this.handleChange}
+                  value={this.state.region || 'All'}
+                >
+                  <option value=''>All</option>
+                  {regions.map(region =>
+                    <option key={region} value={region}>{region.charAt(0).toUpperCase() + region.substr(1)}</option>
+                  )}
+                </select>
+              </div>
+            </div>
           </div>
         </div>
 

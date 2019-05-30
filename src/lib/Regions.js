@@ -1,5 +1,5 @@
 export default [
-  'Greater Gondon',
+  'Greater London',
   'South East',
   'South West',
   'West Midlands',
