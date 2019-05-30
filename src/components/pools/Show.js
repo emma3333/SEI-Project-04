@@ -187,6 +187,17 @@ class Show extends React.Component {
               <p>Address: {address}</p>
               <p>Region: {region}</p>
               <p>Country: {country}</p>
+
+              <div className="buttons is-gapless">
+                {Auth.isAuthenticated() &&
+                  <Link to={{
+                    pathname: `/users/${Auth.getPayload().sub}`,
+                    state: {pool: this.state.pool}
+                  }}>
+                    <button className="button is-light is-small">Star this pool</button>
+                  </Link>
+                }
+              </div>
             </div>
 
             {/* POOLS NEARBY ================================================*/}

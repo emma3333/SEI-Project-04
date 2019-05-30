@@ -1,20 +1,43 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../../lib/Auth'
+import { Link } from 'react-router-dom'
 
-class UsersShow extends React.Component {
+class UserShow extends React.Component {
 
   constructor(props){
     super(props)
 
     this.state = {
-      user: []
+      user: {
+        pools: [],
+        starredPools: []
+      }
     }
   }
 
   componentDidMount() {
     axios.get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }))
+      .then(() => {
+        if(this.props.location.state) {
+          return this.handleStar()
+        }
+      })
+      .catch(err => console.error(err))
   }
+
+  handleStar() {
+    const token = Auth.getToken()
+    const currentUser = this.state.user.id
+    const starredPools = this.state.user.starredPools.slice()
+    starredPools.push(this.props.location.state.pool)
+    const user = {...this.state.user, starredPools}
+    axios.put(`/api/users/${currentUser}`, {starredPools: starredPools}, {headers: { 'Authorization': `Bearer ${token}` }})
+      .then(() => this.setState({ user }))
+      .catch(err => console.error(err))
+  }
+
 
   render() {
     if(!this.state.user) return null
@@ -46,16 +69,8 @@ class UsersShow extends React.Component {
                 </div>
               </div>
             </div>
-
             <div className="column is-two-thirds">
-              <div className="wishList">
-                <div className="wishList">
-                  <h3 className="subtitle subheading-show">Starred places</h3>
-                  <div className="columns is-multiline">
-
-                  </div>
-                </div>
-              </div>
+              <h3 className="subtitle subheading-show">Starred places</h3>
 
             </div>
           </div>
@@ -65,4 +80,15 @@ class UsersShow extends React.Component {
   }
 }
 
-export default UsersShow
+export default UserShow
+
+//
+//   <div className="columns is-multiline">
+//     {this.state.user.starredPools.map(pool =>
+//       <div key={pool.id} className="column is-one-quarter">
+//         <Link to={`/pools/${pool.id}`}>
+//           <img src={pool.image} alt={pool.name} />
+//         </Link>
+//       </div>
+//     )}
+// </div>
