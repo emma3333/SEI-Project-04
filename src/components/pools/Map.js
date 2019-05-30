@@ -20,7 +20,7 @@ class PoolsMap extends React.Component {
       },
       pools: [],
       marker: null,
-      zoom: [6],
+      zoom: [10],
       active: false,
       poolId: ''
     }
@@ -79,9 +79,10 @@ class PoolsMap extends React.Component {
               offset={[-2, -40]}
             >
               <div>
-                <p>{this.state.pool.name}</p>
-                <p>{this.state.pool.address}</p>
-                <Link to={`/pools/${this.state.poolId}`}></Link>
+                <Link to={`/pools/${this.state.poolId}`}>
+                  <p>{this.state.pool.name}</p>
+                  <p>{this.state.pool.address}</p>
+                </Link>
               </div>
             </Popup> }
           </Map>
