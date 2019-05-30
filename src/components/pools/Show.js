@@ -15,7 +15,7 @@ class Show extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      pool: [],
+      pool: null,
       pools: []
     }
   }
@@ -25,9 +25,7 @@ class Show extends React.Component {
       pool: axios.get(`/api/pools/${this.props.match.params.id}`).then(res => res.data),
       pools: axios.get('/api/pools').then(res => res.data)
     })
-      .then(res => {
-        this.setState({ pool: res.pool, pools: res.pools, comments: res.comments })
-      })
+      .then(data => this.setState(data))
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -44,17 +42,11 @@ class Show extends React.Component {
   render() {
     if(!this.state.pool) return null
 
-    const { name, description, type, address, lng, lat, region, heated, country, user, image, comments} = this.state.pool
+    const { name, description, type, address, lng, lat, region, heated, country, user, image, comments } = this.state.pool
 
     const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
 
-    console.log(this.state.pool, 'POOL')
-    console.log(this.state.pools, 'POOLS')
-    console.log(this.state.pools, 'POOLS')
-
-    console.log(nearby, 'SIMILAR')
-    console.log(this.state.pool.user, 'USER')
-    console.log(this.state.pool.comments, 'COMMENT')
+    console.log(comments)
 
     return (
 
@@ -112,6 +104,13 @@ class Show extends React.Component {
                     </nav>
                   </div>
                 </article>
+                <div>user comment:
+                  {comments.map(comment =>
+                    <p key={comment.id}>{comment.content}</p>
+
+                  )}
+                </div>
+
 
 
               </div>
