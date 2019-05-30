@@ -37,6 +37,7 @@ class Index extends React.Component {
     return (
       <section className="hero is-fullheight-with-navbar">
         <div className="columns is-multiline">
+
           <Map
             style="mapbox://styles/mapbox/streets-v10"
             zoom={[10]}
@@ -59,10 +60,9 @@ class Index extends React.Component {
         </div>
 
 
-
         <div className="columns is-multiline">
           {this.state.pools.map(pool =>
-            <div key={pool.id} className="column is-one-quarter-desktop is-one-third-tablet">
+            <div key={pool.id} className="column is-one-fifth-desktop is-one-third-tablet">
               <Link to={`/pools/${pool.id}`}>
                 <Card {...pool} />
               </Link>
