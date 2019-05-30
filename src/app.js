@@ -16,6 +16,7 @@ import PoolsMap from './components/pools/Map'
 import PoolsNew from './components/pools/New'
 import PoolsCollection from './components/pools/Collection'
 
+import UsersShow from './components/user/Show'
 
 import 'bulma'
 import './style.scss'
@@ -27,6 +28,7 @@ class App extends React.Component {
         <div>
           <Navbar />
           <Switch>
+            <Route path="/users/:id" component={UsersShow} />
             <Route path='/pools/new' component={PoolsNew} />
             <Route path='/pools/:id' component={PoolsShow} />
             <Route path='/collections' component={PoolsCollection} />

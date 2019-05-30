@@ -79,10 +79,11 @@ class Index extends React.Component {
           </Map>
         </div>
 
-        <div className="container">
+        <div className="section">
           <div className="container columns">
 
             {/* SEARCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
+
             <div className="control column index-control">
               <input
                 className="input"
@@ -93,8 +94,10 @@ class Index extends React.Component {
               />
             </div>
 
+
             {/* DROPDOWN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
             <div className="control column index-control">
+
               <div className="select">
                 <select
                   name="region"
@@ -108,6 +111,7 @@ class Index extends React.Component {
                 </select>
               </div>
             </div>
+
           </div>
         </div>
 
