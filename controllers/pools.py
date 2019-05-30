@@ -90,7 +90,7 @@ def delete(pool_id):
 
     return '', 204
 
-# CREATE COMMENT ==============================================================
+# COMMENTS ============================================================
 
 @router.route('/pools/<int:pool_id>/comments', methods=['POST'])
 @db_session
@@ -113,3 +113,31 @@ def create_comment(pool_id):
 
     # otherwise, send back the pool data as JSON
     return pool_schema.dumps(pool), 201
+
+
+@router.route('/pools/<int:pool_id>/comments/<int:comment_id>', methods=['GET'])
+@db_session
+def show_comment(pool_id, comment_id):
+    schema = PoolSchema()
+    pool = Pool.get(id=pool_id)
+    comment = Comment.get(id=comment_id)
+
+    # If we can't find a pool, send a 404 response
+    if not comment:
+        abort(404)
+
+    # otherwise, send back the pool data as JSON
+    return schema.dumps(comment)
+
+
+@router.route('/pools/<int:pool_id>/comments/<int:comment_id>', methods=['DELETE'])
+@db_session
+@secure_route
+def delete_comment(pool_id, comment_id):
+    schema = PoolSchema()
+    pool = Pool.get(id=pool_id)
+    comment = Comment.get(id=comment_id)
+    comment.delete()
+    db.commit()
+
+    return schema.dumps(pool)
