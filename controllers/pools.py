@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify, abort, g
 from pony.orm import db_session
 from marshmallow import ValidationError
 from app import db
-from models.Pool import Pool, PoolSchema, CommentSchema
+from models.Pool import Pool, PoolSchema, Comment, CommentSchema
 from lib.secure_route import secure_route
 
 
@@ -91,25 +91,25 @@ def delete(pool_id):
     return '', 204
 
 # CREATE COMMENT ==============================================================
-#
-# @router.route('/pools', methods=['POST'])
-# @db_session
-# @secure_route
-# def create():
-#     # This will deserialize the JSON from insomnia
-#     schema = CommentSchema()
-#
-#     try:
-#         # attempt to convert the JSON into a dict
-#         data = schema.load(request.get_json())
-#         # Use that to create a pool object
-#         data['user'] = g.current_user
-#         pool = Pool(**data)
-#         # Store it in the database
-#         db.commit()
-#     except ValidationError as err:
-#         # if the validation fails, send back a 422 response
-#         return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
-#
-#     # otherwise, send back the pool data as JSON
-#     return schema.dumps(pool), 201
+
+@router.route('/pools/<int:pool_id>/comments', methods=['POST'])
+@db_session
+@secure_route
+def create_comment(pool_id):
+    pool_schema = PoolSchema()
+    comment_schema = CommentSchema()
+    pool = Pool.get(id=pool_id)
+
+    try:
+        # attempt to convert the JSON into a dict
+        data = comment_schema.load(request.get_json())
+    except ValidationError as err:
+            # if the validation fails, send back a 422 response
+        return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
+        # Use that to create a pool object
+    Comment(**data, pool=pool, user=g.current_user)
+        # Store it in the database
+    db.commit()
+
+    # otherwise, send back the pool data as JSON
+    return pool_schema.dumps(pool), 201

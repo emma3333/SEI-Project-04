@@ -4,6 +4,8 @@ import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
 import Promise from 'bluebird'
 import Card from './Card'
 import { Link } from 'react-router-dom'
+import Auth from '../../lib/Auth'
+
 
 const mapboxToken = process.env.MAPBOX_TOKEN
 
@@ -18,6 +20,10 @@ class Show extends React.Component {
       pool: null,
       pools: []
     }
+
+    this.handleComment = this.handleComment.bind(this)
+    this.handleDeleteComments = this.handleDeleteComments.bind(this)
+
   }
 
   getPools() {
@@ -38,6 +44,31 @@ class Show extends React.Component {
       this.getPools()
     }
   }
+
+  handleComment(e) {
+    e.preventDefault()
+
+    const token = Auth.getToken()
+
+    axios.post(`/api/pools/${this.props.match.params.id}`, this.state.data, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+
+    window.location.reload()
+  }
+
+  handleDeleteComments(e) {
+
+    const token = Auth.getToken()
+
+    if (e.target.value === Auth.getPayload().sub) {
+      axios.delete(`/api/pools/${this.props.match.params.id}/${e.target.id}`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      } )
+    }
+    window.location.reload()
+  }
+
 
   render() {
     if(!this.state.pool) return null
@@ -81,8 +112,8 @@ class Show extends React.Component {
 
 
               {/* COMMENTS ==================================================*/}
-              <div className="comment-heading">
-                <h2 className="subtitle is-6">Comments</h2>
+              <div className="">
+                <h2 className="subtitle is-6 comment-heading">Comments</h2>
                 <article className="media">
                   <figure className="media-left">
                     <p className="image is-64x64">

@@ -13,7 +13,7 @@ with db_session():
         username='emma',
         email='ekprice01@gmail.com',
         password_hash=schema.generate_hash('pass'),
-        image='https://imgur.com/X2Px8OR'
+        image='https://i.imgur.com/X2Px8OR.png'
     )
 
     pool_one = Pool(
