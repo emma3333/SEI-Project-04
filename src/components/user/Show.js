@@ -22,37 +22,33 @@ class UsersShow extends React.Component {
     const { id } = this.state.user
     return (
       <section className="section">
-        <div className="container editpage">
+        <div className="container">
 
-          <div className="columns is-variable is-2">
+          <div className="columns">
 
             <div className="column is-third">
-              <div className="user-info box">
-                <div className="user-image">
-                  <figure className="image">
+
+              <div className="card">
+                <div className="card-image">
+                  <figure className="image is-1by1">
                     <img src={this.state.user.image} alt={this.state.user.username} />
                   </figure>
                 </div>
-                <div className="username">
-                  <h3 className="subheading-show">{this.state.user.username}</h3>
-                </div>
-                <div className="user-bio">
-                </div>
-              </div>
-
-            </div>
-
-            <div className="column is-third">
-              <div className="vinylCollection box">
-                <h3 className="subtitle subheading-show">Plan your trip</h3>
-                <div className="columns is-multiline">
-
+                <div className="card-content">
+                  <div className="media">
+                    <div className="media-left">
+                    </div>
+                    <div className="media-content">
+                      <p className="title is-4">{this.state.user.username}</p>
+                      <p className="subtitle is-6">@{this.state.user.username}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="column is-third">
-              <div className="wishList box">
+            <div className="column is-two-thirds">
+              <div className="wishList">
                 <div className="wishList">
                   <h3 className="subtitle subheading-show">Starred places</h3>
                   <div className="columns is-multiline">
