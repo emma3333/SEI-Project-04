@@ -1,51 +1,89 @@
 import React from 'react'
 import axios from 'axios'
-import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
+import ReactMapboxGl, { Marker, Popup } from 'react-mapbox-gl'
+import { Link } from 'react-router-dom'
 
 const mapboxToken = process.env.MAPBOX_TOKEN
-// import { Link } from 'react-router-dom'
 
 const Map = ReactMapboxGl({
   accessToken: mapboxToken
 })
 
 class PoolsMap extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
+
     this.state={
-      pools: []
+      currentLocation: {
+        lat: false,
+        lng: false
+      },
+      pools: [],
+      marker: null,
+      zoom: [6],
+      active: false,
+      poolId: ''
     }
   }
 
   componentDidMount() {
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords
+      this.setState({ currentLocation: {lng: latitude, lat: longitude }})
+    })
+
     axios.get('/api/pools')
       .then(res => this.setState({ pools: res.data }))
   }
 
+  clickMarker(pool) {
+    this.setState({ active: true })
+    this.setState({ pool })
+    this.setState({ currentLocation: {lat: pool.lat, lng: pool.lng }})
+    this.setState({ zoom: [10] })
+    this.setState({ poolId: pool.id })
+  }
+
   render() {
-    console.log(this.state.pools)
-    if(!this.state) return <p>Loading...</p>
+    {if(this.state.currentLocation.lat === false)
+      return(
+        <div className='section'>
+          <p>Loading..</p>
+        </div>
+      )}
     return (
       <section className="hero is-fullheight-with-navbar">
         <div className="columns is-multiline">
           <Map
             style="mapbox://styles/mapbox/streets-v10"
-            zoom={[5]}
-            center={{
-              lat: 54.364384,
-              lng: -1.846999
-            }}
+            center={[ this.state.currentLocation.lat, this.state.currentLocation.lng ]}
+            zoom = {this.state.zoom}
             containerStyle={{
               height: '100vh',
               width: '100vw'
             }}>
             {this.state.pools.map(pool =>
-              <Marker key={pool.id}
+              <Marker
+                key={pool.id}
                 coordinates={[pool.lng, pool.lat]}
+                onClick={() => this.clickMarker(pool)}
                 anchor="bottom">
                 <img src={'../../assets/marker.png'}/>
               </Marker>
             )}
+            {this.state.active &&
+            <Popup
+              coordinates= {[ this.state.pool.lng, this.state.pool.lat ]}
+              anchor="bottom-left"
+              offset={[-2, -40]}
+            >
+              <div>
+                <p>{this.state.pool.name}</p>
+                <p>{this.state.pool.address}</p>
+                <Link to={`/pools/${this.state.poolId}`}></Link>
+              </div>
+            </Popup> }
           </Map>
         </div>
       </section>
