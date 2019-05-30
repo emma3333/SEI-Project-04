@@ -2,7 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Card from './Card'
+import qs from 'query-string'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
+import regions from '../../lib/regions'
+
 
 const mapboxToken = process.env.MAPBOX_TOKEN
 
@@ -15,9 +18,18 @@ class Index extends React.Component {
 
   constructor(props) {
     super(props)
+    this.props.match.query = qs.parse(this.props.location.search)
+    this.handleChange = this.handleChange.bind(this)
     this.state={
-      pools: []
+      pools: [],
+      list: '',
+      searchText: '',
+      region: this.props.match.query.region || ''
     }
+  }
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   componentDidMount() {
@@ -31,13 +43,21 @@ class Index extends React.Component {
     }
   }
 
+  searchPool() {
+    const search = new RegExp(this.state.searchText, 'i')
+    const region = new RegExp(this.state.region, 'i')
+    return this.state.pools.filter(pool => {
+      return (search.test(pool.name) || search.test(pool.address)) && region.test(pool.region)
+    })
+  }
+
   render() {
     console.log(this.state.pools)
-    if(!this.state) return <p>Loading...</p>
+    if(!this.state.pools) return null
     return (
       <section className="hero is-fullheight-with-navbar">
         <div className="columns is-multiline">
-
+          {/* MAP >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
           <Map
             style="mapbox://styles/mapbox/streets-v10"
             zoom={[10]}
@@ -59,9 +79,35 @@ class Index extends React.Component {
           </Map>
         </div>
 
+        {/* SEARCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
+        <div className="control column index-control">
+          <input
+            className="input"
+            type="text"
+            placeholder="Search by name of pool"
+            name="searchText"
+            onChange={this.handleChange}
+          />
+        </div>
+
+        {/* DROPDOWN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
+        <div className="control column index-control">
+          <div className="select">
+            <select
+              name="region"
+              onChange={this.handleChange}
+              value={this.state.region || 'All'}
+            >
+              <option value=''>All</option>
+              {regions.map(region =>
+                <option key={region} value={region}>{region.charAt(0).toUpperCase() + region.substr(1)}</option>
+              )}
+            </select>
+          </div>
+        </div>
 
         <div className="columns is-multiline">
-          {this.state.pools.map(pool =>
+          {this.searchPool().map(pool =>
             <div key={pool.id} className="column is-one-fifth-desktop is-one-third-tablet">
               <Link to={`/pools/${pool.id}`}>
                 <Card {...pool} />
@@ -69,6 +115,7 @@ class Index extends React.Component {
             </div>
           )}
         </div>
+
 
 
 

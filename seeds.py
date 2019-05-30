@@ -24,7 +24,7 @@ with db_session():
         address='Hampstead Heath, Highgate, London NW3 1AS',
         lng='-0.175135',
         lat='51.563260',
-        region='London',
+        region='Greater London',
         heated=False,
         country='England',
         user=emma
@@ -38,7 +38,7 @@ with db_session():
         address='Hyde Park, London, W2 2UH',
         lng='-0.165690',
         lat='51.507721',
-        region='London',
+        region='Greater London',
         heated=False,
         country='England',
         user=emma
@@ -108,7 +108,7 @@ with db_session():
         address='Gordon House Road, Hampstead, London, NW5 1LP',
         lng='-0.148416',
         lat='51.556147',
-        region='London',
+        region='Greater London',
         heated=False,
         country='England',
         user=emma
