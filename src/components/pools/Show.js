@@ -81,6 +81,8 @@ class Show extends React.Component {
 
     console.log(this.state.data, 'COMMENT DATA')
 
+    console.log(Auth.getPayload().sub, 'PAYLOAD')
+
     return (
 
       <section className="is-fullheight-with-navbar">

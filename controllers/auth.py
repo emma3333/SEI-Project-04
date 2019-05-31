@@ -6,6 +6,8 @@ from marshmallow import ValidationError
 
 router = Blueprint('auth', __name__)
 
+# / profile with secure route
+
 @router.route('/register', methods=['POST'])
 @db_session
 def register():

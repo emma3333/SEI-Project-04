@@ -7,13 +7,13 @@ from app import db
 from config.environment import secret
 
 class User(db.Entity):
-
     username = Required(str, unique=True)
     email = Required(str, unique=True)
     password_hash = Required(str)
     image = Optional(str)
-    pools = Set('Pool')
+    pools = Set('Pool', reverse='user')
     comments = Set('Comment')
+    starred_pools = Set('Pool', reverse='starred_by')
 
     def is_password_valid(self, plaintext):
         return bcrypt.checkpw(plaintext.encode('utf8'), self.password_hash.encode('utf8'))
@@ -42,7 +42,7 @@ class UserSchema(Schema):
     image = fields.Str()
     pools = fields.Nested('PoolSchema', many=True, exclude=('user',))
     comments = fields.Nested('CommentSchema', many=True, exclude=('user',))
-
+    starred_pools = fields.Nested('PoolSchema', many=True, exclude=('user',))
 
     def generate_hash(self, plaintext):
         return bcrypt.hashpw(plaintext.encode('utf8'), bcrypt.gensalt(8)).decode('utf8')

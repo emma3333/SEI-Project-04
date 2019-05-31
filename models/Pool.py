@@ -4,7 +4,6 @@ from pony.orm import Required, Optional, Set
 from marshmallow import Schema, fields
 # from .User import User
 
-
 class Comment(db.Entity):
     content = Required(str)
     created_at = Required(datetime, default=datetime.utcnow)
@@ -16,7 +15,6 @@ class CommentSchema(Schema):
     content = fields.Str(required=True)
     created_at = fields.DateTime(format='%Y-%m-%d %H:%M:%S')
     user = fields.Nested('UserSchema', exclude=('pools',))
-
 
 class Pool(db.Entity):
     name = Required(str, unique=True)
@@ -31,6 +29,7 @@ class Pool(db.Entity):
     country = Required(str)
     user = Required('User')
     comments = Set('Comment') # describes the one to many relationship
+    starred_by = Set('User') # describes many to many relationship
 
 class PoolSchema(Schema):
     id = fields.Int(dump_only=True)
@@ -46,3 +45,4 @@ class PoolSchema(Schema):
     country = fields.Str(required=True)
     user = fields.Nested('UserSchema', exclude=('pools',))
     comments = fields.Nested('CommentSchema', many=True)
+    starred_by = fields.Nested('UserSchema', many=True, exclude=('pools',))

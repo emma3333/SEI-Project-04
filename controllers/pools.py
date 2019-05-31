@@ -141,3 +141,17 @@ def delete_comment(pool_id, comment_id):
     db.commit()
 
     return schema.dumps(pool)
+
+
+# STARRED POOLS ===============================================================
+
+@router.route('/pools/<int:pool_id>/star', methods=['POST'])
+@db_session
+@secure_route
+def star_pool(pool_id):
+    schema = PoolSchema()
+    pool = Pool.get(id=pool_id)
+    pool.starred_by.extends(g.current_user)
+    db.commit()
+
+    return schema.dumps(pool)

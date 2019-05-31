@@ -11,7 +11,7 @@ class UserShow extends React.Component {
     this.state = {
       user: {
         pools: [],
-        starredPools: []
+        starred_pools: []
       }
     }
   }
@@ -30,10 +30,10 @@ class UserShow extends React.Component {
   handleStar() {
     const token = Auth.getToken()
     const currentUser = this.state.user.id
-    const starredPools = this.state.user.starredPools.slice()
-    starredPools.push(this.props.location.state.pool)
-    const user = {...this.state.user, starredPools}
-    axios.put(`/api/users/${currentUser}`, {starredPools: starredPools}, {headers: { 'Authorization': `Bearer ${token}` }})
+    const starred_pools = this.state.user.starred_pools.slice()
+    starred_pools.push(this.props.location.state.pool)
+    const user = {...this.state.user, starred_pools}
+    axios.put(`/api/users/${currentUser}`, {starred_pools: starred_pools}, {headers: { 'Authorization': `Bearer ${token}` }})
       .then(() => this.setState({ user }))
       .catch(err => console.error(err))
   }
@@ -72,6 +72,16 @@ class UserShow extends React.Component {
             <div className="column is-two-thirds">
               <h3 className="subtitle subheading-show">Starred places</h3>
 
+              <div className="columns is-multiline">
+                {this.state.user.starred_pools.map(pool =>
+                  <div key={pool.id} className="column is-one-quarter">
+                    <Link to={`/pools/${pool.id}`}>
+                      <img src={pool.image} alt={pool.name} />
+                    </Link>
+                  </div>
+                )}
+              </div>
+
             </div>
           </div>
         </div>
@@ -81,14 +91,3 @@ class UserShow extends React.Component {
 }
 
 export default UserShow
-
-//
-//   <div className="columns is-multiline">
-//     {this.state.user.starredPools.map(pool =>
-//       <div key={pool.id} className="column is-one-quarter">
-//         <Link to={`/pools/${pool.id}`}>
-//           <img src={pool.image} alt={pool.name} />
-//         </Link>
-//       </div>
-//     )}
-// </div>

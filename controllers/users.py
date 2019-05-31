@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify, abort, g
 from pony.orm import db_session
 from models.User import User, UserSchema
 
-
 router = Blueprint(__name__, 'users') # creates the router for this controller
 
 @router.route('/users', methods=['GET'])
