@@ -5,7 +5,6 @@ from app import db
 from models.Pool import Pool, PoolSchema, Comment, CommentSchema
 from lib.secure_route import secure_route
 
-
 router = Blueprint(__name__, 'pools') # creates the router for this controller
 
 @router.route('/pools', methods=['GET'])
@@ -151,7 +150,7 @@ def delete_comment(pool_id, comment_id):
 def star_pool(pool_id):
     schema = PoolSchema()
     pool = Pool.get(id=pool_id)
-    pool.starred_by.extends(g.current_user)
+    pool.starred_by.add(g.current_user)
     db.commit()
 
     return schema.dumps(pool)

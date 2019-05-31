@@ -24,6 +24,7 @@ class Show extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleComment = this.handleComment.bind(this)
     this.handleDeleteComments = this.handleDeleteComments.bind(this)
+    this.handleStar = this.handleStar.bind(this)
 
   }
 
@@ -61,14 +62,19 @@ class Show extends React.Component {
   }
 
   handleDeleteComments(e) {
-    const token = Auth.getToken()
     axios.delete(`/api/pools/${this.props.match.params.id}/comments/${e.target.id}`, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    } )
+      headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+    })
       .then(() => this.getPools())
   }
 
-
+  handleStar() {
+    // make a request to /pools/:pool_id/star
+    axios.post(`/api/pools/${this.props.match.params.id}/star`, null, {
+      headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+    })
+      .then(() => this.props.history.push('/profile'))
+  }
 
   render() {
     if(!this.state.pool) return null
@@ -78,8 +84,6 @@ class Show extends React.Component {
     const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
 
     console.log(comments, 'COMMENTS')
-
-    console.log(this.state.data, 'COMMENT DATA')
 
     console.log(Auth.getPayload().sub, 'PAYLOAD')
 
@@ -105,7 +109,7 @@ class Show extends React.Component {
           </Marker>
         </Map>
 
-        {/* POOL INFO ===================================================*/}
+        {/* POOL INFO =====================================================*/}
         <div className="section">
           <div className="columns is-multiline">
 
@@ -144,9 +148,7 @@ class Show extends React.Component {
                   <article key={comment.id} className="media">
                     <figure className="media-left">
                       <p className="image is-64x64">
-                        <Link to={`/users/${comment.user.id}`}>
-                          <img src={comment.user.image} />
-                        </Link>
+                        <img src={comment.user.image} />
                       </p>
                     </figure>
                     <div className="media-content">
@@ -190,14 +192,10 @@ class Show extends React.Component {
               <p>Region: {region}</p>
               <p>Country: {country}</p>
 
+
               <div className="buttons is-gapless">
                 {Auth.isAuthenticated() &&
-                  <Link to={{
-                    pathname: `/users/${Auth.getPayload().sub}`,
-                    state: {pool: this.state.pool}
-                  }}>
-                    <button className="button is-light is-small">Star this pool</button>
-                  </Link>
+                  <button onClick={this.handleStar} className="button is-light is-small">Star this pool</button>
                 }
               </div>
             </div>

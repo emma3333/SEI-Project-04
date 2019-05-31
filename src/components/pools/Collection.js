@@ -4,13 +4,6 @@ import { Link } from 'react-router-dom'
 import Card from './Card'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
 import Map from './Map'
-//
-// const mapboxToken = process.env.MAPBOX_TOKEN
-//
-// const Map = ReactMapboxGl({
-//   accessToken: mapboxToken
-// })
-
 
 class PoolsCollection extends React.Component {
 

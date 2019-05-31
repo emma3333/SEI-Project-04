@@ -14,7 +14,7 @@ class CommentSchema(Schema):
     id = fields.Int(dump_only=True)
     content = fields.Str(required=True)
     created_at = fields.DateTime(format='%Y-%m-%d %H:%M:%S')
-    user = fields.Nested('UserSchema', exclude=('pools',))
+    user = fields.Nested('UserSchema', exclude=('pools', 'starred_pools'))
 
 class Pool(db.Entity):
     name = Required(str, unique=True)
@@ -27,9 +27,9 @@ class Pool(db.Entity):
     region = Required(str)
     heated = Optional(bool, default=False)
     country = Required(str)
-    user = Required('User')
+    user = Required('User', reverse='pools')
     comments = Set('Comment') # describes the one to many relationship
-    starred_by = Set('User') # describes many to many relationship
+    starred_by = Set('User', reverse='starred_pools') # describes many to many relationship
 
 class PoolSchema(Schema):
     id = fields.Int(dump_only=True)
@@ -43,6 +43,5 @@ class PoolSchema(Schema):
     region = fields.Str(required=True)
     heated = fields.Str()
     country = fields.Str(required=True)
-    user = fields.Nested('UserSchema', exclude=('pools',))
+    user = fields.Nested('UserSchema', exclude=('pools', 'starred_pools', 'comments'))
     comments = fields.Nested('CommentSchema', many=True)
-    starred_by = fields.Nested('UserSchema', many=True, exclude=('pools',))

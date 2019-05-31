@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import SecureRoute from './components/common/SecureRoute'
 
 // import SecureRoute from './components/common/SecureRoute'
 
@@ -28,7 +29,7 @@ class App extends React.Component {
         <div>
           <Navbar />
           <Switch>
-            <Route path="/users/:id" component={UserShow} />
+            <Route path="/profile" component={UserShow} />
             <Route path='/pools/new' component={PoolsNew} />
             <Route path='/pools/:id' component={PoolsShow} />
             <Route path='/collections' component={PoolsCollection} />

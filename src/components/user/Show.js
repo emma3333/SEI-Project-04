@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
+const token = Auth.getToken()
 
 class UserShow extends React.Component {
 
@@ -17,7 +18,9 @@ class UserShow extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/users/${this.props.match.params.id}`)
+    axios.get('/api/profile', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
       .then(res => this.setState({ user: res.data }))
       .then(() => {
         if(this.props.location.state) {
@@ -27,22 +30,10 @@ class UserShow extends React.Component {
       .catch(err => console.error(err))
   }
 
-  handleStar() {
-    const token = Auth.getToken()
-    const currentUser = this.state.user.id
-    const starred_pools = this.state.user.starred_pools.slice()
-    starred_pools.push(this.props.location.state.pool)
-    const user = {...this.state.user, starred_pools}
-    axios.put(`/api/users/${currentUser}`, {starred_pools: starred_pools}, {headers: { 'Authorization': `Bearer ${token}` }})
-      .then(() => this.setState({ user }))
-      .catch(err => console.error(err))
-  }
-
-
   render() {
     if(!this.state.user) return null
-    console.log(this.state.user)
-    const { id } = this.state.user
+    console.log(this.state.user, 'USER')
+    console.log(this.props.location, 'LOCATION.STATE.POOL')
     return (
       <section className="section">
         <div className="container">
