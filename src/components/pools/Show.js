@@ -25,6 +25,7 @@ class Show extends React.Component {
     this.handleComment = this.handleComment.bind(this)
     this.handleDeleteComments = this.handleDeleteComments.bind(this)
     this.handleStar = this.handleStar.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
 
   }
 
@@ -76,10 +77,23 @@ class Show extends React.Component {
       .then(() => this.props.history.push('/profile'))
   }
 
+  handleDelete() {
+    const token = Auth.getToken()
+    axios.delete(`/api/pools/${this.props.match.params.id}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+      .then(() => this.props.history.push('/pools'))
+  }
+
+  canModify() {
+    // if the user is logged in AND the user's id matches the characters' user's id return true
+    return Auth.isAuthenticated() && Auth.getPayload().sub === this.state.pool.user.id
+  }
+
   render() {
     if(!this.state.pool) return null
 
-    const { name, description, type, address, lng, lat, region, heated, country, user, image, comments } = this.state.pool
+    const { name, description, type, address, lng, lat, region, heated, country, user, image, comments, id } = this.state.pool
 
     const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
 
@@ -117,6 +131,13 @@ class Show extends React.Component {
               <figure className="image">
                 <img src={image} alt={name} />
               </figure>
+
+              {this.canModify() &&
+                <div className="level-right">
+                  <Link to={`/pools/${id}/edit`} className="button is-light is-small">Edit</Link>
+                  <button className="button is-dark is-small" onClick={this.handleDelete}>Delete</button>
+                </div>
+              }
 
 
               {/* COMMENTS ==================================================*/}
