@@ -31,9 +31,7 @@ class Edit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-
     const token = Auth.getToken()
-
     axios.put(`/api/pools/${this.state.data.id}`, this.state.data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
@@ -42,7 +40,8 @@ class Edit extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state , 'STATE')
+    console.log(this.state.data, 'DATA')
     return (
       <section className="section">
         <div className="container">

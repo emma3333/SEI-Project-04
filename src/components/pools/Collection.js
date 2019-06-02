@@ -34,21 +34,22 @@ class PoolsCollection extends React.Component {
           <Map />
 
         </div>
+        <div className="container">
 
 
 
-        <div className="columns is-multiline">
-          {this.state.pools.map(pool =>
-            <div key={pool.id} className="column is-one-quarter-desktop is-one-third-tablet">
-              <Link to={`/pools/${pool.id}`}>
-                <Card {...pool} />
-              </Link>
-            </div>
-          )}
+          <div className="columns is-multiline">
+            {this.state.pools.map(pool =>
+              <div key={pool.id} className="column is-one-quarter-desktop is-one-third-tablet">
+                <Link to={`/pools/${pool.id}`}>
+                  <Card {...pool} />
+                </Link>
+              </div>
+            )}
+          </div>
+
+
         </div>
-
-
-
       </section>
 
     )

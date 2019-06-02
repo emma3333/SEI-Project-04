@@ -184,7 +184,299 @@ with db_session():
         user=emma
     )
 
+    pool_thirteen = Pool(
+        name='Brockwell Lido',
+        image='https://www.brockwellswimmers.com/wp-content/uploads/2018/02/Brockwell_Lido3-977x720.jpg',
+        description='Brockwell Lido is a large lido in Brockwell Park, Herne Hill, London. It opened in July 1937, closed in 1990 and after a local campaign was re-opened in 1994.',
+        type='lido',
+        address='Dulwich Rd, London SE24 0PA',
+        lng='-0.110520',
+        lat='51.455470',
+        region='Greater London',
+        heated=False,
+        country='England',
+        user=emma
+    )
 
+    pool_fourteen = Pool(
+        name='Llyn D\'ur Arddu',
+        image='https://wildswim.com/imageprocessor/b2efef43-3bae-4215-bb6d-13ceaf385e11.jpg?width=800&height=480&mode=crop',
+        description='Access gained via the Llanberis Path to this crystal clear turquoise and azure blue lake. A popular spot for local climbers.',
+        type='pond',
+        address='Llyn D\'ur Arddu, Gwynedd, Snowdonia, LL55 4UL',
+        lng='-4.09052191',
+        lat='53.08050156',
+        region='Wales',
+        heated=False,
+        country='Wales',
+        user=emma
+    )
+
+    pool_fifteen = Pool(
+        name='Loch Morar',
+        image='https://wildswim.com/imageprocessor/80f045ea-d6c3-44d1-8382-53aa5787b18f.jpg?width=800&height=480&mode=crop',
+        description='If you are into the nature of Scotland, this is a great out of the way place that few tourists ever find. A jewel on the west coast, and easy to access for a day trip if you are staying in Arasaig or Mallaig, or just stopping before a ferry to the islands.',
+        type='lake',
+        address='Loch Morar, Morar, Mallaig, PH40 4PE, Scotland',
+        lng='-5.763980',
+        lat='56.971160',
+        region='Scotland',
+        heated=False,
+        country='Scotland',
+        user=emma
+    )
+
+    pool_sixteen = Pool(
+        name='Camusdarrach Beach',
+        image='https://wildswim.com/imageprocessor/de0b1fa8-7cb8-4170-be44-0e817896b3a9.jpg?width=800&height=480&mode=crop',
+        description='With a spectacular view to the jagged crest of Cuillin on the Isle of Skye, the rugged blue peaks of Rum and the steep sea cliff of Eigg, Camusdarach is breathtaking. With plenty of opportunities for swimming, rock pooling and walking, the beach is a great place to spend a day. Camusdarach is the beach featured in the film Local Hero and is a popular place on tours of film locations.',
+        type='sea',
+        address='Camusdarrach Beach, Arisaig, PH39 4NT, Scotland',
+        lng='-5.858690',
+        lat='56.931670',
+        region='Scotland',
+        heated=False,
+        country='Scotland',
+        user=emma
+    )
+
+    pool_seventeen = Pool(
+        name='Portishead Lido',
+        image='https://wildswim.com/imageprocessor/d239e95b-c7d8-46c0-a326-eeb94a70cb99.jpg?width=800&height=480&mode=crop',
+        description='Portishead Open Air Pool aka Portishead Lido is an open air pool built in 1962, 33m x 12.5, with stunning views of the Severn estuary and saved from closure by the local community in 2008. It is heated from April to September.',
+        type='lido',
+        address='Portishead Lido, The Esplanade, Portishead, BS20 9HD',
+        lng='-2.579640',
+        lat='51.456580',
+        region='Wales',
+        heated=False,
+        country='Wales',
+        user=emma
+    )
+
+    pool_eighteen = Pool(
+        name='Margate Tidal Pool',
+        image='https://tr-images.condecdn.net/image/PDNr23lwoO1/crop/1620/f/walpole-bay-tidal-pool-margate-kent-conde-nast-traveller-17aug17-historic-england.jpg',
+        description='Margate tidal pool is quite a walk from the Railway Station, but worth it. From the station, walk north to the sandy beach and then walk east. You will see other pools on sandy beaches before you get here but these appear to be exclusively boating ponds with big "NO SWIMMING" notices',
+        type='tidal pool',
+        address='Walpole Bay, Walpole Bay, Margate, CT9 2JJ, England',
+        lng='1.403980',
+        lat='51.391150',
+        region='East of England',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_nineteen = Pool(
+        name='Pells Pool',
+        image='https://media.dayoutwiththekids.co.uk/media/17419/34259-the-pells-outdoor-swimming-pool-lewes-01.jpg?anchor=center&mode=crop&quality=75&width=834&height=467',
+        description='This 1860s Grade II-listed pool is the oldest freshwater pool in the country - only Lymington\'s sea water pool is older (1833). 40m x 20m with a paddling pool and grassy areas for sunbathing.',
+        type='lido',
+        address='Pells Pool, Brook St, Lewes, BN7 2BA',
+        lng='0.010780',
+        lat='50.876660',
+        region='South East',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twenty = Pool(
+        name='Guilford Lido',
+        image='https://upload.wikimedia.org/wikipedia/commons/c/c8/Lido1_edited_640.jpg',
+        description='1930s lido, 50m x 28m, set in three acres of landscaped gardens at Stoke Park. Heated and in the middle of Guildford. There are paddling pools, water slides and free parking.',
+        type='lido',
+        address='Lido Rd, Stoke Park, Guildford, GU1 1HB',
+        lng='-0.571550',
+        lat='51.243290',
+        region='South East',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twentyone = Pool(
+        name='Treyarnon Tidal Pool',
+        image='https://wildswim.com/imageprocessor/e6a68da4-fc04-4f58-bef3-d1cba5eb65ed.jpg?width=800&height=480&mode=crop',
+        description='Just six seven minutes around the corner from Constantine Bay on the coast path lies a pool-size tidal pool in the rocks. The biggest has a wall of concrete to keep water levels high, but just below it is a small deep plunge pool. Great for swimming, diving, paddling and snorkeling',
+        type='tidal pool',
+        address='Treyarnon Tidal Pool, Cornwall, PL28 8JR',
+        lng='-5.020910',
+        lat='50.527230',
+        region='South West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twentytwo = Pool(
+        name='Woody Bay Rock Pool',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/TELEMMGLPICT000136885708_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQfyf2A9a6I9YchsjMeADBa08.jpeg?imwidth=1400',
+        description='Exmoor\'s coast is wild and precipitous with 250m-high cliffs hiding secret coves and lagoons. Descend to Woody Bay to find a cobbled track that winds down past an ancient limekiln to a bouler-strewn beach and waterfall. Hidden at the far eas end is a natural rock pool. Look more carefully and you\'ll see the remains of the old pier, the only remains of a grand resort that the Victorians once planned for this remote piece of coast. Find the lay-by car park on the lower arm of the lynton to Martinhoe Lane. Walk down the switchback track, signed Martinhoe manor, about 20 minutes.',
+        type='tidal pool',
+        address='Woody Bay Rock Pool, Exmoor',
+        lng='-3.8949',
+        lat='51.2248',
+        region='South West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twentythree = Pool(
+        name='River Stour, Wimborne Minster',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/TELEMMGLPICT000136885201_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQfyf2A9a6I9YchsjMeADBa08.jpeg?imwidth=1400',
+        description='The Romas were very good swimmers - it was a requirement of joining the army - and the old Roman ford near wimborne Minster must have been delightful even in their day. There\'s a large space to paddle by the small weir. Upstream there is a footbridge and the water deepend with cow parsley and meadowsweet along the banks. Nearby is the Roman fort of Babury Rings and the National Trust park at Kingston Lacy. Seek out Barford farm with its homemade ice cream in Sturminster Marshall (more river swimming here). Take the B3082 (Blandford) from Wimborne and turn left down Cowgrove Road, signposted to the football club. Continue 3/4 mile to find a small parking area and river on the left.',
+        type='river',
+        address='River Stour, Wimborne Minster, Dorset',
+        lng='-2.0076',
+        lat='50.8000',
+        region='South West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twentyfour = Pool(
+        name='Chagfird river-fed swimming pool',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/Capture_trans_NvBQzQNjv4BqL0WwcwovDZdsvPPBqc6OJv5donmmBAmIq3q37YHzNiU.PNG?imwidth=1400',
+        description='Deep in Dartmoor, this outdoor swimming pool is fed by the river Teign, straight off the moor. It was dug in 1947 as a co-operative effort by the village and some of the original old boys still come down to make tea. these days it has solar heaters and an indoor cafe. There is also good river swimmiong at the salmon leaps, and above the weir.',
+        type='lido',
+        address='Chagford, Dartmoor, TQ13 8DA',
+        lng='-3.8326',
+        lat='50.6808',
+        region='South West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twentyfive = Pool(
+        name='Grantchester Meadows',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/TELEMMGLPICT000136885138_trans_NvBQzQNjv4Bqeoh6R_Asy6TV7Mp4S1i8Pctl4wH-QVoA1_nWU5B-emI.jpeg?imwidth=1400',
+        description='On hot summer days it can seem like little has changed since Edwardian times, when Rupert Brooke was a Grantchester resident and bathed naked with Virginia Woolf. The Cam flows merrily past picnic parties, punts and swimmer, some heading downstream to Cambridge\'s Backs, others heading upstream to the Orchard Tea Garden in Grantchester. Deep banks make this good for diving, but it can be muddy! From the tea garden in Grantchester (CB3 9ND), explore upstream, or take a longer walk downstream from Sheep\'s Green (about 20 minutes).',
+        type='river',
+        address='Grantchester Meadows, Cambridge, CB3 9ND',
+        lng='0.1046',
+        lat='52.1907',
+        region='East of England',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twentysix = Pool(
+        name='River Ouse, Barcombe Mills',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/TELEMMGLPICT000136885187_trans_NvBQzQNjv4BqplGOf-dgG3z4gg9owgQTXPGkjMqXV6CT_ASrwFoxoSc.jpeg?imwidth=1400',
+        description='Just in sight of the Sussex Downs, the Ouse runs deep through open pasture. There are grassy banks, ideal for jumping and diving, and it\'s a perfect place for other riverside games. Rent a little blue rowing boat from the Anchor Inn and explort for more than two miles through remote countryside - the spire of Isfield church is the only building you will see the entire length of. Two miles north of Lewes on A26, turn left, signed Barcombe. Find a car park on the right after a mile, and head upstream past sluices to the meadow.',
+        type='river',
+        address='River Ouse, Barcombe Mills, East Sussex, BN8 5EA',
+        lng='0.0411',
+        lat='50.9151',
+        region='South East',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twentyseven = Pool(
+        name='River Thames, Buscot',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/ss-composite-image-2017-8-11-14-39_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.png?imwidth=1400',
+        description='This is the Thames at its most idyllic. The old weir at Buscot has scooped out a deep natural pool lined with ancient weeping willow. Children climb the low boughs and use them as platforms to jump from, and rope swings hang everywhere. The deep roots make perfect handrails to pull yourself out and the lawns that border the pool are dotted with inflatable boats and deckchairs. Upstream Cheese Wharf (a good palce for diving) was once a loading bay for 20 tons of cheese a day. Two miles east of Lechlade on the A417, turn left for Buscot by the mirror, signposted visitor parking.',
+        type='river',
+        address='River Thames, Buscot, Cotswolds',
+        lng='-1.6683',
+        lat='51.6809',
+        region='South East',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twentyseven = Pool(
+        name='River Wey, Surrey',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/TELEMMGLPICT000136886418_trans_NvBQzQNjv4BqaBJSHwufYM_Fh0ArUj1hequZKfEZf-DZHA_hrv9jmkk.jpeg?imwidth=1400',
+        description='Surrey is surprisingly rural despite being so close to London. It\'s England\'s most wooded county and sports some excellent wild swimming along the River Wey. There are sandy beaches and banks where the North Downs Way crosses the river just south of Guilford, near Shalford, but for the most rural escape head for the beautiful meanders and meadows on the common near Old Woking. You can explore all the way downstream as far as the ruined priory on an island at Newark. From Old Working roundabout, head south on the A247 (Broadmead Road) towards Send. 200m on the left is a footpath. Follow this 300m to the first meander.',
+        type='river',
+        address='River Wey, Surrey',
+        lng='-0.5355',
+        lat='51.2993',
+        region='South East',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_twentyeight = Pool(
+        name='Lady Falls',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/ss-composite-image-2017-8-11-13-36_trans_NvBQzQNjv4Bq7fJ7jj8-gj7ZXzs1a_mNLVVopz-tW2eyJA-NX9znS20.png?imwidth=1400',
+        description='Mosses and ferns grow in profusion in this misty rainforest microclimate. A slender chute tumbles 30ft into a large plunge pool set in a huge wooded amphitheatre. There is a pebble beach and you can climb behind the falls and dive back in. The adventurous can explore upstream to Einion Gam, ones of Wales\'s tallest waterfalls. There are more waterfall pools on the main river Nedd Fechan, up to the bridge at Pont Melin-fach. Pontneddfechan is north of Swansea on the A465. Park at the visitor centre and follow the wooder river path behind the Angel Inn for about 20 minutes; go left at the footbridge.',
+        type='river',
+        address='Lady Falls, Waterfall Woods, Brecon Beacons',
+        lng='-3.6011',
+        lat='51.7714',
+        region='Wales',
+        heated=False,
+        country='Wales',
+        user=emma
+    )
+
+    pool_twentynine = Pool(
+        name='Llangennith Blue Pool',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/TELEMMGLPICT000136885164_trans_NvBQzQNjv4Bqeo_i_u9APj8RuoebjoAHt7rBiwLVv-x2UIIDI2Y-giA.jpeg?imwidth=1400',
+        description='Said to be bottomless, this giant-tub shaped tidal rock pool sits in the corner of one of Gower\'s most beautiful beaches. You can jump and drive into indigo water from high ledges. The Three Chimneys Cave arches mark the furthest reach of the bay, and it is said that Portuegese and Brazilian gold coins can still be found washed up from an ancient shipwreck. Park at the entrance to Broughton Farm Caravan Park, Llangennith (SA3 1JP), and head west on the coast path to find the bay after 3/4 mile.',
+        type='tidal pool',
+        address='Llangennith Blue Pool, Gower',
+        lng='-4.2986',
+        lat='51.6141',
+        region='Wales',
+        heated=False,
+        country='Wales',
+        user=emma
+    )
+
+    pool_thirty = Pool(
+        name='Blue Lake of Golwern',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/TELEMMGLPICT000136885123_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQfyf2A9a6I9YchsjMeADBa08.jpeg?imwidth=1400',
+        description='Disused slate quarries often fill with clear spring water, glinting like cobalt jewels on the mountainside. One of the most popular and safest is at Golwern Quarry, with wonderful views out from high above the Mawddach estuary. The water is access via a short tunnel that quickly opens out into a sheltered amphitheatre. This pool is almost perfectly rectangular with smooth straigh rock walls that make it as close to a natural swimming pool as you wish. Just south of Friog/Fairbourne Church, turn left at the telephone box and up the lane 1/3 mile to find a footpath and gate of the right.',
+        type='lake',
+        address='Blue Lake of Golwern, Snowdonia',
+        lng='-4.0413',
+        lat='52.6891',
+        region='Wales',
+        heated=False,
+        country='Wales',
+        user=emma
+    )
+
+    pool_thirtyone = Pool(
+        name='Hatchmere Lake',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/ss-composite-image-2017-8-11-13-53_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.png?imwidth=1400',
+        description='The West Midlands\' meres and mosses are some of the last reminaing fragments of ancient peat bogs in the country - remnants of hollows formed during out glacial past. Hatchmere, nestled in a corner of the Delamere Forst Park, forms a serence, reed-banked lagoon that has been popular with wild swimmers for generations. A small bay leads to sandy shallows where jewel-blue dragonflies whirr low over the water\'s surface. Six miles south of the M56(J12) on B5152. Find the beach next to The Carrier\'s Inn (WA6 6NL). There are many woodland walks and bike rides nearby.',
+        type='lake',
+        address='Hatchmere Lake, Delemere Forest, Cheshire',
+        lng='-2.6698',
+        lat='53.2446',
+        region='West Midlands',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_thirtytwo = Pool(
+        name='Three Shires Head Waterfall',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/1280px-Three_Shire_trans_NvBQzQNjv4BqUgehH7knIs2mL4LO-crfgu0JcK6kii4EZo4SCKDPAyk.jpg?imwidth=1400',
+        description='At the meeting of three counties, high in the Peak District at the headwaters of the River Dane, there\'s a creek that gushes down the hill along grassy banks before dropping into a pool beneath two medieval bridges. It\'s notorious no-man\'s land that once attracted brigands excaping the law. Follow the stream down to a wild plunge pool and enjoy a pummelling from the stream - and amazing views. Just off the A53 Leek-Buxton road, start your walk from the New Inn pub in Flash(SK17 0SW), the highest village in England. Take the footpath at Spring Head Farm.',
+        type='river',
+        address='Three Shires Head Waterfall, Peak District',
+        lng='-1.9869',
+        lat='53.2138',
+        region='North West',
+        heated=False,
+        country='England',
+        user=emma
+    )
     comment_one = Comment(
         content='Favourite pool in London',
         user=emma,

@@ -63,6 +63,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
                     <option value="Pond">Pond</option>
                     <option value="river">River</option>
                     <option value="sea">Sea</option>
+                    <option value="tidal pool">Tidal Pool</option>
                   </select>
                 </div>
                 {errors.type && <div className="help is-danger">{errors.type}</div>}

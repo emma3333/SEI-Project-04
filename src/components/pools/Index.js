@@ -113,20 +113,19 @@ class Index extends React.Component {
             </div>
 
           </div>
+
+          <div className="columns is-multiline">
+            {this.searchPool().map(pool =>
+              <div key={pool.id} className="column is-one-fifth-desktop is-one-third-tablet">
+                <Link to={`/pools/${pool.id}`}>
+                  <Card {...pool} />
+                </Link>
+              </div>
+            )}
+          </div>
+
+
         </div>
-
-        <div className="columns is-multiline">
-          {this.searchPool().map(pool =>
-            <div key={pool.id} className="column is-one-fifth-desktop is-one-third-tablet">
-              <Link to={`/pools/${pool.id}`}>
-                <Card {...pool} />
-              </Link>
-            </div>
-          )}
-        </div>
-
-
-
 
       </section>
 
