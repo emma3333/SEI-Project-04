@@ -30,8 +30,8 @@ class App extends React.Component {
         <div>
           <Navbar />
           <Switch>
-            <SecureRoute path="/profile" component={UserShow} />
-            <SecureRoute path="/pools/:id/edit" component={PoolsEdit} />
+            <Route path="/profile" component={UserShow} />
+            <Route path="/pools/:id/edit" component={PoolsEdit} />
             <Route path='/pools/new' component={PoolsNew} />
             <Route path='/pools/:id' component={PoolsShow} />
             <Route path='/collections' component={PoolsCollection} />

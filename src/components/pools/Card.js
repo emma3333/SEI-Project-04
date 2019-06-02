@@ -10,7 +10,7 @@ const Card = ({ image, name }) => {
       </div>
 
       <header className="card-header">
-        <p className="card-header-title">
+        <p className="card-header-subtitle">
           {name}
         </p>
       </header>

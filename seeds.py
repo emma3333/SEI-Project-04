@@ -91,7 +91,7 @@ with db_session():
         image='https://lh3.googleusercontent.com/2WAKwSWs22QEBuQ-fq3c2ypLaT5DIfDwpccj9peSIFwqeMyJ2AFtBiWNUgpcT1ypjEz9-Sw=w1080-h608-p-no-v0',
         description='Situated on the edge of Ilkley Moor and surrounded by wide open countryside, this freshwater lido is circular (46cm in diameter) with a central foundtain and slide. There is a smaller heated pool on site.',
         type='lido',
-        address='Denton Road, Ilkley LS29 0BZ',
+        address='Denton Road, Ilkley, LS29 0BZ',
         lng='-1.819177',
         lat='53.932506',
         region='Yorkshire and the Humber',
@@ -477,6 +477,119 @@ with db_session():
         country='England',
         user=emma
     )
+
+    pool_thirtythree = Pool(
+        name='Welford-on-Avon',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/19421185_trans_NvBQzQNjv4BqNvLtDx75wZSR0MSb26ou_4pIMotykyGm1vIbIiII8w8.jpg?imwidth=1400',
+        description='Sporting one of the tallest maypoles in England, and a lovely pub, Welford sits in a wide loop of our most quintessentially English river. A line of thatched cottages leads to a river path with a weir and green banks upstream. Follow the path all the way to Stratford and take you pick of places. Four miles west of Stratford. From the Bell Inn (CV37 8EB), pass the church and follow Boat Lane.',
+        type='river',
+        address='Welford-on-Avon, Warwickshire',
+        lng='-1.7910',
+        lat='52.1679',
+        region='West Midlands',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_thirtyfour = Pool(
+        name='Tongue Pot',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/ss-composite-image-2017-8-11-13-59_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.png?imwidth=1400',
+        description='The 15-mile Esk valley is renowned for its magical \'tubs\' and \'dubs\'. The higher you go the more dramatic the pools and waterfalls are, so seek out Tongue Pot, with emerald water set beneath an ancient packhorse bridge. High jumps are possible and you can sample various rock pools. Above are more great pools, including Esk Waterfall and Lingcove Beck. Park by the telephone at the bottom of Hardknott Pass and follow the riverside path up through Brotherilkeld Farm for two miles, to reach the confluence and bridge.',
+        type='river',
+        address='Tongue Pot, Eskdale, Lake District',
+        lng='-3.1907',
+        lat='54.4236',
+        region='North West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_thirtyfive = Pool(
+        name='Gormire Lake',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/TELEMMGLPICT000136885617_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQfyf2A9a6I9YchsjMeADBa08.jpeg?imwidth=1400',
+        description='James Herriot thought Sutton Bank the finest view in England, with vistas out as far as the Dales. Down the escarpment is Gormire Lake, cradled by ancient woods, a tarn formed by glacial erosion 20,000 years ago. This is a secluded palce, the water is smooth and bird life is abundant. Head east from Thirsk on the A170. From the main Sutton Bank car park walk along the escarpment and after 300 yards follow nature reserve signed, descending via the track on the left.',
+        type='lake',
+        address='Gormire Lake, North Yorkshire Moors',
+        lng='-1.2283',
+        lat='54.2427',
+        region='Yorkshire and The Humber',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_thirtysix = Pool(
+        name='River Tay',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/ss-composite-image-2017-8-11-14-5_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.png?imwidth=1400',
+        description='Tayside once had as many distilleries as Speyside and to many Aberfeldy is still the spiritual home of Scotch. Golden in the sun, the Tay runs sweet and peaty here and bathing in it as close as you\'ll get to swimming in whisky itself. From its Trossachs source, it is warmed by shallow lochs that act as great solar collectors. Head upstream for pebble beaches or enjoy the little bay by the town centre. Easy entry coming into Aberfeldy from the west, or dip in the Loch Tay at Dalerb, in the Tay Forest Park near Kenmore.',
+        type='river',
+        address='River Tay, Aberfeldy, Perthshire',
+        lng='-3.8769',
+        lat='56.6178',
+        region='Scotland',
+        heated=False,
+        country='Scotland',
+        user=emma
+    )
+
+    pool_thirtyseven = Pool(
+        name='Fairy Pools',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/ss-composite-image-2017-8-11-14-9_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.png?imwidth=1400',
+        description='The pools of Allt Coir\' a\'Mhadaidh are sculpted from lilac-tinged volcanic lava sheltered in glades fringed with rowan trees. The misty towers of the Black Cuillin kingdom rise above like something from Mordor. The water is so clear you have to stare to see if it\'s there. There are good jumps for older kids and even an underwater arch. Follow the A863/B8009 and turn left (Glen Brittle) just before Carbost (Talisker Distillery). The Fairy Pools car park is on the right. Cross the road and go upstream for 3/4 mile.',
+        type='pond',
+        address='Fairy Pools, Isle of Skye',
+        lng='-6.2554',
+        lat='57.2497',
+        region='Scotland',
+        heated=False,
+        country='Scotland',
+        user=emma
+    )
+
+    pool_thirtyeight = Pool(
+        name='Treyarnon Rock Pool',
+        image='https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/ss-composite-image-2017-8-11-12-59_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.png?imwidth=1400',
+        description='Up in the rocks along the north edge of the beach, Treyarnon rock pool is a magical place for children to learn to swim and snorkel. It is entirely natural and refilled each high tide with fresh seawater, and a new starfish or two. In some parts it\'s deep enough to dive into. The YHA cafe above has warming drinks and food for afterwards. Constantine Bay to the north is a classic surf beach and leads on to Trevose Head round Hole, an intriguing collapsed sea cave and blowhole. From the car park follow the coat path. The rock pool is 50 yards past the YHA, PL28 8JP.',
+        type='pond',
+        address='Treyarnon Rock Pool, North Cornwall, PL28 8JP',
+        lng='-5.0250',
+        lat='50.5280',
+        region='South West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_thirtynine = Pool(
+        name='St Nectan\'s Kieve',
+        image='https://www.telegraph.co.uk/content/dam/Travel/2018/June/St-Nectan%E2%80%99s-Kieve-iStock-640219898.jpg?imwidth=1240',
+        description='Swimming there: At the head of a wild glen a tall, slender waterfall falls into a high basin, flows through a circular hole and drops into a plunge pool (the kieve). This is a holy place with prayer flags, a shrine room above and lots of steps. There is a small tea room in the hermitage. An entrance fee applies. Getting there: Locate the track with a postbox, opposite a telephone box, on the B3263 in Trethevey, two miles east of Tintagel. Bear right and follow it for one mile, past St Piran’s Well, down into the woods, and up along a pretty stream, finally climbing the steps up to the shrine entrance (20 mins).',
+        type='river',
+        address='St Nectan\'s Kieve, Tintagel',
+        lng='-4.7168',
+        lat='50.6644',
+        region='South West',
+        heated=False,
+        country='England',
+        user=emma
+    )
+
+    pool_fourty = Pool(
+        name='Horeseshoe Falls, river Fechan',
+        image='https://www.telegraph.co.uk/content/dam/Travel/2017/April/waterfall-horseshoe.jpg?imwidth=1240',
+        description='Swimming there: A fantastic set of large, deep forest plunge pools beneath a horseshoe-shaped waterfall. The top pool has a tree and high cliff that you can jump from. Getting there: From the junction pool and footbridge (for Lady Falls) bear right and follow the main stream a further half mile (35 minutes).',
+        type='river',
+        address='Horeseshoe Falls, river Fechan, Llangollen, LL20 8BN',
+        lng='-3.5936',
+        lat='51.7742',
+        region='Wales',
+        heated=False,
+        country='Wales',
+        user=emma
+    )
+
     comment_one = Comment(
         content='Favourite pool in London',
         user=emma,
