@@ -16,6 +16,7 @@ import PoolsIndex from './components/pools/Index'
 import PoolsMap from './components/pools/Map'
 import PoolsNew from './components/pools/New'
 import PoolsCollection from './components/pools/Collection'
+import PoolsEdit from './components/pools/Edit'
 
 import UserShow from './components/user/Show'
 
@@ -29,7 +30,8 @@ class App extends React.Component {
         <div>
           <Navbar />
           <Switch>
-            <Route path="/profile" component={UserShow} />
+            <SecureRoute path="/profile" component={UserShow} />
+            <SecureRoute path="/pools/:id/edit" component={PoolsEdit} />
             <Route path='/pools/new' component={PoolsNew} />
             <Route path='/pools/:id' component={PoolsShow} />
             <Route path='/collections' component={PoolsCollection} />
