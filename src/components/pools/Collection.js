@@ -29,13 +29,33 @@ class PoolsCollection extends React.Component {
   }
 
 
-  filterPools() {
+  lidoFilter() {
     const data = this.state.pools.map(pool => {
       const { type, region, description, name, address, country } = pool
       return { type, region, description, name, address, country }
     })
     const lido = data.filter(test => test.type === 'lido')
     return lido
+
+  }
+
+  londonFilter() {
+    const data = this.state.pools.map(pool => {
+      const { type, region, description, name, address, country } = pool
+      return { type, region, description, name, address, country }
+    })
+    const london = data.filter(two => two.region === 'Greater London')
+    return london
+  }
+
+
+  coastalFilter() {
+    const data = this.state.pools.map(pool => {
+      const { type, region, description, name, address, country } = pool
+      return { type, region, description, name, address, country }
+    })
+    const coastal = data.filter(three => three.type === 'sea')
+    return coastal
   }
 
   render() {
@@ -43,7 +63,10 @@ class PoolsCollection extends React.Component {
 
     console.log(this.state.pools, 'POOLS')
     console.log(regions, 'REGIONS')
-    console.log(this.filterPools(), 'LIDO')
+    console.log(this.lidoFilter(), 'LIDO')
+    console.log(this.londonFilter(), 'LONDON')
+    console.log(this.coastalFilter(), 'COASTAL')
+
 
     if(!this.state) return <p>Loading...</p>
     return (
