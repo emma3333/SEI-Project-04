@@ -226,10 +226,19 @@ class Show extends React.Component {
               <p>Address: {address}</p>
               <p>Region: {region}</p>
               <p>Country: {country}</p>
-              <p>Current weather forecast: </p>
+              <p>8 day weather forecast: </p>
+              <ul>
 
+                {weatherForecast.map(day =>
+                  <li key={day.time}>
+                    <p>Day:{day.time}</p>
+                    <p>Summary: {day.summary}</p>
+                    <p>Icon: {day.icon}</p>
+                    <p>Low Temp: {day.temperatureLow}</p>
+                    <p>High Temp: {day.temperatureHigh}</p>
+                  </li> )}
 
-
+              </ul>
             </div>
 
             {/* POOLS NEARBY ================================================*/}
