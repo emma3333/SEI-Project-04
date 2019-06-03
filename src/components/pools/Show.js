@@ -103,6 +103,9 @@ class Show extends React.Component {
 
     const weatherForecast = this.state.weatherForecast
 
+    const forecastDays = weatherForecast.map(day => new Date(day.time * 1000))
+
+    console.log(forecastDays)
     console.log(comments, 'COMMENTS')
 
     console.log(Auth.getPayload().sub, 'PAYLOAD')
@@ -237,14 +240,17 @@ class Show extends React.Component {
                     <th>Low</th>
                     <th>High</th>
                   </tr>
-                  {weatherForecast.map(day =>
-                    <tr key={day.time}>
-                      <td>{moment(day.time).format('DD/MM/YYYY')}</td>
+                  {weatherForecast.map((day, i) => {
+                    const date = forecastDays[i]
+                    return <tr key={day.time}>
+                      <td>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>
                       <td>{day.summary}</td>
                       <td>{day.icon}</td>
                       <td>{day.temperatureLow}</td>
                       <td>{day.temperatureHigh}</td>
-                    </tr> )}
+                    </tr> 
+                  }
+                  )}
                 </thead>
               </table>
             </div>

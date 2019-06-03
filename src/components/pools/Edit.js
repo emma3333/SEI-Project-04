@@ -20,7 +20,9 @@ class Edit extends React.Component {
 
   componentDidMount() {
     axios.get(`/api/pools/${this.props.match.params.id}`)
-      .then(res => this.setState({ data: res.data }))
+      .then(res => {
+        this.setState({ data: res.data })
+      })
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -32,7 +34,10 @@ class Edit extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     const token = Auth.getToken()
-    axios.put(`/api/pools/${this.state.data.id}`, this.state.data, {
+    const data = {...this.state.data}
+    delete data['id']
+    delete data['user']
+    axios.put(`/api/pools/${this.state.data.id}`, data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(() => this.props.history.push('/pools'))
