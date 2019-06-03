@@ -18,7 +18,7 @@ class Show extends React.Component {
     this.state = {
       pool: null,
       pools: [],
-      data: null
+      data: null // data is the comment?
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -34,7 +34,10 @@ class Show extends React.Component {
       pool: axios.get(`/api/pools/${this.props.match.params.id}`).then(res => res.data),
       pools: axios.get('/api/pools').then(res => res.data)
     })
-      .then(data => this.setState(data))
+      .then(res => {
+        axios.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${process.env.DARKSKY_KEY}/${res.pool.lat}, ${res.pool.lng}`)
+          .then(res2 => this.setState({ pool: res.pool, pools: res.pools, weatherForecast: res2.data.daily.data }))
+      })
       .catch(err => this.setState({ errors: err.response.data.errors }))
   }
 
@@ -97,9 +100,13 @@ class Show extends React.Component {
 
     const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
 
+    const weatherForecast = this.state.weatherForecast
+
     console.log(comments, 'COMMENTS')
 
     console.log(Auth.getPayload().sub, 'PAYLOAD')
+
+    console.log(weatherForecast, 'WEATHER')
 
     return (
 
@@ -131,6 +138,13 @@ class Show extends React.Component {
               <figure className="image">
                 <img src={image} alt={name} />
               </figure>
+
+
+              <div className="buttons is-gapless">
+                {Auth.isAuthenticated() &&
+                  <button onClick={this.handleStar} className="button is-light is-small">Star this pool</button>
+                }
+              </div>
 
               {this.canModify() &&
                 <div className="level-right">
@@ -212,13 +226,10 @@ class Show extends React.Component {
               <p>Address: {address}</p>
               <p>Region: {region}</p>
               <p>Country: {country}</p>
+              <p>Current weather forecast: </p>
 
 
-              <div className="buttons is-gapless">
-                {Auth.isAuthenticated() &&
-                  <button onClick={this.handleStar} className="button is-light is-small">Star this pool</button>
-                }
-              </div>
+
             </div>
 
             {/* POOLS NEARBY ================================================*/}
@@ -249,3 +260,24 @@ class Show extends React.Component {
 }
 
 export default Show
+
+//
+// getPools() {
+//   Promise.props({
+//     pool: axios.get(`/api/pools/${this.props.match.params.id}`).then(res => res.data),
+//     pools: axios.get('/api/pools').then(res => res.data)
+//   })
+//     .then(res => {
+//       return Promise.props({
+//         weatherForecast: axios.get('https://api.darksky.net/forecast/', {
+//           params: {
+//             key: process.env.DARKSKY_KEY,
+//             latitude: res.pool.lat,
+//             longitude: res.pool.lng,
+//             format: 'json'
+//           }
+//         }).then(data => this.setState(data))
+//       })
+//     })
+//     .catch(err => this.setState({ errors: err.response.data.errors }))
+// }
