@@ -30,9 +30,13 @@ class Index extends React.Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  componentDidMount() {
+  getData(){
     axios.get('/api/pools')
       .then(res => this.setState({ pools: res.data }))
+  }
+
+  componentDidMount() {
+    this.getData()
   }
 
   componentDidUpdate(prevProps) {
@@ -109,7 +113,7 @@ class Index extends React.Component {
                 </select>
               </div>
             </div>
-            
+
           </div>
 
           <div className="columns is-multiline">

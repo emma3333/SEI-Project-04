@@ -115,10 +115,7 @@ class Show extends React.Component {
         <Map
           style="mapbox://styles/mapbox/streets-v10"
           zoom={[10]}
-          center={{
-            lat: 51.527714,
-            lng: -0.095843
-          }}
+          center={[ this.state.pool.lng, this.state.pool.lat ]}
           containerStyle={{
             height: '40vh',
             width: '100vw'
