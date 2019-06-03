@@ -28,7 +28,6 @@ class PoolsCollection extends React.Component {
     }
   }
 
-
   lidoFilter() {
     const data = this.state.pools.map(pool => {
       const { type, region, description, name, address, country } = pool
@@ -44,7 +43,7 @@ class PoolsCollection extends React.Component {
       const { type, region, description, name, address, country } = pool
       return { type, region, description, name, address, country }
     })
-    const london = data.filter(two => two.region === 'Greater London')
+    const london = data.filter(london => london.region === 'Greater London')
     return london
   }
 
@@ -54,8 +53,35 @@ class PoolsCollection extends React.Component {
       const { type, region, description, name, address, country } = pool
       return { type, region, description, name, address, country }
     })
-    const coastal = data.filter(three => three.type === 'sea')
+    const coastal = data.filter(coastal => (coastal.type === 'sea') || (coastal.type === 'tidal pool'))
     return coastal
+  }
+
+  waterfallFilter() {
+    const data = this.state.pools.map(pool => {
+      const { type, region, description, name, address, country } = pool
+      return { type, region, description, name, address, country }
+    })
+    const waterfall = data.filter(waterfall => waterfall.description.includes('waterfall'))
+    return waterfall
+  }
+
+  lakeFilter() {
+    const data = this.state.pools.map(pool => {
+      const { type, region, description, name, address, country } = pool
+      return { type, region, description, name, address, country }
+    })
+    const lake = data.filter(lake => (lake.type === 'lake' ))
+    return lake
+  }
+
+  riverFilter() {
+    const data = this.state.pools.map(pool => {
+      const { type, region, description, name, address, country } = pool
+      return { type, region, description, name, address, country }
+    })
+    const river = data.filter(river => (river.type === 'river' ))
+    return river
   }
 
   render() {
@@ -66,6 +92,9 @@ class PoolsCollection extends React.Component {
     console.log(this.lidoFilter(), 'LIDO')
     console.log(this.londonFilter(), 'LONDON')
     console.log(this.coastalFilter(), 'COASTAL')
+    console.log(this.waterfallFilter(), 'WATERFALL')
+    console.log(this.lakeFilter(), 'LAKE')
+    console.log(this.riverFilter(), 'RIVER')
 
 
     if(!this.state) return <p>Loading...</p>
@@ -81,10 +110,10 @@ class PoolsCollection extends React.Component {
             <div className="columns is-multiline is-vcentered">
               <Link to="region/Wales" className="column is-half-desktop is-full-mobile is-half-tablet is-vcentered" id="art-one"><div>BY THE SEA</div> </Link>
               <Link to="/pools/scotland" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-two"><div>LONDON</div> </Link>
-              <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-three"><div>HEATED</div> </Link>
+              <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-three"><div>RIVERS</div> </Link>
               <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-four"><div>LIDOS</div> </Link>
               <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-three"><div>NEAR WATERFALLS</div> </Link>
-              <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-four"><div>RIVERS</div> </Link>
+              <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-four"><div>LAKES</div> </Link>
             </div>
           </div>
         </section>
