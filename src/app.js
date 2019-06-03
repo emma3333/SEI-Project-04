@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import SecureRoute from './components/common/SecureRoute'
 
-// import SecureRoute from './components/common/SecureRoute'
-
 import Home from './components/common/Home'
 import Navbar from './components/common/Navbar'
 
@@ -30,7 +28,7 @@ class App extends React.Component {
         <div>
           <Navbar />
           <Switch>
-            <Route path="/profile" component={UserShow} />
+            <SecureRoute path="/profile" component={UserShow} />
             <Route path="/pools/:id/edit" component={PoolsEdit} />
             <Route path='/pools/new' component={PoolsNew} />
             <Route path='/pools/:id' component={PoolsShow} />

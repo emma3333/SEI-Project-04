@@ -248,7 +248,7 @@ class Show extends React.Component {
                       <td>{day.icon}</td>
                       <td>{day.temperatureLow}</td>
                       <td>{day.temperatureHigh}</td>
-                    </tr> 
+                    </tr>
                   }
                   )}
                 </thead>

@@ -41,7 +41,7 @@ class PoolsCollection extends React.Component {
         <section className="section featured">
           <div className="container">
             <div className="columns is-multiline is-vcentered">
-              <Link to="region/Wales"className="column is-half-desktop is-full-mobile is-half-tablet is-vcentered" id="art-one"><div>BY THE SEA</div> </Link>
+              <Link to="region/Wales" className="column is-half-desktop is-full-mobile is-half-tablet is-vcentered" id="art-one"><div>BY THE SEA</div> </Link>
               <Link to="/pools/scotland" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-two"><div>LONDON</div> </Link>
               <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-three"><div>HEATED</div> </Link>
               <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-four"><div>LIDOS</div> </Link>
