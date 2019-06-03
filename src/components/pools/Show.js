@@ -277,12 +277,3 @@ class Show extends React.Component {
 }
 
 export default Show
-
-// {weatherForecast.map(day =>
-//   <th key={day.time}>
-//     <td>Day:{day.time}</td>
-//     <td>Summary: {day.summary}</td>
-//     <td>Icon: {day.icon}</td>
-//     <td>Low Temp: {day.temperatureLow}</td>
-//     <td>High Temp: {day.temperatureHigh}</td>
-//   </th> )}
