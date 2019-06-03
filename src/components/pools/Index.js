@@ -84,7 +84,7 @@ class Index extends React.Component {
         </div>
 
         <div className="section">
-          <div className="container columns">
+          <div className="container columns is-right">
 
             {/* SEARCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
 
@@ -99,27 +99,13 @@ class Index extends React.Component {
             </div>
 
 
-            {/* DROPDOWN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
-            <div className="control column index-control">
-              <div className="select">
-                <select
-                  name="region"
-                  onChange={this.handleChange}
-                  value={this.state.region || 'All'}
-                >
-                  <option value=''>All</option>
-                  {regions.map(region =>
-                    <option key={region} value={region}>{region.charAt(0).toUpperCase() + region.substr(1)}</option>
-                  )}
-                </select>
-              </div>
-            </div>
+
 
           </div>
 
           <div className="columns is-multiline">
             {this.searchPool().map(pool =>
-              <div key={pool.id} className="column is-one-fifth-desktop is-one-third-tablet">
+              <div key={pool.id} className="column is-one-quarter-desktop is-one-third-tablet">
                 <Link to={`/pools/${pool.id}`}>
                   <Card {...pool} />
                 </Link>
