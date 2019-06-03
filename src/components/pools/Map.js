@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import ReactMapboxGl, { Marker, Popup } from 'react-mapbox-gl'
 import { Link } from 'react-router-dom'
+import Loading from '../common/Loading'
 
 const mapboxToken = process.env.MAPBOX_TOKEN
 
@@ -46,12 +47,7 @@ class PoolsMap extends React.Component {
   }
 
   render() {
-    {if(this.state.currentLocation.lat === false)
-      return(
-        <div className='section'>
-          <p>Loading..</p>
-        </div>
-      )}
+    {if(this.state.currentLocation.lat === false) return <Loading />}
     return (
       <section className="hero map-hero">
         <div className="columns is-multiline">

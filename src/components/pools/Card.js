@@ -8,14 +8,15 @@ const Card = ({ image, name }) => {
           <img src={image} alt={name} />
         </figure>
       </div>
-
-      <header className="card-header">
-        <p className="card-header-subtitle">
-          {name}
-        </p>
-      </header>
     </div>
   )
 }
 
 export default Card
+
+
+// <header className="card-header">
+//   <p className="card-header-subtitle">
+//     {name}
+//   </p>
+// </header>

@@ -6,7 +6,6 @@ import qs from 'query-string'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
 import regions from '../../lib/regions'
 
-
 const mapboxToken = process.env.MAPBOX_TOKEN
 
 const Map = ReactMapboxGl({
@@ -57,6 +56,7 @@ class Index extends React.Component {
     return (
       <section className="hero is-fullheight-with-navbar">
         <div className="columns is-multiline">
+
           {/* MAP >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
           <Map
             style="mapbox://styles/mapbox/streets-v10"

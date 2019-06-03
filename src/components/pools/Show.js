@@ -5,6 +5,9 @@ import Promise from 'bluebird'
 import Card from './Card'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
+const moment = require('moment')
+import regions from '../../lib/regions'
+
 
 const mapboxToken = process.env.MAPBOX_TOKEN
 
@@ -238,7 +241,7 @@ class Show extends React.Component {
                   </tr>
                   {weatherForecast.map(day =>
                     <tr key={day.time}>
-                      <td>{day.time}</td>
+                      <td>moment.unix({day.time})</td>
                       <td>{day.summary}</td>
                       <td>{day.icon}</td>
                       <td>{day.temperatureLow}</td>
@@ -252,22 +255,31 @@ class Show extends React.Component {
 
           {/* POOLS NEARBY ================================================*/}
 
-          <div className="columns">
-            <div className="nearby-pools">
-              <h2 className="subtitle is-6">Nearby pools</h2>
-              <div>
-                {nearby.map(pool =>
-                  <div className="nearby-pools column" key={pool.id}>
-                    <Link to={`/pools/${pool.id}`}>
-                      <Card {...pool} />
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
         </div>
 
+
+        <section className="hero is-fullheight-with-navbar">
+          <div className="columns is-multiline">
+
+          </div>
+          <div className="container">
+            <h2 className="subtitle xis-6">Nearby pools</h2>
+
+            <div className="columns is-multiline">
+
+
+              {nearby.map(pool =>
+                <div key={pool.id} className="column is-one-quarter-desktop is-one-third-tablet">
+                  <Link to={`/pools/${pool.id}`}>
+                    <img src= {pool.image} alt={pool.name} />
+                  </Link>
+                </div>
+              )}
+            </div>
+
+
+          </div>
+        </section>
 
       </section>
     )
