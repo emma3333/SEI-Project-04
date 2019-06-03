@@ -35,6 +35,11 @@ class UserShow extends React.Component {
     if(!this.state.user) return null
     console.log(this.state.user, 'USER')
     console.log(this.props.location, 'LOCATION.STATE.POOL')
+    console.log(this.state.user.starred_pools)
+
+    const starredPools = this.state.user.starred_pools
+    console.log(starredPools, 'STARREDPOOLS')
+
     return (
       <section className="section">
         <div className="container">
@@ -65,13 +70,14 @@ class UserShow extends React.Component {
               <h3 className="subtitle subheading-show">Starred places</h3>
 
               <div className="columns is-multiline">
-                {this.state.user.starred_pools.map(pool =>
-                  <div key={pool.id} className="column is-one-quarter">
-                    <Link to={`/pools/${pool.id}`}>
-                      <img src={pool.image} alt={pool.name} />
-                    </Link>
-                  </div>
-                )}
+                {starredPools.length === 0 ? <p>No starred pools yet</p> :
+                  starredPools.map(pool =>
+                    <div key={pool.id} className="column is-one-quarter">
+                      <Link to={`/pools/${pool.id}`}>
+                        <img src={pool.image} alt={pool.name} />
+                      </Link>
+                    </div>
+                  )}
               </div>
 
             </div>
