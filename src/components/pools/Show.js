@@ -5,9 +5,7 @@ import Promise from 'bluebird'
 import Card from './Card'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
-const moment = require('moment')
-import regions from '../../lib/regions'
-
+import moment from 'moment'
 
 const mapboxToken = process.env.MAPBOX_TOKEN
 
@@ -241,7 +239,7 @@ class Show extends React.Component {
                   </tr>
                   {weatherForecast.map(day =>
                     <tr key={day.time}>
-                      <td>moment.unix({day.time})</td>
+                      <td>{moment(day.time).format('DD/MM/YYYY')}</td>
                       <td>{day.summary}</td>
                       <td>{day.icon}</td>
                       <td>{day.temperatureLow}</td>
@@ -258,15 +256,15 @@ class Show extends React.Component {
         </div>
 
 
-        <section className="hero is-fullheight-with-navbar">
+        <section className="">
           <div className="columns is-multiline">
 
           </div>
           <div className="container">
             <h2 className="subtitle xis-6">Nearby pools</h2>
+            <hr />
 
             <div className="columns is-multiline">
-
 
               {nearby.map(pool =>
                 <div key={pool.id} className="column is-one-quarter-desktop is-one-third-tablet">
@@ -276,11 +274,8 @@ class Show extends React.Component {
                 </div>
               )}
             </div>
-
-
           </div>
         </section>
-
       </section>
     )
 
