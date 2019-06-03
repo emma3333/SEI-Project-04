@@ -218,7 +218,7 @@ class Show extends React.Component {
 
             </div>
 
-            <div className="column is-two-fifths-desktop is-half-tablet is-full-mobile">
+            <div className="column is-three-fifths-desktop is-half-tablet is-full-mobile">
               <h2 className="subtitle is-6 pool-heading">{name}</h2>
               <p>Description: {description}</p>
               <p>Type: {type}</p>
@@ -226,35 +226,43 @@ class Show extends React.Component {
               <p>Address: {address}</p>
               <p>Region: {region}</p>
               <p>Country: {country}</p>
-              <p>8 day weather forecast: </p>
-              <ul>
-
-                {weatherForecast.map(day =>
-                  <li key={day.time}>
-                    <p>Day:{day.time}</p>
-                    <p>Summary: {day.summary}</p>
-                    <p>Icon: {day.icon}</p>
-                    <p>Low Temp: {day.temperatureLow}</p>
-                    <p>High Temp: {day.temperatureHigh}</p>
-                  </li> )}
-
-              </ul>
+              <h4 className="subtitle is-6 pool-heading">8 day weather forecast </h4>
+              <table className="table is-narrow is-bordered">
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Summary</th>
+                    <th>Icon</th>
+                    <th>Low</th>
+                    <th>High</th>
+                  </tr>
+                  {weatherForecast.map(day =>
+                    <tr key={day.time}>
+                      <td>{day.time}</td>
+                      <td>{day.summary}</td>
+                      <td>{day.icon}</td>
+                      <td>{day.temperatureLow}</td>
+                      <td>{day.temperatureHigh}</td>
+                    </tr> )}
+                </thead>
+              </table>
             </div>
+          </div>
 
-            {/* POOLS NEARBY ================================================*/}
 
-            <div className="column is-one-fifth-desktop is-half-tablet is-full-mobile">
-              <div className="nearby-pools">
-                <h2 className="subtitle is-6">Nearby pools</h2>
-                <div>
-                  {nearby.map(pool =>
-                    <div className="nearby-pools" key={pool.id}>
-                      <Link to={`/pools/${pool.id}`}>
-                        <Card {...pool} />
-                      </Link>
-                    </div>
-                  )}
-                </div>
+          {/* POOLS NEARBY ================================================*/}
+
+          <div className="columns">
+            <div className="nearby-pools">
+              <h2 className="subtitle is-6">Nearby pools</h2>
+              <div>
+                {nearby.map(pool =>
+                  <div className="nearby-pools column" key={pool.id}>
+                    <Link to={`/pools/${pool.id}`}>
+                      <Card {...pool} />
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -270,23 +278,11 @@ class Show extends React.Component {
 
 export default Show
 
-//
-// getPools() {
-//   Promise.props({
-//     pool: axios.get(`/api/pools/${this.props.match.params.id}`).then(res => res.data),
-//     pools: axios.get('/api/pools').then(res => res.data)
-//   })
-//     .then(res => {
-//       return Promise.props({
-//         weatherForecast: axios.get('https://api.darksky.net/forecast/', {
-//           params: {
-//             key: process.env.DARKSKY_KEY,
-//             latitude: res.pool.lat,
-//             longitude: res.pool.lng,
-//             format: 'json'
-//           }
-//         }).then(data => this.setState(data))
-//       })
-//     })
-//     .catch(err => this.setState({ errors: err.response.data.errors }))
-// }
+// {weatherForecast.map(day =>
+//   <th key={day.time}>
+//     <td>Day:{day.time}</td>
+//     <td>Summary: {day.summary}</td>
+//     <td>Icon: {day.icon}</td>
+//     <td>Low Temp: {day.temperatureLow}</td>
+//     <td>High Temp: {day.temperatureHigh}</td>
+//   </th> )}
