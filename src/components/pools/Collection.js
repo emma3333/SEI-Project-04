@@ -41,38 +41,39 @@ class PoolsCollection extends React.Component {
 
           </div>
         </section>
+
         <section className="section">
           <div className="container">
-            <div className="columns is-multiline is-vcentered">
-
-              <Link to="/pools?region=Wales" className="column is-half-desktop is-full-mobile is-half-tablet is-vcentered" id="collection-one">
-                <div>WALES</div>
+            <div className="columns collection is-multiline is-centered">
+              <Link to="/pools?type=coastal" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection1 notification is-dark">
+                <h3 className="subtitle is-4">COASTAL</h3>
+                <hr />
               </Link>
-
-              <Link to="/pools?type=lido" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
-                <div>LIDO</div>
+              <Link to="/pools?region=Greater London" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection1 notification is-dark">
+                <h3 className="subtitle is-4">LONDON</h3>
+                <hr />
               </Link>
-
-              <Link to="/pools?type=coastal" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
-                <div>BY THE SEA</div>
+              <Link to="/pools?type=river" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection1 notification is-dark">
+                <h3 className="subtitle is-4">RIVERS</h3>
+                <hr />
               </Link>
-
-              <Link to="/pools?type=rivers" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
-                <div>RIVERS</div>
+              <Link to="/pools?type=lido" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection1 notification is-dark">
+                <h3 className="subtitle is-4">LIDOS</h3>
+                <hr />
               </Link>
-
-              <Link to="/pools?type=lakes" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
-                <div>LAKES</div>
+              <Link to="/pools?region=Scotland" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection1 notification is-dark">
+                <h3 className="subtitle is-4">SCOTLAND</h3>
+                <hr />
               </Link>
-
-              <Link to="/pools?region=Greater London" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
-                <div>LONDON</div>
+              <Link to="/pools?type=lake" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection1 notification is-dark">
+                <h3 className="subtitle is-4">LAKES</h3>
+                <hr />
               </Link>
-
             </div>
-
           </div>
         </section>
+
+
       </main>
     )
   }

@@ -266,7 +266,7 @@ class Show extends React.Component {
             <div className="columns is-multiline">
 
               {nearby.map(pool =>
-                <div key={pool.id} className="column is-one-quarter-desktop is-one-third-tablet">
+                <div key={pool.id} className="column is-one-fifth-desktop is-one-third-tablet">
                   <Link to={`/pools/${pool.id}`}>
                     <img src= {pool.image} alt={pool.name} />
                   </Link>
