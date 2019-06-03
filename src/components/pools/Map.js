@@ -21,13 +21,11 @@ class PoolsMap extends React.Component {
       pools: [],
       marker: null,
       zoom: [10],
-      active: false,
-      poolId: ''
+      active: false
     }
   }
 
   componentDidMount() {
-
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords
       this.setState({ currentLocation: {lng: latitude, lat: longitude }})
@@ -38,11 +36,12 @@ class PoolsMap extends React.Component {
   }
 
   clickMarker(pool) {
-    this.setState({ active: true })
-    this.setState({ pool })
-    this.setState({ currentLocation: {lat: pool.lng, lng: pool.lat }})
-    this.setState({ zoom: [12] })
-    this.setState({ poolId: pool.id })
+    this.setState({
+      active: true,
+      pool,
+      currentLocation: {lat: pool.lng, lng: pool.lat},
+      zoom: [12]
+    })
   }
 
   render() {
@@ -62,14 +61,15 @@ class PoolsMap extends React.Component {
             containerStyle={{
               height: '50vh',
               width: '100vw'
-            }}>
+            }}
+          >
             {this.state.pools.map(pool =>
               <Marker
                 key={pool.id}
                 coordinates={[pool.lng, pool.lat]}
                 onClick={() => this.clickMarker(pool)}
                 anchor="bottom">
-                <img src={'../../assets/marker.png'}/>
+                <img src={'/assets/marker.png'}/>
               </Marker>
             )}
             {this.state.active &&
@@ -79,7 +79,7 @@ class PoolsMap extends React.Component {
               offset={[-2, -40]}
             >
               <div>
-                <Link to={`/pools/${this.state.poolId}`}>
+                <Link to={`/pools/${this.state.pool.id}`}>
                   <p>{this.state.pool.name}</p>
                   <p>{this.state.pool.address}</p>
                 </Link>

@@ -10,9 +10,20 @@ router = Blueprint(__name__, 'pools') # creates the router for this controller
 @router.route('/pools', methods=['GET'])
 @db_session # Allow access to the database for the 'index' function
 def index():
-    # This will serialize our data
     schema = PoolSchema(many=True)
-    pools = Pool.select()
+
+    if request.args:
+        # This will serialize our data
+        region = request.args.get('region')
+        pool_type = request.args.get('type')
+
+
+        pools = Pool.select(lambda pool: pool.region == region or pool.type == pool_type)
+
+    else:
+        pools = Pool.select()
+
+
     return schema.dumps(pools) # 'schema.dumps' converts the list to JSON
 
 @router.route('/pools', methods=['POST'])

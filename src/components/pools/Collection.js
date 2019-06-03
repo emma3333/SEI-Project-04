@@ -14,9 +14,13 @@ class PoolsCollection extends React.Component {
     }
   }
 
-  componentDidMount() {
+  getData() {
     axios.get('/api/pools')
       .then(res => this.setState({ pools: res.data }))
+  }
+
+  componentDidMount() {
+    this.getData()
   }
 
   componentDidUpdate(prevProps) {

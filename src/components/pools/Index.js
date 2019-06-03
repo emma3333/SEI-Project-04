@@ -31,7 +31,9 @@ class Index extends React.Component {
   }
 
   getData(){
-    axios.get('/api/pools')
+    axios.get('/api/pools', {
+      params: this.props.match.query
+    })
       .then(res => this.setState({ pools: res.data }))
   }
 
@@ -54,7 +56,6 @@ class Index extends React.Component {
   }
 
   render() {
-    console.log(this.state.pools)
     if(!this.state.pools) return null
     return (
       <section className="hero is-fullheight-with-navbar">
