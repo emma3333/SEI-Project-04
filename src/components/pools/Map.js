@@ -47,7 +47,12 @@ class PoolsMap extends React.Component {
   }
 
   render() {
-    {if(this.state.currentLocation.lat === false) return <Loading />}
+    {if(this.state.currentLocation.lat === false)
+      return(
+        <div className='section'>
+          <p>Loading..</p>
+        </div>
+      )}
     return (
       <section className="hero map-hero">
         <div className="columns is-multiline">

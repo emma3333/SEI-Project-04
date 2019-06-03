@@ -29,8 +29,8 @@ class App extends React.Component {
           <Navbar />
           <Switch>
             <SecureRoute path="/profile" component={UserShow} />
-            <Route path="/pools/:id/edit" component={PoolsEdit} />
-            <Route path='/pools/new' component={PoolsNew} />
+            <SecureRoute path="/pools/:id/edit" component={PoolsEdit} />
+            <SecureRoute path='/pools/new' component={PoolsNew} />
             <Route path='/pools/:id' component={PoolsShow} />
             <Route path='/collections' component={PoolsCollection} />
             <Route path='/pools' component={PoolsIndex} />

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Card from './Card'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
 import Map from './Map'
-import Loading from '../common/Loading'
+// import Loading from '../common/Loading'
 import regions from '../../lib/regions'
 
 class PoolsCollection extends React.Component {
@@ -19,6 +19,7 @@ class PoolsCollection extends React.Component {
   componentDidMount() {
     axios.get('/api/pools')
       .then(res => this.setState({ pools: res.data }))
+
   }
 
   componentDidUpdate(prevProps) {
@@ -27,10 +28,24 @@ class PoolsCollection extends React.Component {
     }
   }
 
+
+  filterPools() {
+    const data = this.state.pools.map(pool => {
+      const { type, region, description, name, address, country } = pool
+      return { type, region, description, name, address, country }
+    })
+    const lido = data.filter(test => test.type === 'lido')
+    return lido
+  }
+
   render() {
+
+
     console.log(this.state.pools, 'POOLS')
-    console.log(regions)
-    if(!this.state) return <Loading />
+    console.log(regions, 'REGIONS')
+    console.log(this.filterPools(), 'LIDO')
+
+    if(!this.state) return <p>Loading...</p>
     return (
       <main>
         <section className="hero">

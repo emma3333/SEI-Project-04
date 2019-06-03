@@ -12,7 +12,6 @@ const Map = ReactMapboxGl({
   accessToken: mapboxToken
 })
 
-
 class Index extends React.Component {
 
   constructor(props) {
@@ -123,7 +122,6 @@ class Index extends React.Component {
               </div>
             )}
           </div>
-
 
         </div>
 

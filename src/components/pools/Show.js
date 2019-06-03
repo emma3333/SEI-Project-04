@@ -5,7 +5,6 @@ import Promise from 'bluebird'
 import Card from './Card'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
-import moment from 'moment'
 
 const mapboxToken = process.env.MAPBOX_TOKEN
 
@@ -107,10 +106,8 @@ class Show extends React.Component {
 
     console.log(forecastDays)
     console.log(comments, 'COMMENTS')
-
-    console.log(Auth.getPayload().sub, 'PAYLOAD')
-
     console.log(weatherForecast, 'WEATHER')
+    console.log(nearby, 'NEARBY')
 
     return (
 
