@@ -96,7 +96,6 @@ class Index extends React.Component {
 
             {/* DROPDOWN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
             <div className="control column index-control">
-
               <div className="select">
                 <select
                   name="region"
@@ -110,7 +109,7 @@ class Index extends React.Component {
                 </select>
               </div>
             </div>
-
+            
           </div>
 
           <div className="columns is-multiline">

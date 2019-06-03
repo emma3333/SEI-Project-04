@@ -1,10 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Card from './Card'
-import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
 import Map from './Map'
-// import Loading from '../common/Loading'
+import Loading from '../common/Loading'
 import regions from '../../lib/regions'
 
 class PoolsCollection extends React.Component {
@@ -19,7 +17,6 @@ class PoolsCollection extends React.Component {
   componentDidMount() {
     axios.get('/api/pools')
       .then(res => this.setState({ pools: res.data }))
-
   }
 
   componentDidUpdate(prevProps) {
@@ -28,93 +25,48 @@ class PoolsCollection extends React.Component {
     }
   }
 
-  lidoFilter() {
-    const data = this.state.pools.map(pool => {
-      const { type, region, description, name, address, country } = pool
-      return { type, region, description, name, address, country }
-    })
-    const lido = data.filter(test => test.type === 'lido')
-    return lido
-
-  }
-
-  londonFilter() {
-    const data = this.state.pools.map(pool => {
-      const { type, region, description, name, address, country } = pool
-      return { type, region, description, name, address, country }
-    })
-    const london = data.filter(london => london.region === 'Greater London')
-    return london
-  }
-
-
-  coastalFilter() {
-    const data = this.state.pools.map(pool => {
-      const { type, region, description, name, address, country } = pool
-      return { type, region, description, name, address, country }
-    })
-    const coastal = data.filter(coastal => (coastal.type === 'sea') || (coastal.type === 'tidal pool'))
-    return coastal
-  }
-
-  waterfallFilter() {
-    const data = this.state.pools.map(pool => {
-      const { type, region, description, name, address, country } = pool
-      return { type, region, description, name, address, country }
-    })
-    const waterfall = data.filter(waterfall => waterfall.description.includes('waterfall'))
-    return waterfall
-  }
-
-  lakeFilter() {
-    const data = this.state.pools.map(pool => {
-      const { type, region, description, name, address, country } = pool
-      return { type, region, description, name, address, country }
-    })
-    const lake = data.filter(lake => (lake.type === 'lake' ))
-    return lake
-  }
-
-  riverFilter() {
-    const data = this.state.pools.map(pool => {
-      const { type, region, description, name, address, country } = pool
-      return { type, region, description, name, address, country }
-    })
-    const river = data.filter(river => (river.type === 'river' ))
-    return river
-  }
-
   render() {
-
-
-    console.log(this.state.pools, 'POOLS')
-    console.log(regions, 'REGIONS')
-    console.log(this.lidoFilter(), 'LIDO')
-    console.log(this.londonFilter(), 'LONDON')
-    console.log(this.coastalFilter(), 'COASTAL')
-    console.log(this.waterfallFilter(), 'WATERFALL')
-    console.log(this.lakeFilter(), 'LAKE')
-    console.log(this.riverFilter(), 'RIVER')
-
-
-    if(!this.state) return <p>Loading...</p>
+    console.log(this.state.pools)
+    console.log(regions)
+    if(!this.state) return <Loading />
     return (
       <main>
         <section className="hero">
           <div className="columns is-multiline">
             <Map />
+
           </div>
         </section>
-        <section className="section featured">
+        <section className="section">
           <div className="container">
             <div className="columns is-multiline is-vcentered">
-              <Link to="region/Wales" className="column is-half-desktop is-full-mobile is-half-tablet is-vcentered" id="art-one"><div>BY THE SEA</div> </Link>
-              <Link to="/pools/scotland" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-two"><div>LONDON</div> </Link>
-              <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-three"><div>RIVERS</div> </Link>
-              <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-four"><div>LIDOS</div> </Link>
-              <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-three"><div>NEAR WATERFALLS</div> </Link>
-              <Link to="/pools" className="column is-half-desktop is-full-mobile is-half-tablet" id="art-four"><div>LAKES</div> </Link>
+
+              <Link to="/pools?region=Wales" className="column is-half-desktop is-full-mobile is-half-tablet is-vcentered" id="collection-one">
+                <div>WALES</div>
+              </Link>
+
+              <Link to="/pools?type=lido" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
+                <div>LIDO</div>
+              </Link>
+
+              <Link to="/pools?type=coastal" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
+                <div>BY THE SEA</div>
+              </Link>
+
+              <Link to="/pools?type=rivers" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
+                <div>RIVERS</div>
+              </Link>
+
+              <Link to="/pools?type=lakes" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
+                <div>LAKES</div>
+              </Link>
+
+              <Link to="/pools?region=Greater London" className="column is-half-desktop is-full-mobile is-half-tablet" id="collection-two">
+                <div>LONDON</div>
+              </Link>
+
             </div>
+
           </div>
         </section>
       </main>
@@ -123,12 +75,3 @@ class PoolsCollection extends React.Component {
 }
 
 export default PoolsCollection
-
-
-// {regions.map(region =>
-//   <div key={region} className="column is-one-quarter-desktop is-one-third-tablet">
-//     <Link to={`/pools?region=${region}`}>
-//       <img src='/assets/homehero.jpg' alt={region} />
-//     </Link>
-//   </div>
-// )}

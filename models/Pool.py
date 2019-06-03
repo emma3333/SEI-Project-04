@@ -45,13 +45,3 @@ class PoolSchema(Schema):
     country = fields.Str(required=True)
     user = fields.Nested('UserSchema', exclude=('pools', 'starred_pools', 'comments'))
     comments = fields.Nested('CommentSchema', many=True)
-
-# problem with the pool id and user id on edit form
-
-    # @post_load
-    # def load_pool(self, data):
-    #     data['pool'] = Pool.get(id=data['pool_id']) # use the pool model to load the pool from the database by id, getting the pool by getting the id
-    #     # but the model doesn't want a pool id, it wants the pool, so we dlete the pool_id
-    #     del data['pool_id']
-    #
-    #     return data

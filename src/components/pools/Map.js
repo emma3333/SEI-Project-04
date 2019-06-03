@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import ReactMapboxGl, { Marker, Popup } from 'react-mapbox-gl'
 import { Link } from 'react-router-dom'
-import Loading from '../common/Loading'
 
 const mapboxToken = process.env.MAPBOX_TOKEN
 

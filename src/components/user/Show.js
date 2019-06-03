@@ -30,6 +30,7 @@ class UserShow extends React.Component {
       .catch(err => console.error(err))
   }
 
+
   render() {
     if(!this.state.user) return null
     console.log(this.state.user, 'USER')

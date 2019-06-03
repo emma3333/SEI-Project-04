@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
 import Promise from 'bluebird'
-import Card from './Card'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
 
@@ -96,7 +95,7 @@ class Show extends React.Component {
   render() {
     if(!this.state.pool) return null
 
-    const { name, description, type, address, lng, lat, region, heated, country, user, image, comments, id } = this.state.pool
+    const { name, description, type, address, lng, lat, region, heated, country, image, comments, id } = this.state.pool
 
     const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
 
