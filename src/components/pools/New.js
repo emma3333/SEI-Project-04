@@ -45,7 +45,7 @@ class New extends React.Component {
         </section>
 
         <div className="container">
-          <div className="columns is-centered">
+          <div className="columns is-centered add-new">
             <div className="column is-half-desktop is-two-thirds-tablet form">
               <Form
                 handleChange={this.handleChange}

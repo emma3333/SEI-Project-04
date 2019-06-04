@@ -16,11 +16,25 @@ with db_session():
         image='https://i.imgur.com/X2Px8OR.png'
     )
 
+    amy = User(
+        username='Amy',
+        email='amy@gmail.com',
+        password_hash=schema.generate_hash('pass'),
+        image='https://pbs.twimg.com/profile_images/726724811293085696/cyQw1WFQ_400x400.jpg'
+    )
+
+    george = User(
+        username='George',
+        email='george@gmail.com',
+        password_hash=schema.generate_hash('pass'),
+        image='https://pbs.twimg.com/profile_images/501362801873403904/YtVi3_jA_400x400.jpeg'
+    )
+
     pool_one = Pool(
         name='Kenwood Ladies\' Bathing Pond',
         image='https://storify.com/services/proxy/2/Wzk4uTfDIg4TLKDVtWNSjw/https/d2kmm3vx031a1h.cloudfront.net/O7p7wh3vRkGK8G70Kg6y_20170719_101823.jpg',
         description='The Kenwood Ladies’ Pond is situated on Millfield Lane on the eastern edge of Hampstead Heath.',
-        type='pool',
+        type='pond',
         address='Hampstead Heath, Highgate, London NW3 1AS',
         lng='-0.175135',
         lat='51.563260',

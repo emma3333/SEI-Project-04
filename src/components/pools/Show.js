@@ -245,6 +245,7 @@ class Show extends React.Component {
                       </div>
                       <nav className="level">
                         <div className="level-left">
+                        
                           <div className="level-item">
                             <a className="button is-dark is-small" onClick={this.handleComment}>Submit</a>
                           </div>

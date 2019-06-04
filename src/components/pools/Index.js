@@ -65,13 +65,10 @@ class Index extends React.Component {
 
         </div>
 
+        {/* SEARCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
         <div className="section index-search">
           <div className="container columns is-right">
-
-            {/* SEARCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
-
             <div className="control column index-control">
-
               <input
                 className="input search-index"
                 type="text"
@@ -80,7 +77,6 @@ class Index extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-
           </div>
 
           <div className="columns is-multiline">
