@@ -8,7 +8,7 @@ class Register extends React.Component {
 
     this.state = {
       data: {},
-      errors: {}
+      error: {}
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -31,7 +31,7 @@ class Register extends React.Component {
     //   headers: { 'Content-Type': 'application/json' } // set the content type to JSON
     // })
       .then(() => this.props.history.push('/login'))
-      .catch(err => this.setState({ errors: err.response.data.errors }))
+      .catch(err => this.setState({ error: err.response.data.error }))
   }
 
   render() {
@@ -54,7 +54,7 @@ class Register extends React.Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {this.state.errors.username && <div className="help is-danger">{this.state.errors.username}</div>}
+                  {this.state.error.username && <div className="help is-danger">{this.state.error.username}</div>}
 
                 </div>
                 <div className="field">
@@ -66,7 +66,7 @@ class Register extends React.Component {
                       placeholder="eg: emma@gmail.com"
                       onChange={this.handleChange}/>
                   </div>
-                  {this.state.errors.email && <div className="help is-danger">{this.state.errors.email}</div>}
+                  {this.state.error.email && <div className="help is-danger">{this.state.error.email}</div>}
 
                 </div>
 
@@ -79,7 +79,7 @@ class Register extends React.Component {
                       placeholder="eg: https://candobristol.co.uk/img/profile-pic.svg"
                       onChange={this.handleChange}/>
                   </div>
-                  {this.state.errors.image && <div className="help is-danger">{this.state.errors.image}</div>}
+                  {this.state.error.image && <div className="help is-danger">{this.state.error.image}</div>}
 
                 </div>
 
@@ -94,7 +94,7 @@ class Register extends React.Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {this.state.errors.password && <div className="help is-danger">{this.state.errors.password}</div>}
+                  {this.state.error.password && <div className="help is-danger">{this.state.error.password}</div>}
 
                 </div>
                 <div className="field">
@@ -108,7 +108,7 @@ class Register extends React.Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {this.state.errors.password_confirmation && <div className="help is-danger">{this.state.errors.password_confirmation}</div>}
+                  {this.state.error.password_confirmation && <div className="help is-danger">{this.state.error.password_confirmation}</div>}
 
                 </div>
 
