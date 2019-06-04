@@ -13,16 +13,13 @@ def index():
     schema = PoolSchema(many=True)
 
     if request.args:
-        # This will serialize our data
         region = request.args.get('region')
         pool_type = request.args.get('type')
-
 
         pools = Pool.select(lambda pool: pool.region == region or pool.type == pool_type)
 
     else:
         pools = Pool.select()
-
 
     return schema.dumps(pools) # 'schema.dumps' converts the list to JSON
 

@@ -82,7 +82,6 @@ class Show extends React.Component {
   }
 
   handleStar() {
-    // make a request to /pools/:pool_id/star
     axios.post(`/api/pools/${this.props.match.params.id}/star`, null, {
       headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
     })
@@ -159,18 +158,19 @@ class Show extends React.Component {
                   <img src={image} alt={name} />
                 </figure>
 
-                <div className="buttons is-gapless">
-                </div>
 
-                {this.canModify() &&
-                  <div className="level-right">
-                    <Link to={`/pools/${id}/edit`} className="button is-light is-small">Edit</Link>
-                    <button className="button is-dark is-small" onClick={this.handleDelete}>Delete</button>
-                    {Auth.isAuthenticated() &&
-                      <button onClick={this.handleStar} className="button is-light is-small">Star this pool</button>
-                    }
-                  </div>
-                }
+                <div className="buttons star-edit-delete">
+
+                  {this.canModify() &&
+                    <div className="level-right">
+                      <Link to={`/pools/${id}/edit`} className="button is-light is-small">Edit</Link>
+                      <button className="button is-dark is-small" onClick={this.handleDelete}>Delete</button>
+                    </div>
+                  }
+                  {Auth.isAuthenticated() &&
+                    <button onClick={this.handleStar} className="button is-light is-small">Star this pool</button>
+                  }
+                </div>
 
 
                 {/* WEATHER FORECAST - DARSKY API MAP ===========================================*/}
@@ -284,8 +284,6 @@ class Show extends React.Component {
 
 
           {/* POOLS NEARBY ================================================*/}
-
-
 
           <section className="section">
             <div className="columns is-multiline">

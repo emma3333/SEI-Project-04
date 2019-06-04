@@ -21,7 +21,6 @@ class UserShow extends React.Component {
       headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
-        console.log('AFTER LOAD', res.data)
         this.setState({ user: res.data })
       })
       .catch(err => console.error(err))
