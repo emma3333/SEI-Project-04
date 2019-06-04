@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Map from './Map'
+// import Map from './Map'
 import Loading from '../common/Loading'
 import regions from '../../lib/Regions'
 
