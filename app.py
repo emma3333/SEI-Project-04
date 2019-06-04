@@ -1,10 +1,13 @@
 from flask import Flask, jsonify
 from pony.orm import Database
+from config.environment import db_uri
 
-app = Flask(__name__)
+
+app = Flask(__name__, static_folder='public') # telling flask which folder the static files are (says where the frontend files are)
 db = Database()
 
-db.bind(provider='postgres', database='wild-swimming-db')
+# pylint: disable=W0611,C0413
+db.bind('postgres', db_uri)
 
 from config import routes
 
