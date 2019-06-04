@@ -24,6 +24,7 @@ class Index extends React.Component {
   }
 
   getData(){
+    console.log('QUERY =====>', this.props.match.query)
     axios.get('/api/pools', {
       params: this.props.match.query
     })
@@ -35,7 +36,11 @@ class Index extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.location.pathname !== this.props.location.pathname) {
+    if(
+      prevProps.location.pathname !== this.props.location.pathname ||
+      prevProps.location.search !== this.props.location.search
+    ) {
+      this.props.match.query = qs.parse(this.props.location.search)
       this.getData()
     }
   }
@@ -55,7 +60,7 @@ class Index extends React.Component {
         <div className="columns is-multiline">
 
           {/* MAP >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
-          <Map />
+          <Map pools={this.state.pools} />
 
         </div>
 

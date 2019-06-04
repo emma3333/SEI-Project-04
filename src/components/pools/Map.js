@@ -10,19 +10,19 @@ const Map = ReactMapboxGl({
 })
 
 class PoolsMap extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state={
       currentLocation: {
         lat: false,
         lng: false
       },
-      pools: [],
       marker: null,
       zoom: [11],
       active: false
     }
+
   }
 
   componentDidMount() {
@@ -30,9 +30,6 @@ class PoolsMap extends React.Component {
       const { latitude, longitude } = position.coords
       this.setState({ currentLocation: {lng: latitude, lat: longitude }})
     })
-
-    axios.get('/api/pools')
-      .then(res => this.setState({ pools: res.data }))
   }
 
   clickMarker(pool) {
@@ -45,6 +42,7 @@ class PoolsMap extends React.Component {
   }
 
   render() {
+    console.log(this.props.pools)
     {if(this.state.currentLocation.lat === false)
       return(
         <div className='section'>
@@ -63,7 +61,7 @@ class PoolsMap extends React.Component {
               width: '100vw'
             }}
           >
-            {this.state.pools.map(pool =>
+            {this.props.pools && this.props.pools.map(pool =>
               <Marker
                 key={pool.id}
                 coordinates={[pool.lng, pool.lat]}

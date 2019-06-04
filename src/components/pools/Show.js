@@ -259,19 +259,7 @@ class Show extends React.Component {
                             {comment.content}
                           </p>
                         </div>
-                        <nav className="level is-mobile">
-                          <div className="level-left">
-                            <a className="level-item">
-                              <span className="icon is-small"><i className="fas fa-reply"></i></span>
-                            </a>
-                            <a className="level-item">
-                              <span className="icon is-small"><i className="fas fa-retweet"></i></span>
-                            </a>
-                            <a className="level-item">
-                              <span className="icon is-small"><i className="fas fa-heart"></i></span>
-                            </a>
-                          </div>
-                        </nav>
+
                       </div>
                       <div className="media-right">
                         <button id={comment.id} value={comment.user.id} className="delete" onClick={this.handleDeleteComments}></button>
@@ -303,7 +291,9 @@ class Show extends React.Component {
                 {nearby.map(pool =>
                   <div key={pool.id} className="column is-one-fifth-desktop is-one-third-tablet">
                     <Link to={`/pools/${pool.id}`}>
-                      <img src= {pool.image} alt={pool.name} />
+                      <figure className="image is-16by9">
+                        <img src={pool.image} alt={pool.name}/>
+                      </figure>
                     </Link>
                   </div>
                 )}
