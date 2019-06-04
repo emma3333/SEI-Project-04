@@ -10,7 +10,7 @@ db.create_tables()
 with db_session():
     schema = UserSchema()
     emma = User(
-        username='emma',
+        username='Emma',
         email='ekprice01@gmail.com',
         password_hash=schema.generate_hash('pass'),
         image='https://i.imgur.com/X2Px8OR.png'

@@ -59,7 +59,7 @@ class Index extends React.Component {
 
         </div>
 
-        <div className="section">
+        <div className="section index-search">
           <div className="container columns is-right">
 
             {/* SEARCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
@@ -67,7 +67,7 @@ class Index extends React.Component {
             <div className="control column index-control">
 
               <input
-                className="input"
+                className="input search-index"
                 type="text"
                 placeholder="Search..."
                 name="searchText"

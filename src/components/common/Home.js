@@ -1,5 +1,7 @@
 import React from 'react'
-import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
+import ReactMapboxGl, { Marker, Popup } from 'react-mapbox-gl'
+import { Link } from 'react-router-dom'
+
 import axios from 'axios'
 
 const mapboxToken = process.env.MAPBOX_TOKEN
@@ -13,13 +15,24 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state={
-      pools: []
+      pools: [],
+      active: false
     }
   }
 
   componentDidMount() {
     axios.get('/api/pools')
       .then(res => this.setState({ pools: res.data }))
+  }
+
+
+  clickMarker(pool) {
+    this.setState({
+      active: true,
+      pool,
+      currentLocation: {lat: pool.lng, lng: pool.lat},
+      zoom: [12]
+    })
   }
 
   render() {
@@ -38,12 +51,28 @@ class Home extends React.Component {
               width: '100vw'
             }}>
             {this.state.pools.map(pool =>
-              <Marker key={pool.id}
+              <Marker
+                key={pool.id}
                 coordinates={[pool.lng, pool.lat]}
+                onClick={() => this.clickMarker(pool)}
                 anchor="bottom">
-                <img src={'../../assets/marker.png'} height="20px"/>
+                <img src={'/assets/marker.png'}/>
               </Marker>
             )}
+            {this.state.active &&
+            <Popup
+              coordinates= {[ this.state.pool.lng, this.state.pool.lat ]}
+              anchor="bottom-left"
+              offset={[-2, -40]}
+            >
+              <div>
+                <Link to={`/pools/${this.state.pool.id}`}>
+                  <p className="popup">{this.state.pool.name}</p>
+                  <hr className="popup-hr"/>
+                  <p className="popup">{this.state.pool.address}</p>
+                </Link>
+              </div>
+            </Popup> }
           </Map>
         </div>
         <div className="hero-body">

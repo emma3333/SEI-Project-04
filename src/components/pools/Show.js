@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
+import ReactMapboxGl, { Marker, Popup } from 'react-mapbox-gl'
 import Promise from 'bluebird'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
@@ -17,7 +17,9 @@ class Show extends React.Component {
     this.state = {
       pool: null,
       pools: [],
-      data: null // data is the comment?
+      data: null, // data is the comment?
+      active: false
+
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -48,6 +50,15 @@ class Show extends React.Component {
     if(prevProps.location.pathname !== this.props.location.pathname) {
       this.getPools()
     }
+  }
+
+  clickMarker(pool) {
+    this.setState({
+      active: true,
+      pool,
+      currentLocation: {lat: pool.lng, lng: pool.lat},
+      zoom: [12]
+    })
   }
 
   handleChange(e) {
@@ -120,11 +131,29 @@ class Show extends React.Component {
             height: '40vh',
             width: '100vw'
           }}>
-          <Marker
-            coordinates={[lng, lat]}
-            anchor="bottom">
-            <img src={'../../assets/marker.png'}/>
-          </Marker>
+          {this.state.pools.map(pool =>
+            <Marker
+              key={pool.id}
+              coordinates={[pool.lng, pool.lat]}
+              onClick={() => this.clickMarker(pool)}
+              anchor="bottom">
+              <img src={'/assets/marker.png'}/>
+            </Marker>
+          )}
+          {this.state.active &&
+          <Popup
+            coordinates= {[ this.state.pool.lng, this.state.pool.lat ]}
+            anchor="bottom-left"
+            offset={[-2, -40]}
+          >
+            <div>
+              <Link to={`/pools/${this.state.pool.id}`}>
+                <p className="popup">{this.state.pool.name}</p>
+                <hr className="popup-hr"/>
+                <p className="popup">{this.state.pool.address}</p>
+              </Link>
+            </div>
+          </Popup> }
         </Map>
 
         {/* POOL INFO =====================================================*/}
@@ -159,8 +188,8 @@ class Show extends React.Component {
                     <tr>
                       <th>Day</th>
                       <th>Summary</th>
-                      <th>Low</th>
-                      <th>High</th>
+                      <th>Low(F)</th>
+                      <th>High(F)</th>
                     </tr>
                     {weatherForecast.map((day, i) => {
                       const date = forecastDays[i]
@@ -172,6 +201,7 @@ class Show extends React.Component {
                       </tr>
                     }
                     )}
+
                   </thead>
                 </table>
 
