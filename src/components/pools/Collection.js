@@ -69,6 +69,18 @@ class PoolsCollection extends React.Component {
                 <h3 className="subtitle is-4">LAKES</h3>
                 <hr />
               </Link>
+              <Link to="/pools?region=Wales" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection7 notification is-dark">
+                <h3 className="subtitle is-4">WALES</h3>
+                <hr />
+              </Link>
+              <Link to="/pools?region=South West" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection8 notification is-dark">
+                <h3 className="subtitle is-4">SOUTH WEST</h3>
+                <hr />
+              </Link>
+              <Link to="/pools?type=pond" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection9 notification is-dark">
+                <h3 className="subtitle is-4">PONDS</h3>
+                <hr />
+              </Link>
             </div>
           </div>
         </section>

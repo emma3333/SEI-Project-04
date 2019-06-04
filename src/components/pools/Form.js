@@ -8,6 +8,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
         <div className="formBox">
           <form onSubmit={handleSubmit}>
             <h1 className="title is-4">Add a pool</h1>
+            <hr className="show-hr"/>
             <div className="field">
               <label className="label">Name</label>
               <div className="control">
@@ -171,7 +172,7 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
               {errors.heated && <div className="help is-danger">{errors.heated}</div>}
             </div>
 
-            <button className="button is-dark">SUBMIT</button>
+            <button className="button submit">Submit</button>
           </form>
         </div>
       </div>

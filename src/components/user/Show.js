@@ -68,6 +68,7 @@ class UserShow extends React.Component {
             </div>
             <div className="column is-two-thirds">
               <h3 className="columns subtitle is-4">Starred places</h3>
+              <hr className="show-hr"/>
 
               <div className="columns is-multiline">
                 {starredPools.length === 0 ? <p>No starred pools yet</p> :
