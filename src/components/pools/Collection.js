@@ -35,11 +35,8 @@ class PoolsCollection extends React.Component {
     if(!this.state) return <Loading />
     return (
       <main>
-        <section className="hero">
-          <div className="columns is-multiline">
-            <Map />
-
-          </div>
+        <section className="hero collection-hero">
+          <h1 className="">Wild Swimming</h1>
         </section>
 
         <section className="section">

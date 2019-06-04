@@ -43,12 +43,10 @@ class UserShow extends React.Component {
     return (
       <section className="section">
         <div className="container">
-
           <div className="columns">
-
             <div className="column is-one-third">
 
-              <div className="card">
+              <div className="card user">
                 <div className="card-image">
                   <figure className="image is-square">
                     <img src={this.state.user.image} alt={this.state.user.username} />

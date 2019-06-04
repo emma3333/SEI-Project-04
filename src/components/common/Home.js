@@ -41,7 +41,7 @@ class Home extends React.Component {
               <Marker key={pool.id}
                 coordinates={[pool.lng, pool.lat]}
                 anchor="bottom">
-                <img src={'../../assets/marker.png'}/>
+                <img src={'../../assets/marker.png'} height="20px"/>
               </Marker>
             )}
           </Map>

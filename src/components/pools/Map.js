@@ -20,7 +20,7 @@ class PoolsMap extends React.Component {
       },
       pools: [],
       marker: null,
-      zoom: [10],
+      zoom: [11],
       active: false
     }
   }

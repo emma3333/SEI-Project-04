@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+
 import SecureRoute from './components/common/SecureRoute'
+import FlashMessages from './components/common/FlashMessages'
 
 import Home from './components/common/Home'
 import Navbar from './components/common/Navbar'
@@ -27,6 +29,7 @@ class App extends React.Component {
       <Router>
         <div>
           <Navbar />
+          <FlashMessages />
           <Switch>
             <SecureRoute path="/profile" component={UserShow} />
             <SecureRoute path="/pools/:id/edit" component={PoolsEdit} />

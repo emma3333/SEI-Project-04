@@ -43,96 +43,64 @@ figure {
 
 // COLLECTION ==========================
 
-.pool-collection1 {
-  background-image: url('https://cms.jfhols.co.uk/sites/default/files/ckeditor/b18320e182513232c22e52d3c4a1d3e1.jpg');
+.pool-collection1, .pool-collection2, .pool-collection3, .pool-collection4, .pool-collection5, .pool-collection6, .pool-collection7, .pool-collection8, .pool-collection9 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 4px;
   height: 200px;
-  margin: 10px;
+}
+
+.pool-collection1 {
+  background-image: url('https://cms.jfhols.co.uk/sites/default/files/ckeditor/b18320e182513232c22e52d3c4a1d3e1.jpg');
 }
 
 .pool-collection2 {
   background-image: url('https://assets.londonist.com/uploads/2010/07/i875/18032_hampstead_bank1.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 4px;
-  height: 200px;
-  margin: 10px;
 }
 
 .pool-collection3 {
   background-image: url('https://www.theoutdoorcity.co.uk/dbimgs/62_OC_SMcQueen_9317.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 4px;
-  height: 200px;
-  margin: 10px;
 }
 
 .pool-collection4 {
   background-image: url('https://www.seasaltcornwall.co.uk/blog/wp-content/uploads/2016/07/IMG_8260.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 4px;
-  height: 200px;
-  margin: 10px;
 }
 
 .pool-collection5 {
   background-image: url('https://www.northlinkferries.co.uk/wp-content/uploads/2019/01/Meal-beach-Shetland.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 4px;
-  height: 200px;
-  margin: 10px;
 }
 
 .pool-collection6 {
   background-image: url('https://www.visitcumbria.com/wp-content/uploads/2018/07/windermere-5.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 4px;
-  height: 200px;
-  margin: 10px;
 }
 
 .pool-collection7 {
   background-image: url('https://dioni.co.uk/wp-content/uploads/2017/05/watkins-path-357879134_bf9ce94bf0_o1.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 4px;
-  height: 200px;
-  margin: 10px;
 }
 
 .pool-collection8 {
   background-image: url('https://www.telegraph.co.uk/content/dam/health-fitness/2017/08/11/TELEMMGLPICT000136885201_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQfyf2A9a6I9YchsjMeADBa08.jpeg?imwidth=1400');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 4px;
-  height: 200px;
-  margin: 10px;
 }
 
 .pool-collection9 {
   background-image: url('https://www.brockwellswimmers.com/extra_images/hampsteadwalk/hampteadwalk_photo.jpg');
+}
+
+
+.collection-hero {
+  background-image: url('https://ak9.picdn.net/shutterstock/videos/1333969/thumb/1.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 4px;
-  height: 200px;
-  margin: 10px;
+  height: 320px;
+    h1{
+      margin: 20px;
+      color: white;
+      font-size: 60px;
+      font-weight: bold;
+    }
 }
-
 // SHOW ===============================================
 
 .show-hr {

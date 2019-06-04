@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import Auth from '../../lib/Auth'
-// import Flash from '../../lib/Flash'
+import Flash from '../../lib/Flash'
 
 class Login extends React.Component {
 
@@ -31,7 +31,7 @@ class Login extends React.Component {
     axios.post('/api/login', this.state.data)
       .then(res => {
         Auth.setToken(res.data.token)
-        // Flash.setMessage('success', res.data.message)
+        Flash.setMessage('success', res.data.message)
         this.props.history.push('/pools')
       })
       .catch(() => this.setState({ error: 'Invalid credentials' }))

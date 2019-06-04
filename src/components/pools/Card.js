@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = ({ image, name, id }) => {
+const Card = ({ image, name }) => {
   return (
     <div className="tile is-parent">
       <div className="tile is-parent is-vertical notification is-light">

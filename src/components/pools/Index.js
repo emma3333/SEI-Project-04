@@ -3,14 +3,14 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Card from './Card'
 import qs from 'query-string'
-import ReactMapboxGl, { Marker } from 'react-mapbox-gl'
-import regions from '../../lib/regions'
+import Map from './Map'
+// import regions from '../../lib/regions'
 
-const mapboxToken = process.env.MAPBOX_TOKEN
+// const mapboxToken = process.env.MAPBOX_TOKEN
 
-const Map = ReactMapboxGl({
-  accessToken: mapboxToken
-})
+// const Map = ReactMapboxGl({
+//   accessToken: mapboxToken
+// })
 
 class Index extends React.Component {
 
@@ -62,25 +62,8 @@ class Index extends React.Component {
         <div className="columns is-multiline">
 
           {/* MAP >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
-          <Map
-            style="mapbox://styles/mapbox/streets-v10"
-            zoom={[10]}
-            center={{
-              lat: 51.527714,
-              lng: -0.095843
-            }}
-            containerStyle={{
-              height: '40vh',
-              width: '100vw'
-            }}>
-            {this.state.pools.map(pool =>
-              <Marker key={pool.id}
-                coordinates={[pool.lng, pool.lat]}
-                anchor="bottom">
-                <img src={'../../assets/marker.png'}/>
-              </Marker>
-            )}
-          </Map>
+          <Map />
+
         </div>
 
         <div className="section">
@@ -89,7 +72,7 @@ class Index extends React.Component {
             {/* SEARCH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
 
             <div className="control column index-control">
-            
+
               <input
                 className="input"
                 type="text"
