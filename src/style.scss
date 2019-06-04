@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+$font-stack: Roboto, sans-serif;
+
+html {
+  font: $font-stack;
+}
+
 .home {
   letter-spacing: 2px;
 }
@@ -9,15 +17,11 @@ nav {
 
 .nearby-pools {
   padding: 4px 0;
-  text-transform: uppercase;
-}
-
-.pool-heading {
-  text-transform: uppercase;
+  // text-transform: uppercase;
 }
 
 .comment-heading{
-  text-transform: uppercase;
+  // text-transform: uppercase;
   margin-top: 20px;
 }
 
@@ -99,7 +103,24 @@ figure {
   margin: 10px;
 }
 
+// SHOW ===============================================
 
+.show-hr {
+  background-color: #0CACAE;
+}
+
+.show-hr-comment {
+  background-color: #0CACAE;
+  height: 1px;
+}
+
+.pool-heading {
+
+}
+
+table {
+  font-size: 14px;
+}
 
 // .pool-section {
 //   width: 90%;

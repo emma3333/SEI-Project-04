@@ -129,152 +129,159 @@ class Show extends React.Component {
 
         {/* POOL INFO =====================================================*/}
         <div className="section">
-          <div className="columns is-multiline">
+          <div className="container">
+            <div className="columns is-multiline">
 
-            <div className="column is-two-fifths-desktop is-half-tablet is-full-mobile">
-              <figure className="image">
-                <img src={image} alt={name} />
-              </figure>
+              <div className="column is-half-desktop is-half-tablet is-full-mobile">
+                <figure className="image">
+                  <img src={image} alt={name} />
+                </figure>
 
 
-              <div className="buttons is-gapless">
-                {Auth.isAuthenticated() &&
-                  <button onClick={this.handleStar} className="button is-light is-small">Star this pool</button>
+                <div className="buttons is-gapless">
+                  {Auth.isAuthenticated() &&
+                    <button onClick={this.handleStar} className="button is-light is-small">Star this pool</button>
+                  }
+                </div>
+
+                {this.canModify() &&
+                  <div className="level-right">
+                    <Link to={`/pools/${id}/edit`} className="button is-light is-small">Edit</Link>
+                    <button className="button is-dark is-small" onClick={this.handleDelete}>Delete</button>
+                  </div>
                 }
+
+
+                {/* WEATHER FORECAST - DARSKY API MAP ===========================================*/}
+                <h4 className="title is-6 pool-heading">8 Day Weather Forecast</h4>
+                <table className="table is-narrow is-bordered">
+                  <thead>
+                    <tr>
+                      <th>Day</th>
+                      <th>Summary</th>
+                      <th>Low</th>
+                      <th>High</th>
+                    </tr>
+                    {weatherForecast.map((day, i) => {
+                      const date = forecastDays[i]
+                      return <tr key={day.time}>
+                        <td>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>
+                        <td>{day.summary}</td>
+                        <td>{day.temperatureLow}</td>
+                        <td>{day.temperatureHigh}</td>
+                      </tr>
+                    }
+                    )}
+                  </thead>
+                </table>
+
               </div>
 
-              {this.canModify() &&
-                <div className="level-right">
-                  <Link to={`/pools/${id}/edit`} className="button is-light is-small">Edit</Link>
-                  <button className="button is-dark is-small" onClick={this.handleDelete}>Delete</button>
-                </div>
-              }
+              <div className="column is-half-desktop is-half-tablet is-full-mobile">
+                <h2 className="title is-4 pool-heading">{name}.</h2>
+                <hr className="show-hr"/>
+                <p>Description: {description}</p>
+                <p>Type: {type}</p>
+                <p>Heated: {heated}</p>
+                <p>Address: {address}</p>
+                <p>Region: {region}</p>
+                <p>Country: {country}</p>
 
+                {/* COMMENTS =====================================================*/}
 
-              {/* COMMENTS ==================================================*/}
-              <div className="">
-                <h2 className="subtitle is-6 comment-heading">Comments</h2>
-                <article className="media">
-                  <figure className="media-left">
-                    <p className="image is-64x64">
-                      <img src="https://candobristol.co.uk/img/profile-pic.svg" />
-                    </p>
-                  </figure>
-                  <div className="media-content">
-                    <div className="field">
-                      <p className="control">
-                        <textarea className="textarea" name="content" placeholder="Add a comment..." onChange= {this.handleChange}></textarea>
-                      </p>
-                    </div>
-                    <nav className="level">
-                      <div className="level-left">
-                        <div className="level-item">
-                          <a className="button is-dark is-small" onClick={this.handleComment}>Submit</a>
-                        </div>
-                      </div>
-                    </nav>
-                  </div>
-                </article>
-
-                {comments.map(comment =>
-                  <article key={comment.id} className="media">
+                <div className="">
+                  <h2 className="title is-6 comment-heading">Comments</h2>
+                  <hr className="show-hr-comment"/>
+                  <article className="media">
                     <figure className="media-left">
                       <p className="image is-64x64">
-                        <img src={comment.user.image} />
+                        <img src="https://candobristol.co.uk/img/profile-pic.svg" />
                       </p>
                     </figure>
                     <div className="media-content">
-                      <div className="content">
-                        <p className="commentText">
-                          <strong>{comment.user.username}</strong>  <small>{comment.created_at.substring(0, comment.created_at.length - 8)}</small>
-                          <br />
-                          {comment.content}
+                      <div className="field">
+                        <p className="control">
+                          <textarea className="textarea" name="content" placeholder="Add a comment..." onChange= {this.handleChange}></textarea>
                         </p>
                       </div>
-                      <nav className="level is-mobile">
+                      <nav className="level">
                         <div className="level-left">
-                          <a className="level-item">
-                            <span className="icon is-small"><i className="fas fa-reply"></i></span>
-                          </a>
-                          <a className="level-item">
-                            <span className="icon is-small"><i className="fas fa-retweet"></i></span>
-                          </a>
-                          <a className="level-item">
-                            <span className="icon is-small"><i className="fas fa-heart"></i></span>
-                          </a>
+                          <div className="level-item">
+                            <a className="button is-dark is-small" onClick={this.handleComment}>Submit</a>
+                          </div>
                         </div>
                       </nav>
                     </div>
-                    <div className="media-right">
-                      <button id={comment.id} value={comment.user.id} className="delete" onClick={this.handleDeleteComments}></button>
-                    </div>
                   </article>
-                )}
+
+                  {comments.map(comment =>
+                    <article key={comment.id} className="media">
+                      <figure className="media-left">
+                        <p className="image is-64x64">
+                          <img src={comment.user.image} />
+                        </p>
+                      </figure>
+                      <div className="media-content">
+                        <div className="content">
+                          <p className="commentText">
+                            <strong>{comment.user.username}</strong>  <small>{comment.created_at.substring(0, comment.created_at.length - 8)}</small>
+                            <br />
+                            {comment.content}
+                          </p>
+                        </div>
+                        <nav className="level is-mobile">
+                          <div className="level-left">
+                            <a className="level-item">
+                              <span className="icon is-small"><i className="fas fa-reply"></i></span>
+                            </a>
+                            <a className="level-item">
+                              <span className="icon is-small"><i className="fas fa-retweet"></i></span>
+                            </a>
+                            <a className="level-item">
+                              <span className="icon is-small"><i className="fas fa-heart"></i></span>
+                            </a>
+                          </div>
+                        </nav>
+                      </div>
+                      <div className="media-right">
+                        <button id={comment.id} value={comment.user.id} className="delete" onClick={this.handleDeleteComments}></button>
+                      </div>
+                    </article>
+                  )}
+                </div>
+
 
               </div>
-
-            </div>
-
-            <div className="column is-three-fifths-desktop is-half-tablet is-full-mobile">
-              <h2 className="subtitle is-6 pool-heading">{name}</h2>
-              <p>Description: {description}</p>
-              <p>Type: {type}</p>
-              <p>Heated: {heated}</p>
-              <p>Address: {address}</p>
-              <p>Region: {region}</p>
-              <p>Country: {country}</p>
-              <h4 className="subtitle is-6 pool-heading">8 day weather forecast </h4>
-              <table className="table is-narrow is-bordered">
-                <thead>
-                  <tr>
-                    <th>Day</th>
-                    <th>Summary</th>
-                    <th>Icon</th>
-                    <th>Low</th>
-                    <th>High</th>
-                  </tr>
-                  {weatherForecast.map((day, i) => {
-                    const date = forecastDays[i]
-                    return <tr key={day.time}>
-                      <td>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>
-                      <td>{day.summary}</td>
-                      <td>{day.icon}</td>
-                      <td>{day.temperatureLow}</td>
-                      <td>{day.temperatureHigh}</td>
-                    </tr>
-                  }
-                  )}
-                </thead>
-              </table>
             </div>
           </div>
 
 
           {/* POOLS NEARBY ================================================*/}
 
-        </div>
 
 
-        <section className="">
-          <div className="columns is-multiline">
-
-          </div>
-          <div className="container">
-            <h2 className="subtitle xis-6">Nearby pools</h2>
-            <hr />
-
+          <section className="section">
             <div className="columns is-multiline">
 
-              {nearby.map(pool =>
-                <div key={pool.id} className="column is-one-fifth-desktop is-one-third-tablet">
-                  <Link to={`/pools/${pool.id}`}>
-                    <img src= {pool.image} alt={pool.name} />
-                  </Link>
-                </div>
-              )}
             </div>
-          </div>
-        </section>
+            <div className="container">
+              <h2 className="title is-6 pool-heading">Nearby pools.</h2>
+              <hr className="show-hr"/>
+
+              <div className="columns is-multiline">
+
+                {nearby.map(pool =>
+                  <div key={pool.id} className="column is-one-fifth-desktop is-one-third-tablet">
+                    <Link to={`/pools/${pool.id}`}>
+                      <img src= {pool.image} alt={pool.name} />
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+
+          </section>
+        </div>
       </section>
     )
 
