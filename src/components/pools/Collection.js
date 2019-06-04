@@ -36,7 +36,7 @@ class PoolsCollection extends React.Component {
     return (
       <main>
         <section className="hero collection-hero">
-          <h1 className="">Wild Swimming</h1>
+          <h1 className="">Wild Swimming: Collections</h1>
         </section>
 
         <section className="section">

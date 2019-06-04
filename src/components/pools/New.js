@@ -39,10 +39,14 @@ class New extends React.Component {
   render() {
 
     return (
-      <section className="section">
+      <main>
+        <section className="hero collection-hero">
+          <h1 className="">Wild Swimming: Add Pool</h1>
+        </section>
+
         <div className="container">
           <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
+            <div className="column is-half-desktop is-two-thirds-tablet form">
               <Form
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
@@ -52,7 +56,7 @@ class New extends React.Component {
             </div>
           </div>
         </div>
-      </section>
+      </main>
     )
   }
 }

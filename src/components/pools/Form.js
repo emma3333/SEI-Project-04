@@ -7,8 +7,6 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
       <div className="container is-fluid">
         <div className="formBox">
           <form onSubmit={handleSubmit}>
-            <h1 className="title is-4">Add a pool</h1>
-            <hr className="show-hr"/>
             <div className="field">
               <label className="label">Name</label>
               <div className="control">
