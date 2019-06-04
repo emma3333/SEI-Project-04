@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Map from './Map'
 import Loading from '../common/Loading'
-import regions from '../../lib/regions'
+import regions from '../../lib/Regions'
 
 class PoolsCollection extends React.Component {
 
