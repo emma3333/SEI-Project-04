@@ -48,7 +48,6 @@ class Index extends React.Component {
 
   searchPool() {
     const search = new RegExp(this.state.searchText, 'i')
-    // const region = new RegExp(this.state.region, 'i')
     return this.state.pools.filter(pool => {
       return (search.test(pool.name) || search.test(pool.address || search.test(pool.region) || search.test(pool.description))) || search.test(pool.region)
     })

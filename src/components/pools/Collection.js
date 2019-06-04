@@ -42,7 +42,7 @@ class PoolsCollection extends React.Component {
         <section className="section">
           <div className="container">
             <div className="columns collection is-multiline is-centered">
-              <Link to="/pools?type=coastal" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection1 notification is-dark">
+              <Link to="/pools?type=Coastal" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection1 notification is-dark">
                 <h3 className="subtitle is-4">COASTAL</h3>
                 <hr />
               </Link>
@@ -50,11 +50,11 @@ class PoolsCollection extends React.Component {
                 <h3 className="subtitle is-4">LONDON</h3>
                 <hr />
               </Link>
-              <Link to="/pools?type=river" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection3 notification is-dark">
+              <Link to="/pools?type=River" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection3 notification is-dark">
                 <h3 className="subtitle is-4">RIVERS</h3>
                 <hr />
               </Link>
-              <Link to="/pools?type=lido" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection4 notification is-dark">
+              <Link to="/pools?type=Lido" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection4 notification is-dark">
                 <h3 className="subtitle is-4">LIDOS</h3>
                 <hr />
               </Link>
@@ -62,7 +62,7 @@ class PoolsCollection extends React.Component {
                 <h3 className="subtitle is-4">SCOTLAND</h3>
                 <hr />
               </Link>
-              <Link to="/pools?type=lake" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection6 notification is-dark">
+              <Link to="/pools?type=Lake" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection6 notification is-dark">
                 <h3 className="subtitle is-4">LAKES</h3>
                 <hr />
               </Link>
@@ -74,14 +74,13 @@ class PoolsCollection extends React.Component {
                 <h3 className="subtitle is-4">SOUTH WEST</h3>
                 <hr />
               </Link>
-              <Link to="/pools?type=pond" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection9 notification is-dark">
+              <Link to="/pools?type=Pond" className="column is-one-quarter is-full-mobile is-half-tablet pool-collection9 notification is-dark">
                 <h3 className="subtitle is-4">PONDS</h3>
                 <hr />
               </Link>
             </div>
           </div>
         </section>
-
 
       </main>
     )

@@ -36,7 +36,7 @@ class UserShow extends React.Component {
     return (
       <main>
         <section className="hero collection-hero">
-          <h1 className="">Wild Swimming: {this.state.user.username}</h1>
+          <h1 className="">Wild Swimming: {this.state.user.username}'s Profile</h1>
         </section>
 
         <section className="section">

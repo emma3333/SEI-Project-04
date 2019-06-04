@@ -57,12 +57,11 @@ const Form = ({ handleChange, handleSubmit, data, errors}) => {
                     value={data.type || ''}
                   >
                     <option value="" disabled>Please choose...</option>
-                    <option value="lido">Lido</option>
-                    <option value="lake">Lake</option>
+                    <option value="Lido">Lido</option>
+                    <option value="Lake">Lake</option>
                     <option value="Pond">Pond</option>
-                    <option value="river">River</option>
-                    <option value="sea">Sea</option>
-                    <option value="tidal pool">Tidal Pool</option>
+                    <option value="River">River</option>
+                    <option value="Coastal">Coastal</option>
                   </select>
                 </div>
                 {errors.type && <div className="help is-danger">{errors.type}</div>}

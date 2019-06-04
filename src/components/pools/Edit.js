@@ -48,20 +48,25 @@ class Edit extends React.Component {
     console.log(this.state , 'STATE')
     console.log(this.state.data, 'DATA')
     return (
-      <section className="section">
-        <div className="container">
-          <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
-              <Form
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-                data={this.state.data}
-                errors={this.state.errors}
-              />
+      <main>
+        <section className="hero collection-hero">
+          <h1 className="">Wild Swimming: Edit</h1>
+        </section>
+        <section className="section">
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-half-desktop is-two-thirds-tablet">
+                <Form
+                  handleChange={this.handleChange}
+                  handleSubmit={this.handleSubmit}
+                  data={this.state.data}
+                  errors={this.state.errors}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     )
   }
 }

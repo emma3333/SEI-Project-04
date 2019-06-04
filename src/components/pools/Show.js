@@ -18,9 +18,8 @@ class Show extends React.Component {
     this.state = {
       pool: null,
       pools: [],
-      data: null, // data is the comment?
+      data: null,
       active: false
-
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -28,7 +27,6 @@ class Show extends React.Component {
     this.handleDeleteComments = this.handleDeleteComments.bind(this)
     this.handleStar = this.handleStar.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
-
   }
 
   getPools() {
@@ -57,7 +55,7 @@ class Show extends React.Component {
     this.setState({
       active: true,
       pool,
-      currentLocation: {lat: pool.lng, lng: pool.lat},
+      currentLocation: {lng: pool.lng, lat: pool.lat},
       zoom: [12]
     })
   }
@@ -107,22 +105,12 @@ class Show extends React.Component {
   render() {
     if(!this.state.pool) return <Loading />
 
-    const { name, description, type, address, lng, lat, region, heated, country, image, comments, id } = this.state.pool
-
+    const { name, description, type, address, region, heated, country, image, comments, id } = this.state.pool
     const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
-
     const weatherForecast = this.state.weatherForecast
     const forecastDays = weatherForecast.map(day => new Date(day.time * 1000))
     const celsiusLow = weatherForecast.map(temp => Math.ceil((temp.temperatureLow-32)*(5/9)))
     const celsiusHigh = weatherForecast.map(temp => Math.ceil((temp.temperatureHigh-32)*(5/9)))
-
-    console.log(celsiusLow, 'CELCIUS LOW')
-    console.log(celsiusHigh, 'CELCIUS HIGH')
-
-    console.log(forecastDays)
-    console.log(comments, 'COMMENTS')
-    console.log(weatherForecast, 'WEATHER')
-    console.log(nearby, 'NEARBY')
 
     return (
 
@@ -171,9 +159,7 @@ class Show extends React.Component {
                   <img src={image} alt={name} />
                 </figure>
 
-
                 <div className="buttons is-gapless">
-
                 </div>
 
                 {this.canModify() &&
@@ -219,12 +205,12 @@ class Show extends React.Component {
               <div className="column is-half-desktop is-half-tablet is-full-mobile">
                 <h2 className="title is-4 pool-heading">{name}</h2>
                 <hr className="show-hr"/>
-                <p>Description: {description}</p>
-                <p>Type: {type}</p>
-                <p>Heated: {heated}</p>
-                <p>Address: {address}</p>
-                <p>Region: {region}</p>
-                <p>Country: {country}</p>
+                <p className="pool-show-info">Description: {description}</p>
+                <p className="pool-show-info">Type: {type}</p>
+                <p className="pool-show-info">Heated: {heated}</p>
+                <p className="pool-show-info">Address: {address}</p>
+                <p className="pool-show-info">Region: {region}</p>
+                <p className="pool-show-info">Country: {country}</p>
 
                 {/* COMMENTS =====================================================*/}
 
@@ -245,7 +231,7 @@ class Show extends React.Component {
                       </div>
                       <nav className="level">
                         <div className="level-left">
-                        
+
                           <div className="level-item">
                             <a className="button is-dark is-small" onClick={this.handleComment}>Submit</a>
                           </div>

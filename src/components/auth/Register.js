@@ -24,12 +24,8 @@ class Register extends React.Component {
 
   // send data to API
   handleSubmit(e) {
-    e.preventDefault() // a forms default is to reload the  browser
+    e.preventDefault()
     axios.post('/api/register', this.state.data)
-    //   method: 'POST', // POST request
-    //   body: JSON.stringify(this.state.data), // send the data as the body of the request
-    //   headers: { 'Content-Type': 'application/json' } // set the content type to JSON
-    // })
       .then(() => this.props.history.push('/login'))
       .catch(err => this.setState({ error: err.response.data.error }))
   }
@@ -65,7 +61,7 @@ class Register extends React.Component {
                       <input
                         className="input"
                         name="email"
-                        placeholder="eg: emma@gmail.com"
+                        placeholder="eg: emp2019@gmail.com"
                         onChange={this.handleChange}/>
                     </div>
                     {this.state.error.email && <div className="help is-danger">{this.state.error.email}</div>}

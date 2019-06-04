@@ -32,7 +32,7 @@ class Login extends React.Component {
       .then(res => {
         Auth.setToken(res.data.token)
         Flash.setMessage('success', res.data.message)
-        this.props.history.push('/pools')
+        this.props.history.push('/')
       })
       .catch(() => this.setState({ error: 'Invalid credentials' }))
   }
@@ -54,7 +54,7 @@ class Login extends React.Component {
                       <input
                         className="input"
                         name="email"
-                        placeholder="eg: emma@gmail.com"
+                        placeholder="eg: emp2019@gmail.com"
                         onChange={this.handleChange}
                       />
                     </div>
