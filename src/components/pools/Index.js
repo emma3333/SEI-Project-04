@@ -4,13 +4,6 @@ import { Link } from 'react-router-dom'
 import Card from './Card'
 import qs from 'query-string'
 import Map from './Map'
-// import regions from '../../lib/regions'
-
-// const mapboxToken = process.env.MAPBOX_TOKEN
-
-// const Map = ReactMapboxGl({
-//   accessToken: mapboxToken
-// })
 
 class Index extends React.Component {
 
