@@ -46,7 +46,7 @@ class UserShow extends React.Component {
 
           <div className="columns">
 
-            <div className="column is-third">
+            <div className="column is-one-third">
 
               <div className="card">
                 <div className="card-image">
@@ -67,12 +67,12 @@ class UserShow extends React.Component {
               </div>
             </div>
             <div className="column is-two-thirds">
-              <h3 className="subtitle subheading-show">Starred places</h3>
+              <h3 className="columns subtitle is-4">Starred places</h3>
 
               <div className="columns is-multiline">
                 {starredPools.length === 0 ? <p>No starred pools yet</p> :
                   starredPools.map(pool =>
-                    <div key={pool.id} className="column is-one-quarter">
+                    <div key={pool.id} className="column is-one-quarter-desktop">
                       <Link to={`/pools/${pool.id}`}>
                         <img src={pool.image} alt={pool.name} />
                       </Link>

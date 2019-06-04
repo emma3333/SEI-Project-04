@@ -98,9 +98,6 @@ class Index extends React.Component {
               />
             </div>
 
-
-
-
           </div>
 
           <div className="columns is-multiline">

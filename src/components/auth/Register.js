@@ -67,6 +67,20 @@ class Register extends React.Component {
                   {this.state.errors.email && <div className="help is-danger">{this.state.errors.email}</div>}
 
                 </div>
+
+                <div className="field">
+                  <label className="label">Image</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      name="image"
+                      placeholder="eg: https://candobristol.co.uk/img/profile-pic.svg"
+                      onChange={this.handleChange}/>
+                  </div>
+                  {this.state.errors.image && <div className="help is-danger">{this.state.errors.image}</div>}
+
+                </div>
+
                 <div className="field">
                   <label className="label">Password</label>
                   <div className="control">
