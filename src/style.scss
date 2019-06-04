@@ -142,4 +142,15 @@ table {
 
 .popup {
   color: black;
+  padding: 6px;
+}
+
+.popup-hr {
+  background-color: $primary-color;
+  margin: 2px;
+
+}
+
+.mapboxgl-popup-content {
+  padding: 2px;
 }

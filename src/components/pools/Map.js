@@ -81,7 +81,7 @@ class PoolsMap extends React.Component {
               <div>
                 <Link to={`/pools/${this.state.pool.id}`}>
                   <p className="popup">{this.state.pool.name}</p>
-                  <hr className="show-hr-comment"/>
+                  <hr className="popup-hr"/>
                   <p className="popup">{this.state.pool.address}</p>
                 </Link>
               </div>
