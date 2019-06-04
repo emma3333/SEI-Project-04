@@ -4,6 +4,7 @@ import ReactMapboxGl, { Marker, Popup } from 'react-mapbox-gl'
 import Promise from 'bluebird'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
+import Loading from '../common/Loading'
 
 const mapboxToken = process.env.MAPBOX_TOKEN
 
@@ -104,15 +105,19 @@ class Show extends React.Component {
   }
 
   render() {
-    if(!this.state.pool) return null
+    if(!this.state.pool) return <Loading />
 
     const { name, description, type, address, lng, lat, region, heated, country, image, comments, id } = this.state.pool
 
     const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
 
     const weatherForecast = this.state.weatherForecast
-
     const forecastDays = weatherForecast.map(day => new Date(day.time * 1000))
+    const celsiusLow = weatherForecast.map(temp => Math.ceil((temp.temperatureLow-32)*(5/9)))
+    const celsiusHigh = weatherForecast.map(temp => Math.ceil((temp.temperatureHigh-32)*(5/9)))
+
+    console.log(celsiusLow, 'CELCIUS LOW')
+    console.log(celsiusHigh, 'CELCIUS HIGH')
 
     console.log(forecastDays)
     console.log(comments, 'COMMENTS')
@@ -184,21 +189,24 @@ class Show extends React.Component {
 
                 {/* WEATHER FORECAST - DARSKY API MAP ===========================================*/}
                 <h4 className="title is-6 pool-heading">8 Day Weather Forecast</h4>
+                <hr className="show-hr-comment" />
                 <table className="table is-narrow is-bordered">
                   <thead>
                     <tr>
                       <th>Day</th>
                       <th>Summary</th>
-                      <th>Low(F)</th>
-                      <th>High(F)</th>
+                      <th>Low(°C)</th>
+                      <th>High(°C)</th>
                     </tr>
                     {weatherForecast.map((day, i) => {
                       const date = forecastDays[i]
+                      const tempLow = celsiusLow[i]
+                      const tempHigh = celsiusHigh[i]
                       return <tr key={day.time}>
                         <td>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>
                         <td>{day.summary}</td>
-                        <td>{day.temperatureLow}</td>
-                        <td>{day.temperatureHigh}</td>
+                        <td>{tempLow}</td>
+                        <td>{tempHigh}</td>
                       </tr>
                     }
                     )}

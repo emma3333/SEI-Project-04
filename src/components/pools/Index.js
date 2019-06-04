@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Card from './Card'
 import qs from 'query-string'
 import Map from './Map'
+import Loading from '../common/Loading'
 
 class Index extends React.Component {
 
@@ -54,7 +55,7 @@ class Index extends React.Component {
   }
 
   render() {
-    if(!this.state.pools) return null
+    if(!this.state.pools) return <Loading />
     return (
       <section className="hero is-fullheight-with-navbar">
         <div className="columns is-multiline">

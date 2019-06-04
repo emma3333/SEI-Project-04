@@ -7,7 +7,7 @@ const Loading = () => {
       <div className="hero-body has-text-centered is-vcentered">
         <div className="container">
           <figure>
-            <img src="https://thumbs.gfycat.com/RadiantCheerfulBigmouthbass.webp" alt="loading" />
+            <img src="http://themenectar.com/docs/salient/wp-content/uploads/2016/10/basicloader.gif" alt="loading" />
           </figure>
         </div>
       </div>
