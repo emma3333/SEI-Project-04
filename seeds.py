@@ -591,11 +591,11 @@ with db_session():
     )
 
     pool_fourty = Pool(
-        name='Horeseshoe Falls, river Fechan',
+        name='Horeseshoe Falls, River Fechan',
         image='https://www.telegraph.co.uk/content/dam/Travel/2017/April/waterfall-horseshoe.jpg?imwidth=1240',
         description='Swimming there: A fantastic set of large, deep forest plunge pools beneath a horseshoe-shaped waterfall. The top pool has a tree and high cliff that you can jump from. Getting there: From the junction pool and footbridge (for Lady Falls) bear right and follow the main stream a further half mile (35 minutes).',
         type='River',
-        address='Horeseshoe Falls, river Fechan, Llangollen, LL20 8BN',
+        address='Horeseshoe Falls, River Fechan, Llangollen, LL20 8BN',
         lng='-3.5936',
         lat='51.7742',
         region='Wales',
