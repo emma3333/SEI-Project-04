@@ -44,7 +44,7 @@ class Navbar extends React.Component{
 
           <div className="navbar-start">
             <Link to="/" className="navbar-item">Home</Link>
-            <Link to="/pools" className="navbar-item">Pools</Link>
+            <Link to="/pools" className="navbar-item">Browse</Link>
             <Link to="/collections" className="navbar-item">Collections</Link>
             {Auth.isAuthenticated() && <Link to="/pools/new" className="navbar-item">Add Pool</Link>}
           </div>

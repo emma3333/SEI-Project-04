@@ -5,13 +5,15 @@ const Card = ({ image, name, id }) => {
     <div className="tile is-parent">
       <div className="tile is-parent is-vertical notification is-light">
         <article className="tile is-child">
-          <h1 className="title">{id}.</h1>
+          <h1 className="title is-5"><i className="fas fa-swimmer"></i></h1>
           <p className="subtitle">{name}</p>
-          <hr />
+          <hr className="show-hr-comment"/>
           <p></p>
         </article>
         <article className="tile is-child">
-          <img src={image} alt={name}/>
+          <figure className="image is-16by9">
+            <img src={image} alt={name}/>
+          </figure>
         </article>
       </div>
     </div>
