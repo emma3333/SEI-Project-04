@@ -45,6 +45,8 @@ class Login extends React.Component {
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
               <form onSubmit={this.handleSubmit}>
+                <h1 className="title is-4">Login</h1>
+                <hr className="show-hr"/>
                 <div className="field">
                   <label className="label">Email</label>
                   <div className="control">
@@ -71,7 +73,7 @@ class Login extends React.Component {
                   {this.state.error && <div className="help is-danger">{this.state.error}</div>}
                 </div>
 
-                <button className="button is-dark is-small">Submit</button>
+                <button className="button submit">Submit</button>
               </form>
             </div>
           </div>

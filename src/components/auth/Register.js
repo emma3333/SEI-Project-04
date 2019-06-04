@@ -42,6 +42,8 @@ class Register extends React.Component {
           <div className="columns is-centered">
             <div className="column is-half-desktop is-two-thirds-tablet">
               <form onSubmit={this.handleSubmit}>
+                <h1 className="title is-4">Register</h1>
+                <hr className="show-hr"/>
                 <div className="field">
                   <label className="label">Username</label>
                   <div className="control">
@@ -110,7 +112,7 @@ class Register extends React.Component {
 
                 </div>
 
-                <button className="button is-dark is-small">Submit</button>
+                <button className="button submit">Submit</button>
               </form>
             </div>
           </div>
