@@ -168,15 +168,16 @@ class Show extends React.Component {
 
 
                 <div className="buttons is-gapless">
-                  {Auth.isAuthenticated() &&
-                    <button onClick={this.handleStar} className="button is-light is-small">Star this pool</button>
-                  }
+
                 </div>
 
                 {this.canModify() &&
                   <div className="level-right">
                     <Link to={`/pools/${id}/edit`} className="button is-light is-small">Edit</Link>
                     <button className="button is-dark is-small" onClick={this.handleDelete}>Delete</button>
+                    {Auth.isAuthenticated() &&
+                      <button onClick={this.handleStar} className="button is-light is-small">Star this pool</button>
+                    }
                   </div>
                 }
 
@@ -259,6 +260,19 @@ class Show extends React.Component {
                             {comment.content}
                           </p>
                         </div>
+                        <nav className="level is-mobile">
+                          <div className="level-left">
+                            <a className="level-item">
+                              <span className="icon is-small"><i className="fas fa-reply"></i></span>
+                            </a>
+                            <a className="level-item">
+                              <span className="icon is-small"><i className="fas fa-retweet"></i></span>
+                            </a>
+                            <a className="level-item">
+                              <span className="icon is-small"><i className="fas fa-heart"></i></span>
+                            </a>
+                          </div>
+                        </nav>
 
                       </div>
                       <div className="media-right">
