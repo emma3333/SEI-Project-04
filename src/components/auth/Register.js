@@ -37,6 +37,10 @@ class Register extends React.Component {
   render() {
     console.log(this.state)
     return (
+      <main>
+        <section className="hero collection-hero">
+          <h1 className="">Wild Swim: Register</h1>
+        </section>
       <section className="section">
         <div className="container">
           <div className="columns is-centered">
@@ -118,6 +122,7 @@ class Register extends React.Component {
           </div>
         </div>
       </section>
+      </main>
     )
   }
 }

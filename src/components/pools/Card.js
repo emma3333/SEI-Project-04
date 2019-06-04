@@ -6,7 +6,7 @@ const Card = ({ image, name }) => {
       <div className="tile is-parent is-vertical notification is-light">
         <article className="tile is-child">
           <h1 className="title is-5"><i className="fas fa-swimmer"></i></h1>
-          <p className="subtitle">{name}</p>
+          <p className="title is-5">{name}</p>
           <hr className="show-hr-comment"/>
           <p></p>
         </article>

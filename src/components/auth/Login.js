@@ -39,45 +39,50 @@ class Login extends React.Component {
 
   render() {
     return (
-      <section className="section">
-        <div className="container">
-          <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
-              <form onSubmit={this.handleSubmit}>
-                <h1 className="title is-4">Login</h1>
-                <hr className="show-hr"/>
-                <div className="field">
-                  <label className="label">Email</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      name="email"
-                      placeholder="eg: emma@gmail.com"
-                      onChange={this.handleChange}
-                    />
+      <main>
+        <section className="hero collection-hero">
+          <h1 className="">Wild Swim: Login</h1>
+        </section>
+        <section className="section">
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-half-desktop is-two-thirds-tablet">
+                <form onSubmit={this.handleSubmit}>
+                  <h1 className="title is-4">Login</h1>
+                  <hr className="show-hr"/>
+                  <div className="field">
+                    <label className="label">Email</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        name="email"
+                        placeholder="eg: emma@gmail.com"
+                        onChange={this.handleChange}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="field">
-                  <label className="label">Password</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      name="password"
-                      type="password"
-                      placeholder="eg: ••••••••"
-                      onChange={this.handleChange}
-                    />
+                  <div className="field">
+                    <label className="label">Password</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        name="password"
+                        type="password"
+                        placeholder="eg: ••••••••"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+
+                    {this.state.error && <div className="help is-danger">{this.state.error}</div>}
                   </div>
 
-                  {this.state.error && <div className="help is-danger">{this.state.error}</div>}
-                </div>
-
-                <button className="button submit">Submit</button>
-              </form>
+                  <button className="button submit">Submit</button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     )
   }
 }
