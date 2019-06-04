@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
-const token = Auth.getToken()
 
 class UserShow extends React.Component {
 
@@ -19,26 +18,20 @@ class UserShow extends React.Component {
 
   componentDidMount() {
     axios.get('/api/profile', {
-      headers: { 'Authorization': `Bearer ${token}` }
+      headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
     })
-      .then(res => this.setState({ user: res.data }))
-      .then(() => {
-        if(this.props.location.state) {
-          return this.handleStar()
-        }
+      .then(res => {
+        console.log('AFTER LOAD', res.data)
+        this.setState({ user: res.data })
       })
       .catch(err => console.error(err))
   }
 
 
   render() {
+    console.log('RENDER', this.state.user)
     if(!this.state.user) return null
-    console.log(this.state.user, 'USER')
-    console.log(this.props.location, 'LOCATION.STATE.POOL')
-    console.log(this.state.user.starred_pools)
-
     const starredPools = this.state.user.starred_pools
-    console.log(starredPools, 'STARREDPOOLS')
 
     return (
       <section className="section">
