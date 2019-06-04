@@ -70,7 +70,9 @@ class UserShow extends React.Component {
                     starredPools.map(pool =>
                       <div key={pool.id} className="column is-one-quarter-desktop">
                         <Link to={`/pools/${pool.id}`}>
-                          <img src={pool.image} alt={pool.name} />
+                          <figure className="image is-16by9">
+                            <img src={pool.image} alt={pool.name}/>
+                          </figure>
                         </Link>
                       </div>
                     )}

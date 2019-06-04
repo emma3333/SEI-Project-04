@@ -208,7 +208,7 @@ class Show extends React.Component {
               </div>
 
               <div className="column is-half-desktop is-half-tablet is-full-mobile">
-                <h2 className="title is-4 pool-heading">{name}.</h2>
+                <h2 className="title is-4 pool-heading">{name}</h2>
                 <hr className="show-hr"/>
                 <p>Description: {description}</p>
                 <p>Type: {type}</p>
@@ -295,7 +295,7 @@ class Show extends React.Component {
 
             </div>
             <div className="container">
-              <h2 className="title is-6 pool-heading">Nearby pools.</h2>
+              <h2 className="title is-6 pool-heading">Nearby pools</h2>
               <hr className="show-hr"/>
 
               <div className="columns is-multiline">
