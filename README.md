@@ -26,6 +26,8 @@
 
 Inspired by my love of swimming outdoors, I decided to base my final project on wild swimming places across the UK.
 
+[Link to application](https://wild-swimming.herokuapp.com/#/)
+
 ### The Brief
 
 The brief was to create a full-stack application by making my own backend using a Python Flask API with a Postgres database, and a front-end built with React that utilises Webpack. The application had to enable a user to register, login and add content. I also used React Mapbox GL and Dark Sky APIs in addition to my own to enhance the application.
@@ -52,9 +54,9 @@ I then described the table properties and schemas in the models, before creating
 
 I used React to write the front-end and started with the key components that completed the user journey, testing them as I went along. For the maps on my application, I used React-mapbox-gl, which is used on my home page, pool show page and browse page. The map's central point on the index page is set to the user's current location, whereas on the pool show page, the map's central point is based on the latitude and longitude of the current pool you're on.
 
-For the pool show page, in addition to displaying information about the specific pool selected, I wanted to have a section displaying the weather forecast for that pool for the next week, and a section displaying nearby pools. in order to do this, I needed to use a Bluebird Promise to control when the axios request would run to manage the asynchronous behaviour of JavaScript. I used axios to get the data for the pool and pools from my API, and then used another axios get request to retrieve the weather forecast for the pool using the Dark Sky API.
+For the pool show page, in addition to displaying information about the specific pool selected, I wanted to have a section displaying the weather forecast for that pool for the next week, and a section displaying nearby pools (based on region). In order to do this, I needed to use a Bluebird Promise to control when the axios request would run to manage the asynchronous behaviour of JavaScript. I used axios to get the data for the pool and pools from my API, and then used another axios get request to retrieve the weather forecast for the pool using the Dark Sky API (see below).
 
-
+Pool show component:
 ```javascript
 getPools() {
   Promise.props({
@@ -112,15 +114,42 @@ const celsiusHigh = weatherForecast.map(temp => Math.ceil((temp.temperatureHigh-
 
 #### Challenges
 
-* One of the biggest challenges was creating the 'starred pool' feature, where a user can star a pool which will add that pool to their profile. I ran into a recursion problem in the backend as I hadn't excluded the necessary fields in my schemas. I then had to state the reverse property of the 'starred_by' and 'starred_pools' properties (see below) as Python didn't recognise the relationship.
+* One of the biggest challenges was creating the 'starred pool' feature, where a user can star a pool which will add that pool to their profile. While writing the code for this, I ran into a recursion problem as I hadn't excluded the necessary fields in my schemas. I then had to state the reverse property of the 'starred_by' and 'starred_pools' properties in my models (see below) as Python didn't recognise the reverse relationship. To create the route for the starred pool, I wrote a function in my pool controller which I then posted to from my pool show component in the frontend, before mapping over the array in the user show component to display on the profile page in the browser.
 
 Pool model:
+```python
 starred_by = Set('User', reverse='starred_pools')
+```
 
 User model:
+```python
 starred_pools = Set('Pool', reverse='starred_by')
+```
 
+Pool controller:
+```python
+@router.route('/pools/<int:pool_id>/star', methods=['POST'])
+@db_session
+@secure_route
+def star_pool(pool_id):
+    schema = PoolSchema()
+    pool = Pool.get(id=pool_id)
+    pool.starred_by.add(g.current_user)
+    db.commit()
+
+    return schema.dumps(pool)
+```
+
+Pool show component:
+```javascript
+handleStar() {
+  axios.post(`/api/pools/${this.props.match.params.id}/star`, null, {
+    headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+  })
+    .then(() => this.props.history.push('/profile'))
+}
+```
 
 ## Future enhancements
 
-If I were to develop the project, I would like to turn the app into a journey planner for a wild swimming day out, pulling in more APIs like Citymapper (for travel information) and Yelp (for nearby pubs and restaurants) to build a full itinerary for a day of wild swimming! I would also use Mapbox, rather than React Mapbox GL.
+If I were to develop the project, I would like to turn the app into a journey planner for a wild swimming day out, pulling in more APIs like Citymapper (for travel information) and Yelp (for nearby pubs and restaurants) to build a full itinerary for a day of wild swimming! I would also use Mapbox, rather than React-mapbox-gl.
