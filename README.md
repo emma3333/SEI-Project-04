@@ -8,7 +8,7 @@
 
 * JavaScript (ES6)
 * Python
-* React.js
+* React
 * PostgreSQL
 * Flask
 * HTML5, SCSS, Bulma
@@ -32,10 +32,36 @@ The brief was to create a full-stack application by making my own backend using 
 
 ![Home page](https://user-images.githubusercontent.com/35655626/59350695-a21a3680-8d14-11e9-9a5f-741846038d55.png)
 
+___________
+
 ![Pool show page](https://user-images.githubusercontent.com/35655626/59350581-5cf60480-8d14-11e9-8096-2427a5ca4e7b.png)
 
 ### The Process
 Before I started coding I made a Trello board to plan the project, writing down what the Postgres relationships were, what models and controllers were required for the backend, what components I needed in the front-end, and how I would manage the workload over the week. I then created wireframes for the front-end, before beginning to code the bulk of the backend and then starting on the front-end.
+
+#### Backend
+When approaching the backend, the first thing I did was decide on the models needed and relationships between them and sketch out entity relationship diagrams (ERDs) to clarify the following relationships:
+
+1. One-to-many relationship between users and pools
+2. One-to-many relationship between users and comments
+3. One-to-many relationship between pools and comments
+
+I then described the table properties and schemas in the models, before creating routes and functions in my controllers. I tested each route in my pool and auth controllers as I went along.
+
+#### Front-end
+
+I used React to write the front-end and started with the key components that completed the user journey, testing them as I went along.
+
+#### Challenges
+
+* One of the biggest challenges was creating the 'starred pool' feature, where a user can star a pool which will add that pool to their profile. I ran into a recursion problem in the backend as I hadn't excluded the necessary fields in my schemas. I then had to state the reverse property of the 'starred_by' and 'starred_pools' properties (see below) as Python didn't recognise the relationship.
+
+Pool model:
+starred_by = Set('User', reverse='starred_pools')
+
+User model:
+starred_pools = Set('Pool', reverse='starred_by')
+
 
 ## Future enhancements
 
