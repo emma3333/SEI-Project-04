@@ -2,7 +2,6 @@ from datetime import datetime
 from app import db
 from pony.orm import Required, Optional, Set
 from marshmallow import Schema, fields, post_load
-# from .User import User
 
 class Comment(db.Entity):
     content = Required(str)
