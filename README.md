@@ -50,7 +50,65 @@ I then described the table properties and schemas in the models, before creating
 
 #### Front-end
 
-I used React to write the front-end and started with the key components that completed the user journey, testing them as I went along.
+I used React to write the front-end and started with the key components that completed the user journey, testing them as I went along. For the maps on my application, I used React-mapbox-gl, which is used on my home page, pool show page and browse page. The map's central point on the index page is set to the user's current location, whereas on the pool show page, the map's central point is based on the latitude and longitude of the current pool you're on.
+
+For the pool show page, in addition to displaying information about the specific pool selected, I wanted to have a section displaying the weather forecast for that pool for the next week, and a section displaying nearby pools. in order to do this, I needed to use a Bluebird Promise to control when the axios request would run to manage the asynchronous behaviour of JavaScript. I used axios to get the data for the pool and pools from my API, and then used another axios get request to retrieve the weather forecast for the pool using the Dark Sky API.
+
+
+```javascript
+getPools() {
+  Promise.props({
+    pool: axios.get(`/api/pools/${this.props.match.params.id}`).then(res => res.data),
+    pools: axios.get('/api/pools').then(res => res.data)
+  })
+    .then(res => {
+      axios.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${process.env.DARKSKY_KEY}/${res.pool.lat}, ${res.pool.lng}`)
+        .then(res2 => this.setState({ pool: res.pool, pools: res.pools, weatherForecast: res2.data.daily.data }))
+    })
+    .catch(err => this.setState({ errors: err.response.data.errors }))
+}
+```
+
+I then used a filter function on the pools and stored this in a variable which I mapped over to display on the page.
+
+```
+const nearby = this.state.pools.filter(pool => pool.region === this.state.pool.region && pool.name !== this.state.pool.name)
+```
+
+Once I had the data from the Dark Sky API, I had to convert the date formatted as a UNIX string into one that was readable, and convert the temperature supplied in Fahrenheit to Celsius and then map over the data and format the data in a table which I did as follows.
+
+```
+const weatherForecast = this.state.weatherForecast
+const forecastDays = weatherForecast.map(day => new Date(day.time * 1000))
+const celsiusLow = weatherForecast.map(temp => Math.ceil((temp.temperatureLow-32)*(5/9)))
+const celsiusHigh = weatherForecast.map(temp => Math.ceil((temp.temperatureHigh-32)*(5/9)))
+```
+
+```
+<table className="table is-narrow is-bordered">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Summary</th>
+      <th>Low(°C)</th>
+      <th>High(°C)</th>
+    </tr>
+    {weatherForecast.map((day, i) => {
+      const date = forecastDays[i]
+      const tempLow = celsiusLow[i]
+      const tempHigh = celsiusHigh[i]
+      return <tr key={day.time}>
+        <td>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</td>
+        <td>{day.summary}</td>
+        <td>{tempLow}</td>
+        <td>{tempHigh}</td>
+      </tr>
+    }
+    )}
+
+  </thead>
+</table>
+```
 
 #### Challenges
 
